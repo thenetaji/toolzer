@@ -57,7 +57,7 @@ import {
   Twitter,
   BrainCircuit,
   Link2,
-  LayoutList
+  LayoutList,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -77,7 +77,7 @@ export function Home() {
   );
 }
 
-export function ToolsShowcase() {
+function ToolsShowcase() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
   const controls = useAnimation();
@@ -178,8 +178,8 @@ export function ToolsShowcase() {
 
   // Total tool count for display
   const totalToolCount = toolCategories.reduce(
-    (count, category) => count + category.tools.length, 
-    0
+    (count, category) => count + category.tools.length,
+    0,
   );
 
   // Color mappings for tool colors
@@ -208,7 +208,7 @@ export function ToolsShowcase() {
     const Icon = tool.icon;
     const { bg, text } = getColorClasses(tool.color);
     const gradientBg = bg.replace("/10", "/40");
-    
+
     return (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -222,13 +222,17 @@ export function ToolsShowcase() {
 
         <div className="p-6">
           {/* Icon */}
-          <div className={`${bg} ${text} w-12 h-12 rounded-lg flex items-center justify-center mb-4`}>
+          <div
+            className={`${bg} ${text} w-12 h-12 rounded-lg flex items-center justify-center mb-4`}
+          >
             <Icon className="h-6 w-6" />
           </div>
 
           {/* Content */}
           <h3 className="text-lg font-semibold mb-1">{tool.name}</h3>
-          <p className="text-sm text-muted-foreground mb-4">{tool.description}</p>
+          <p className="text-sm text-muted-foreground mb-4">
+            {tool.description}
+          </p>
 
           {/* Hover CTA */}
           <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-card to-transparent translate-y-14 group-hover:translate-y-0 transition-transform duration-300 flex items-center justify-end p-6">
@@ -289,7 +293,8 @@ export function ToolsShowcase() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-muted-foreground text-lg"
           >
-            Everything you need to create, convert, and optimize — all in one place.
+            Everything you need to create, convert, and optimize — all in one
+            place.
           </motion.p>
         </div>
 
@@ -300,7 +305,9 @@ export function ToolsShowcase() {
               {/* Category title */}
               <motion.h3
                 initial={{ opacity: 0, x: -20 }}
-                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                animate={
+                  isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }
+                }
                 transition={{ duration: 0.5, delay: 0.2 + catIndex * 0.1 }}
                 className="text-xl font-semibold flex items-center"
               >
@@ -340,7 +347,7 @@ export function ToolsShowcase() {
   );
 }
 
-export function HeroSection() {
+function HeroSection() {
   return (
     <section className="relative py-16 md:py-24 bg-background">
       {/* Static, stable gradient background */}
@@ -392,12 +399,12 @@ export function HeroSection() {
             <p className="text-muted-foreground mb-4">
               Transform files between formats with just a few clicks.
             </p>
-<div className="flex items-center text-sm font-medium text-primary">
-  <Link to="/tools/converters" className="flex items-center">
-    <span>Explore Converters</span>
-    <ArrowRight className="ml-1 h-3.5 w-3.5" />
-  </Link>
-</div>
+            <div className="flex items-center text-sm font-medium text-primary">
+              <Link to="/tools/converters" className="flex items-center">
+                <span>Explore Converters</span>
+                <ArrowRight className="ml-1 h-3.5 w-3.5" />
+              </Link>
+            </div>
           </div>
 
           {/* Media Tools */}
@@ -410,9 +417,9 @@ export function HeroSection() {
               Process images, videos, and audio files with ease.
             </p>
             <div className="flex items-center text-sm font-medium text-primary">
-            <Link to="/tools/media" className="flex items-center">
-              <span>Explore Media Tools</span>
-              <ArrowRight className="ml-1 h-3.5 w-3.5" />
+              <Link to="/tools/media" className="flex items-center">
+                <span>Explore Media Tools</span>
+                <ArrowRight className="ml-1 h-3.5 w-3.5" />
               </Link>
             </div>
           </div>
@@ -427,9 +434,9 @@ export function HeroSection() {
               Boost your workflow with time-saving productivity tools.
             </p>
             <div className="flex items-center text-sm font-medium text-primary">
-            <Link to="/tools/productivity" className="flex items-center">
-              <span>Explore Productivity</span>
-              <ArrowRight className="ml-1 h-3.5 w-3.5" />
+              <Link to="/tools/productivity" className="flex items-center">
+                <span>Explore Productivity</span>
+                <ArrowRight className="ml-1 h-3.5 w-3.5" />
               </Link>
             </div>
           </div>
@@ -457,7 +464,7 @@ export function HeroSection() {
   );
 }
 
-export function FAQSection() {
+function FAQSection() {
   return (
     <section className="py-16 md:py-24 relative overflow-hidden">
       {/* Background elements */}
@@ -600,7 +607,7 @@ export function FAQSection() {
   );
 }
 
-export function CTASection() {
+function CTASection() {
   return (
     <section className="py-20 relative overflow-hidden">
       {/* Background gradient with pattern */}
@@ -824,7 +831,7 @@ export function CTASection() {
   );
 }
 
-export function TrustedBySection() {
+function TrustedBySection() {
   return (
     <section className="py-16 md:py-24 relative overflow-hidden">
       {/* Subtle background */}
@@ -895,7 +902,7 @@ export function TrustedBySection() {
   );
 }
 
-export function WhyToolzer() {
+function WhyToolzer() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -1042,18 +1049,21 @@ export function WhyToolzer() {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-<Link to="/tools" className="block w-full">
-  <Button size="lg" className="w-full gap-2 bg-primary hover:bg-primary/90">
-    Get Started
-    <Zap className="h-4 w-4" />
-  </Button>
-</Link>
-         <Link to="/api" className="block w-full">
-  <Button size="lg" variant="outline" className="w-full gap-2">
-    View API Docs
-    <ArrowRight className="h-4 w-4" />
-  </Button>
-</Link>
+          <Link to="/tools" className="block w-full">
+            <Button
+              size="lg"
+              className="w-full gap-2 bg-primary hover:bg-primary/90"
+            >
+              Get Started
+              <Zap className="h-4 w-4" />
+            </Button>
+          </Link>
+          <Link to="/api" className="block w-full">
+            <Button size="lg" variant="outline" className="w-full gap-2">
+              View API Docs
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

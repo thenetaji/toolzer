@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Header } from "./components/Header";
@@ -18,7 +23,7 @@ function NavigationHandler({ children }) {
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
   const [prevLocation, setPrevLocation] = useState(location.pathname);
-  
+
   useEffect(() => {
     // Only show loader if location actually changed
     if (location.pathname !== prevLocation) {
@@ -28,16 +33,14 @@ function NavigationHandler({ children }) {
         setIsLoading(false);
         setPrevLocation(location.pathname);
       }, 1200); // Show loader for at least 1.2 seconds
-      
+
       return () => clearTimeout(timer);
     }
   }, [location, prevLocation]);
-  
+
   return (
     <>
-      <AnimatePresence>
-        {isLoading && <Loader />}
-      </AnimatePresence>
+      <AnimatePresence>{isLoading && <Loader />}</AnimatePresence>
       {children}
     </>
   );
