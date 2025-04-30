@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import SITE_LOGO from "../assets/logo.png";
 
 const SITE_NAME = "Toolzer";
 const CURRENT_YEAR = new Date().getFullYear();
@@ -67,7 +68,11 @@ export function Footer() {
               <div className="relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-200"></div>
                 <div className="relative bg-background rounded-full p-1 flex items-center justify-center">
-                  <Sparkles className="h-6 w-6 text-primary" />
+                  <img
+                    className="h-6 w-6 text-primary rounded"
+                    src={SITE_LOGO}
+                    alt={SITE_LOGO}
+                  />
                 </div>
               </div>
               <span className="font-bold text-transparent text-xl bg-clip-text bg-gradient-to-r from-primary to-purple-600">

@@ -84,19 +84,20 @@ export function Header() {
             onHoverStart={() => setIsHovering(true)}
             onHoverEnd={() => setIsHovering(false)}
           >
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="relative">
+            <Link to="/" className="flex items-center space-x-3">
+              <div className="relative flex items-center justify-center">
                 <div className="absolute -inset-1 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-200"></div>
                 <div className="relative bg-background rounded-full p-1 flex items-center justify-center">
                   <img
                     src={SiteLogo}
                     alt={SITE_NAME}
-                    className="h-6 w-6 md:block rounded"
+                    className="h-6 w-6 rounded"
                   />
                 </div>
               </div>
+
               <motion.span
-                className="font-extrabold text-transparent text-xl bg-clip-text"
+                className="font-extrabold text-transparent text-xl bg-clip-text bg-gradient-to-r from-primary to-purple-600"
                 animate={{
                   backgroundPosition: isHovering ? ["0%", "100%"] : ["0%"],
                   backgroundSize: "200%",
@@ -118,7 +119,6 @@ export function Header() {
               BETA
             </Badge>
           </motion.div>
-
           <div className="flex items-center">
             {/* Theme Toggle for Desktop */}
             <motion.div whileTap={{ scale: 0.9 }} className="mr-2">
@@ -150,14 +150,13 @@ export function Header() {
                           activeIndex === index ? { scale: 1.1 } : { scale: 1 }
                         }
                       >
-                        <Button
-                          variant={activeIndex === index ? "default" : "ghost"}
-                          size="sm"
-                          className="relative overflow-hidden group rounded-full"
-                        >
-                          <Link
-                            to={item.href}
-                            className="flex items-center px-1"
+                        <Link to={item.href} className="flex items-center">
+                          <Button
+                            variant={
+                              activeIndex === index ? "default" : "ghost"
+                            }
+                            size="sm"
+                            className="relative overflow-hidden group rounded-full px-1"
                           >
                             {item.icon}
                             <span className="relative">
@@ -171,18 +170,20 @@ export function Header() {
                                 transition={{ duration: 0.3 }}
                               />
                             </span>
-                          </Link>
-                          <motion.div
-                            className="absolute inset-0 bg-gradient-to-r from-primary/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity"
-                            initial={{ opacity: 0 }}
-                            animate={
-                              activeIndex === index
-                                ? { opacity: 1 }
-                                : { opacity: 0 }
-                            }
-                            transition={{ duration: 0.3 }}
-                          />
-                        </Button>
+
+                            {/* Gradient Hover Effect */}
+                            <motion.div
+                              className="absolute inset-0 bg-gradient-to-r from-primary/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity"
+                              initial={{ opacity: 0 }}
+                              animate={
+                                activeIndex === index
+                                  ? { opacity: 1 }
+                                  : { opacity: 0 }
+                              }
+                              transition={{ duration: 0.3 }}
+                            />
+                          </Button>
+                        </Link>
                       </motion.div>
                     </TooltipTrigger>
                     <TooltipContent

@@ -367,10 +367,10 @@ function HeroSection() {
             All-in-one toolset to automate your digital workflow
           </h1>
 
-          <p className="text-lg text-muted-foreground mx-auto">
+          <h2 className="text-lg text-muted-foreground mx-auto">
             Powerful online tools for file conversion, media processing, and
             productivity tasks - all in one place, all completely free.
-          </p>
+          </h2>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
             <Link to="/tools" className="block w-full">

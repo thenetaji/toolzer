@@ -3,9 +3,17 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import { visualizer } from "rollup-plugin-visualizer";
+import { partytownVite } from "@qwik.dev/partytown/utils";
 
 export default defineConfig({
-  plugins: [react(), tailwindcss(), visualizer({ open: true })],
+  plugins: [
+    react(),
+    tailwindcss(),
+    visualizer({ open: true }),
+    partytownVite({
+      dest: path.join(__dirname, "dist", "~partytown"),
+    }),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
