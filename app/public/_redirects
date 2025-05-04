@@ -1,0 +1,6 @@
+# Redirect from HTTP to HTTPS
+http://* https://$1 301
+
+# Redirect from www to non-www
+http://www.toolzer.pages.dev/* https://toolzer.pages.dev/:splat 301
+https://www.toolzer.pages.dev/* https://toolzer.pages.dev/:splat 301
