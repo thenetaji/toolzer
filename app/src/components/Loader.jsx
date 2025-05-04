@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Wand2, FileText, Code, Sparkles } from "lucide-react";
-import SiteLogo from "../assets/logo.png";
 
 export default function Loader() {
   const [progress, setProgress] = useState(0);
@@ -103,7 +102,7 @@ export default function Loader() {
             />
 
             <img
-              src={SiteLogo}
+              src="/icons/icon-16x16.webp"
               alt="Toolzer"
               className="w-8 h-8 rounded-full"
             />

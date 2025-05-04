@@ -11,7 +11,6 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import SITE_LOGO from "../assets/logo.png";
 
 const SITE_NAME = "Toolzer";
 const CURRENT_YEAR = new Date().getFullYear();
@@ -70,8 +69,8 @@ export function Footer() {
                 <div className="relative bg-background rounded-full p-1 flex items-center justify-center">
                   <img
                     className="h-6 w-6 text-primary rounded"
-                    src={SITE_LOGO}
-                    alt={SITE_LOGO}
+                    src="/icons/icon-16x16.webp"
+                    alt="SITE_LOGO"
                   />
                 </div>
               </div>

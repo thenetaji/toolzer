@@ -360,16 +360,17 @@ function HeroSection() {
           {/* Simple badge */}
           <div className="mb-6 inline-flex items-center justify-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
             <Sparkles className="h-3.5 w-3.5 mr-2" />
-            <span>All tools in one place</span>
+            <span>Every tool you need, in one place</span>
           </div>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-            All-in-one toolset to automate your digital workflow
+            Your Free All-in-One Online Toolbox
           </h1>
 
           <h2 className="text-lg text-muted-foreground mx-auto">
-            Powerful online tools for file conversion, media processing, and
-            productivity tasks - all in one place, all completely free.
+            Convert files, edit media, optimize SEO, and boost productivity —
+            Toolzer gives you fast, free access to powerful tools, all in your
+            browser* or using API.
           </h2>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">

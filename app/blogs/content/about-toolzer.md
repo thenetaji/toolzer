@@ -1,9 +1,10 @@
 ---
 title: "Welcome to the Coolest Multi-Tool Site Ever!"
 date: "2025-04-30"
-author: "The Multi-Tool Team"
+author: "The Toolzer Team"
 category: "Site Updates"
-excerpt: "Discover the coolest multi-tool site on the internet! Packed with handy utilities and a fun experience."
+description: "Discover the coolest multi-tool site on the internet! Packed with handy utilities and a fun experience."
+slug: about-toolzer
 featured_image: "/blog-images/about-toolzer-sample-image.png"
 ---
 

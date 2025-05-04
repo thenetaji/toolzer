@@ -19,15 +19,14 @@ import About from "./pages/About.jsx";
 import ToolsPage from "./pages/Tools.jsx";
 import Loader from "./components/Loader";
 import NotFound from "./pages/404";
-import { SingleBlogPost } from "./pages/Blog";
+import Blog from "./pages/Blog";
 
 function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/tools" element={<ToolsPage />} />
-      <Route path="/blog" element={<p>Coming soon</p>} />
-      <Route path="/blog/:slug" element={<SingleBlogPost />} />
+      <Route path="/blog" element={<Blog />} />
       <Route path="/about" element={<About />} />
       <Route path="/api" element={<API />} />
       <Route path="/contact" element={<Contact />} />

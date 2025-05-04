@@ -27,7 +27,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import SiteLogo from "../assets/logo.png";
 
 const SITE_NAME = "Toolzer";
 
@@ -89,7 +88,7 @@ export function Header() {
                 <div className="absolute -inset-1 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-200"></div>
                 <div className="relative bg-background rounded-full p-1 flex items-center justify-center">
                   <img
-                    src={SiteLogo}
+                    src="/icons/icon-16x16.webp"
                     alt={SITE_NAME}
                     className="h-6 w-6 rounded"
                   />
@@ -214,7 +213,7 @@ export function Header() {
                 <SheetHeader className="flex flex-row items-center justify-between">
                   <SheetTitle className="flex items-center">
                     <img
-                      src={SiteLogo}
+                      src="/icons/icon-16x16.webp"
                       alt={SITE_NAME}
                       className="h-5 w-5 mr-2 rounded"
                     />
