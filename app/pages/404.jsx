@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 
 export default function NotFound() {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
     document.title = "404 - Page Not Found";
@@ -64,7 +64,7 @@ export default function NotFound() {
           >
             <Button
               variant="default"
-              onClick={() => navigate("/")}
+              onClick={() => router.push("/")}
               className="gap-1"
             >
               <svg
@@ -86,7 +86,7 @@ export default function NotFound() {
             </Button>
             <Button
               variant="outline"
-              onClick={() => navigate(-1)}
+              onClick={() => router.push("/")}
               className="gap-1"
             >
               <svg

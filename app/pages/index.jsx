@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { motion, useAnimation, useInView } from "framer-motion";
 import {
   ArrowRight,
@@ -25,7 +25,7 @@ import {
   Smartphone,
   AppWindow,
   Server,
-  Infinity,
+  Infinity as Infinite,
   Braces as Json,
   Bot,
   CheckCircle,
@@ -64,7 +64,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 
-export function Home() {
+export default function Home() {
   return (
     <>
       <HeroSection />
@@ -329,7 +329,7 @@ function ToolsShowcase() {
 
         {/* Sticky "View All" button */}
         <div className="mt-16 flex justify-center">
-          <Link to="/tools">
+          <Link href="/tools">
             <Button
               size="lg"
               className="gap-2 relative bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30"
@@ -374,7 +374,7 @@ function HeroSection() {
           </h2>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-            <Link to="/tools" className="block w-full">
+            <Link href="/tools" className="block w-full">
               <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2 w-full"
@@ -401,7 +401,7 @@ function HeroSection() {
               Transform files between formats with just a few clicks.
             </p>
             <div className="flex items-center text-sm font-medium text-primary">
-              <Link to="/tools/converters" className="flex items-center">
+              <Link href="/tools/converters" className="flex items-center">
                 <span>Explore Converters</span>
                 <ArrowRight className="ml-1 h-3.5 w-3.5" />
               </Link>
@@ -418,7 +418,7 @@ function HeroSection() {
               Process images, videos, and audio files with ease.
             </p>
             <div className="flex items-center text-sm font-medium text-primary">
-              <Link to="/tools/media" className="flex items-center">
+              <Link href="/tools/media" className="flex items-center">
                 <span>Explore Media Tools</span>
                 <ArrowRight className="ml-1 h-3.5 w-3.5" />
               </Link>
@@ -435,7 +435,7 @@ function HeroSection() {
               Boost your workflow with time-saving productivity tools.
             </p>
             <div className="flex items-center text-sm font-medium text-primary">
-              <Link to="/tools/productivity" className="flex items-center">
+              <Link href="/tools/productivity" className="flex items-center">
                 <span>Explore Productivity</span>
                 <ArrowRight className="ml-1 h-3.5 w-3.5" />
               </Link>
@@ -573,7 +573,7 @@ function FAQSection() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/tools">
+            <Link href="/tools">
               <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/90 gap-2"
@@ -649,7 +649,7 @@ function CTASection() {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Link to="/tools">
+              <Link href="/tools">
                 <Button
                   size="lg"
                   className="bg-primary hover:bg-primary/90 gap-2"
@@ -672,7 +672,7 @@ function CTASection() {
                 </Button>
               </Link>
 
-              <Link to="/tools">
+              <Link href="/tools">
                 <Button size="lg" variant="secondary" className="gap-2">
                   Browse All Tools
                   <svg
@@ -695,7 +695,7 @@ function CTASection() {
                 </Button>
               </Link>
 
-              <Link to="/api" className="block w-full">
+              <Link href="/api" className="block w-full">
                 <Button size="lg" variant="outline" className="gap-2">
                   Explore API Docs
                   <svg
@@ -887,12 +887,12 @@ function TrustedBySection() {
 
         {/* CTA */}
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Link to="/tools" className="block w-full">
+          <Link href="/tools" className="block w-full">
             <Button size="lg" className="gap-2 w-full">
               Explore Tools
             </Button>
           </Link>
-          <Link to="/docs" className="block w-full">
+          <Link href="/docs" className="block w-full">
             <Button size="lg" variant="outline" className="gap-2 w-full">
               View Documentation
             </Button>
@@ -1017,7 +1017,7 @@ function WhyToolzer() {
                     text: "Simple REST API access",
                   },
                   {
-                    icon: <Infinity className="h-5 w-5 text-violet-500" />,
+                    icon: <Infinite className="h-5 w-5 text-violet-500" />,
                     text: "1M free requests per month",
                   },
                   {
@@ -1050,7 +1050,7 @@ function WhyToolzer() {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Link to="/tools" className="block w-full">
+          <Link href="/tools" className="block w-full">
             <Button
               size="lg"
               className="w-full gap-2 bg-primary hover:bg-primary/90"
@@ -1059,7 +1059,7 @@ function WhyToolzer() {
               <Zap className="h-4 w-4" />
             </Button>
           </Link>
-          <Link to="/api" className="block w-full">
+          <Link href="/api" className="block w-full">
             <Button size="lg" variant="outline" className="w-full gap-2">
               View API Docs
               <ArrowRight className="h-4 w-4" />

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   ArrowLeft,
@@ -16,7 +16,7 @@ export default function About() {
   return (
     <div className="container max-w-4xl mx-auto px-4 py-12">
       <div className="mb-8">
-        <Link to="/">
+        <Link href="/">
           <Button variant="ghost" className="pl-0 flex items-center gap-2">
             <ArrowLeft className="h-4 w-4" />
             Back to Home
@@ -206,7 +206,7 @@ export default function About() {
                 <Sparkles className="h-4 w-4" />
               </Button>
 
-              <Link to="/contact">
+              <Link href="/contact">
                 <Button variant="outline" className="gap-2">
                   Contact Us
                 </Button>
