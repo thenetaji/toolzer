@@ -1,16 +1,14 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { Html, Head, Main, NextScript } from "next/document";
+import { Partytown } from "@qwik.dev/partytown/react";
 
 export default function Document() {
   return (
     <Html lang="en" className="dark">
       <Head>
         <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         {/* Favicons */}
-        {[
-          16, 32, 48, 72, 96, 144, 152, 167, 180, 192, 256, 512,
-        ].map((size) => (
+        {[16, 32, 48, 72, 96, 144, 152, 167, 180, 192, 256, 512].map((size) => (
           <link
             key={size}
             rel="icon"
@@ -42,7 +40,6 @@ export default function Document() {
         />
 
         {/* SEO */}
-        <title>Toolzer | Every Online Tool You’ll Ever Need — Free & Fast</title>
         <meta
           name="description"
           content="Toolzer brings all online tools in one place — from file converters to SEO, image editors, downloaders, and dev utilities. 100% free, fast, and ad-free."
@@ -102,7 +99,8 @@ export default function Document() {
                 "Toolzer brings all online tools in one place — from file converters to SEO, image editors, downloaders, and dev utilities. 100% free, fast, and ad-free.",
               applicationCategory: "Utility",
               operatingSystem: "All",
-              browserRequirements: "Requires JavaScript. Works in all modern browsers.",
+              browserRequirements:
+                "Requires JavaScript. Works in all modern browsers.",
               featureList: [
                 "No login required",
                 "Free API access",
@@ -119,11 +117,28 @@ export default function Document() {
 
         {/* Yandex */}
         <meta name="yandex-verification" content="313a70d4f279d51f" />
+
+        <Partytown forward={["dataLayer.push"]} />
+        <script
+          type="text/partytown"
+          src="https://www.googletagmanager.com/gtag/js?id=G-75W2QXCJXB"
+        />
+        <script
+          type="text/partytown"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-75W2QXCJXB');
+            `,
+          }}
+        />
       </Head>
       <body>
         <Main />
         <NextScript />
       </body>
     </Html>
-  )
+  );
 }

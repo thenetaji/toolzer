@@ -30,33 +30,26 @@ import {
   Bot,
   CheckCircle,
   Clock,
-  FileSymlink,
-  ImageIcon,
+  
   Type,
   Download,
-  FileType,
-  FileBadge,
-  Table,
+  
+  
   ImageDown,
-  Minimize2,
-  Scissors,
+  
   Music,
-  Edit3,
   GitCompare,
   AlignJustify,
-  Braces,
   BoxSelect,
   FileCode,
   FileCode2,
-  Binary,
+  
   Key,
-  FileDigit,
   FileEdit,
   Youtube,
   Music2,
   Twitter,
   BrainCircuit,
-  Link2,
   LayoutList,
 } from "lucide-react";
 

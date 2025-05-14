@@ -62,7 +62,9 @@
   border-radius: 0.5rem;
   width: 100%;
   height: auto;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 /* Figure and caption styling */
@@ -130,19 +132,19 @@
   .blogContent {
     font-size: 1rem;
   }
-  
+
   .blogContent h1 {
     font-size: 1.875rem;
   }
-  
+
   .blogContent h2 {
     font-size: 1.5rem;
   }
-  
+
   .blogContent h3 {
     font-size: 1.25rem;
   }
-  
+
   .blogContent h4 {
     font-size: 1.125rem;
   }
