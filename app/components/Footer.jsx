@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Sparkles,
@@ -56,7 +56,7 @@ const socialLinks = [
   },
 ];
 
-export function Footer() {
+export default function Footer() {
   return (
     <footer className="bg-gradient-to-b from-background to-background/95 border-t border-border/40 pt-12 pb-6">
       <div className="container px-4 mx-auto">
@@ -111,7 +111,7 @@ export function Footer() {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <Link
-                    to={link.href}
+                    href={link.href}
                     className="text-sm text-muted-foreground hover:text-foreground flex items-center group"
                   >
                     <ArrowRight className="mr-1 h-3 w-0 opacity-0 group-hover:w-3 group-hover:opacity-100 transition-all duration-300" />
@@ -133,7 +133,7 @@ export function Footer() {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <Link
-                    to={link.href}
+                    href={link.href}
                     className="text-sm text-muted-foreground hover:text-foreground flex items-center group"
                   >
                     <ArrowRight className="mr-1 h-3 w-0 opacity-0 group-hover:w-3 group-hover:opacity-100 transition-all duration-300" />
@@ -170,7 +170,7 @@ export function Footer() {
             {legalLinks.map((link) => (
               <Link
                 key={link.href}
-                to={link.href}
+                href={link.href}
                 className="text-xs text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.name}

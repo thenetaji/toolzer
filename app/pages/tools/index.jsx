@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -152,7 +152,7 @@ export default function ToolsPage() {
               {popularTools.slice(0, 6).map((tool) => {
                 const Icon = iconMap[tool.icon];
                 return (
-                  <Link to={tool.url} key={tool.id}>
+                  <Link href={tool.url} key={tool.id}>
                     <motion.div
                       whileHover={{ y: -5 }}
                       className="bg-card/80 hover:bg-card border border-border/50 rounded-lg p-4 h-full flex flex-col"
@@ -254,7 +254,7 @@ export default function ToolsPage() {
                         {categoryTools.map((tool) => {
                           const Icon = iconMap[tool.icon];
                           return (
-                            <Link to={tool.url} key={tool.id}>
+                            <Link href={tool.url} key={tool.id}>
                               <motion.div
                                 whileHover={{ y: -5 }}
                                 className="bg-card/80 hover:bg-card border border-border/50 rounded-lg p-4 h-full flex flex-col"
@@ -313,7 +313,7 @@ export default function ToolsPage() {
                       {categoryTools.map((tool) => {
                         const Icon = iconMap[tool.icon];
                         return (
-                          <Link to={tool.url} key={tool.id}>
+                          <Link href={tool.url} key={tool.id}>
                             <motion.div
                               whileHover={{ y: -5 }}
                               className="bg-card/80 hover:bg-card border border-border/50 rounded-lg p-4 h-full flex flex-col"
