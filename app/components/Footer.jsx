@@ -1,13 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  Github,
-  Twitter,
-  Instagram,
-  Youtube,
-  ArrowRight,
-} from "lucide-react";
+import { Github, Twitter, Instagram, Youtube, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 

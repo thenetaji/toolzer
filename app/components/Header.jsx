@@ -9,7 +9,6 @@ import {
   Zap,
   Code,
   MessageCircle,
-  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -118,6 +117,7 @@ export default function Header() {
               BETA
             </Badge>
           </motion.div>
+
           <div className="flex items-center">
             {/* Theme Toggle for Desktop */}
             <motion.div whileTap={{ scale: 0.9 }} className="mr-2">
@@ -126,6 +126,7 @@ export default function Header() {
                 onPressedChange={toggleTheme}
                 size="sm"
                 className="bg-muted/50 border-border/0 data-[state=on]:bg-primary/20"
+                aria-label="Toggle Theme"
               >
                 {theme === "dark" ? (
                   <Moon className="h-4 w-4 text-yellow-400" />
@@ -200,7 +201,12 @@ export default function Header() {
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
                 <motion.div whileTap={{ scale: 0.9 }} className="md:hidden">
-                  <Button variant="ghost" size="icon" className="relative ml-2">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="relative ml-2"
+                    aria-label="toggle menu"
+                  >
                     <div className="absolute -inset-1 bg-gradient-to-r from-primary/40 to-purple-600/40 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-200"></div>
                     <Menu className="h-5 w-5 text-primary" />
                   </Button>
@@ -214,7 +220,7 @@ export default function Header() {
                   <SheetTitle className="flex items-center">
                     <img
                       src="/icons/icon-16x16.webp"
-                      alt={SITE_NAME}
+                      alt="logo-icon"
                       className="h-5 w-5 mr-2 rounded"
                     />
                     <span className="font-bold text-transparent text-lg bg-clip-text bg-gradient-to-r from-primary to-purple-600">

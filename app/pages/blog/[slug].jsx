@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { format } from "date-fns";
@@ -21,8 +20,6 @@ import { Separator } from "@/components/ui/separator";
 import styles from "@/styles/blog-post.module.css";
 
 export default function EnhancedBlogPost({ blog }) {
-  const router = useRouter();
-
   if (!blog) {
     return (
       <div className="container max-w-3xl mx-auto px-6 py-12">

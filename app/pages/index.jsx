@@ -5,13 +5,11 @@ import {
   ArrowRight,
   ArrowUpRight,
   Sparkles,
-  Workflow,
   Zap,
   FileText,
   Image,
   BarChart3,
   Wand2,
-  ImagePlus,
   MessageSquareText,
   Volume2,
   Instagram,
@@ -30,32 +28,13 @@ import {
   Bot,
   CheckCircle,
   Clock,
-  
-  Type,
-  Download,
-  
-  
-  ImageDown,
-  
-  Music,
-  GitCompare,
-  AlignJustify,
-  BoxSelect,
-  FileCode,
-  FileCode2,
-  
-  Key,
-  FileEdit,
-  Youtube,
   Music2,
-  Twitter,
-  BrainCircuit,
-  LayoutList,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import FakePingTool from "@/components/FakePing";
 
 export default function Home() {
   return (
@@ -320,7 +299,7 @@ function ToolsShowcase() {
           ))}
         </div>
 
-        {/* Sticky "View All" button */}
+        {/* Sticky "ViewAll" button */}
         <div className="mt-16 flex justify-center">
           <Link href="/tools">
             <Button
@@ -710,115 +689,7 @@ function CTASection() {
               </Link>
             </div>
           </div>
-
-          {/* Right column: Tool animation mockup */}
-          <div className="lg:w-1/2">
-            <div className="relative">
-              {/* Browser window mockup */}
-              <div className="bg-card border border-border/60 rounded-lg shadow-xl overflow-hidden">
-                {/* Browser toolbar */}
-                <div className="bg-muted/50 p-3 border-b border-border/60 flex items-center">
-                  <div className="flex space-x-2">
-                    <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                    <div className="w-3 h-3 rounded-full bg-amber-400"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                  </div>
-                  <div className="ml-4 px-4 py-1 bg-background/70 rounded-full text-xs flex-grow max-w-sm mx-auto flex items-center justify-center truncate">
-                    toolzer.io/tools/markdown-converter
-                  </div>
-                </div>
-
-                {/* Content area */}
-                <div className="p-4 bg-card">
-                  {/* Tool interface mockup */}
-                  <div className="flex flex-col space-y-4">
-                    <div className="flex justify-between items-center">
-                      <div className="flex-1">
-                        <h4 className="text-lg font-semibold">
-                          Markdown Converter
-                        </h4>
-                        <p className="text-sm text-muted-foreground">
-                          Convert HTML to Markdown instantly
-                        </p>
-                      </div>
-                      <div className="w-24 h-8 bg-primary/20 rounded-full animate-pulse"></div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4">
-                      {/* Left editor panel */}
-                      <div className="bg-muted/30 border border-border/60 rounded-md p-3 h-48">
-                        <div className="flex justify-between text-xs mb-2 text-muted-foreground">
-                          <span>HTML Input</span>
-                          <span>100 chars</span>
-                        </div>
-                        <div className="text-xs font-mono space-y-1 opacity-70">
-                          <div>
-                            &lt;<span className="text-blue-400">h1</span>
-                            &gt;Hello World&lt;/
-                            <span className="text-blue-400">h1</span>&gt;
-                          </div>
-                          <div>
-                            &lt;<span className="text-blue-400">p</span>&gt;This
-                            is a paragraph with &lt;
-                            <span className="text-blue-400">strong</span>
-                            &gt;bold text&lt;/
-                            <span className="text-blue-400">strong</span>
-                            &gt;.&lt;/<span className="text-blue-400">p</span>
-                            &gt;
-                          </div>
-                          <div>
-                            &lt;<span className="text-blue-400">ul</span>&gt;
-                          </div>
-                          <div>
-                            {" "}
-                            &lt;<span className="text-blue-400">li</span>
-                            &gt;Item 1&lt;/
-                            <span className="text-blue-400">li</span>&gt;
-                          </div>
-                          <div>
-                            {" "}
-                            &lt;<span className="text-blue-400">li</span>
-                            &gt;Item 2&lt;/
-                            <span className="text-blue-400">li</span>&gt;
-                          </div>
-                          <div>
-                            &lt;/<span className="text-blue-400">ul</span>&gt;
-                          </div>
-                          <div className="animate-pulse">|</div>
-                        </div>
-                      </div>
-
-                      {/* Right output panel */}
-                      <div className="bg-muted/30 border border-border/60 rounded-md p-3 h-48">
-                        <div className="flex justify-between text-xs mb-2 text-muted-foreground">
-                          <span>Markdown Output</span>
-                          <span>Auto-converting...</span>
-                        </div>
-                        <div className="text-xs font-mono space-y-1 opacity-70">
-                          <div># Hello World</div>
-                          <div></div>
-                          <div>This is a paragraph with **bold text**.</div>
-                          <div></div>
-                          <div>- Item 1</div>
-                          <div>- Item 2</div>
-                          <div className="h-4"></div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex justify-between">
-                      <div className="h-8 w-24 bg-muted/50 rounded animate-pulse"></div>
-                      <div className="h-8 w-24 bg-primary/30 rounded animate-pulse"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Decorative elements */}
-              <div className="absolute -z-10 -bottom-6 -right-6 w-full h-full border border-primary/20 rounded-lg"></div>
-              <div className="absolute -z-20 -bottom-12 -right-12 w-full h-full border border-primary/10 rounded-lg"></div>
-            </div>
-          </div>
+          <FakePingTool />
         </div>
       </div>
     </section>
