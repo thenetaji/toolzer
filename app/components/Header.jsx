@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu,
@@ -41,7 +41,7 @@ const navItems = [
   },
 ];
 
-export function Header() {
+export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [theme, setTheme] = useState("dark");
   const [isHovering, setIsHovering] = useState(false);
@@ -83,7 +83,7 @@ export function Header() {
             onHoverStart={() => setIsHovering(true)}
             onHoverEnd={() => setIsHovering(false)}
           >
-            <Link to="/" className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center space-x-3">
               <div className="relative flex items-center justify-center">
                 <div className="absolute -inset-1 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-200"></div>
                 <div className="relative bg-background rounded-full p-1 flex items-center justify-center">
@@ -149,7 +149,7 @@ export function Header() {
                           activeIndex === index ? { scale: 1.1 } : { scale: 1 }
                         }
                       >
-                        <Link to={item.href} className="flex items-center">
+                        <Link href={item.href} className="flex items-center">
                           <Button
                             variant={
                               activeIndex === index ? "default" : "ghost"
@@ -239,7 +239,7 @@ export function Header() {
                           className="w-full justify-start mb-1 group hover:bg-primary/10"
                         >
                           <Link
-                            to={item.href}
+                            href={item.href}
                             className="flex items-center w-full"
                           >
                             <div className="mr-3 p-1 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
