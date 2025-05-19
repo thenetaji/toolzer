@@ -34,7 +34,6 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        {" "}
         <title>
           Toolzer | Every Online Tool You’ll Ever Need — Free & Fast
         </title>
