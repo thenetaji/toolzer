@@ -9,7 +9,6 @@ export default function TermsOfService() {
   const pageDescription =
     "Review Toolzer's terms of service to understand your responsibilities, our policies, and the rules for using our tools and services.";
   const lastUpdated = "2025-04-22";
-  const canonicalUrl = "https://toolzer.com/terms"
 
   return (
     <>
@@ -24,7 +23,7 @@ export default function TermsOfService() {
         <meta property="og:description" content={pageDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="Toolzer" />
-        <meta property="og:image" content="https://toolzer.com/icons/icon-512x512.webp" />
+        <meta property="og:image" content="https://toolzer.com/images/terms-of-service-social.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
 
@@ -32,7 +31,7 @@ export default function TermsOfService() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content="https://toolzer.com/icons/icon-512x512.webp" />
+        <meta name="twitter:image" content="https://toolzer.com/images/terms-of-service-social.jpg" />
 
         {/* Additional SEO tags */}
         <meta name="keywords" content="toolzer terms of service, user obligations, prohibited content, API usage, liability, service policies" />

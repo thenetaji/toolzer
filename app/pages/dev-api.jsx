@@ -24,8 +24,7 @@ export default function API() {
   const pageDescription =
     "Access Toolzer's API to integrate powerful tools like file conversions, text processing, and image manipulation into your own applications and workflows.";
   const lastUpdated = "2025-04-22";
-  const canonicalUrl = "https://toolzer.com/dev-api";
-  
+
   return (
     <>
       <Head>
@@ -39,7 +38,7 @@ export default function API() {
         <meta property="og:description" content={pageDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="Toolzer" />
-        <meta property="og:image" content="https://toolzer.com/icons/icon-512x512.webp" />
+        <meta property="og:image" content="https://toolzer.com/images/api-page-social.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
 
@@ -47,7 +46,7 @@ export default function API() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content="https://toolzer.com/icons/icon-512x512.webp" />
+        <meta name="twitter:image" content="https://toolzer.com/images/api-page-social.jpg" />
 
         {/* Additional SEO tags */}
         <meta name="keywords" content="toolzer api, developer tools, file conversion api, text processing api, image manipulation api, software integration" />

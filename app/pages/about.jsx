@@ -16,7 +16,6 @@ export default function About() {
   const pageTitle = "About Toolzer | Empowering Digital Creators";
   const pageDescription = "Toolzer provides simple yet powerful tools to optimize digital workflows for creators and developers. Learn about our mission, values, and the team behind our innovative platform.";
   const lastUpdated = "2025-04-22";
-  const canonicalUrl = "https://toolzer.pages.dev/about";
   
   return (
     <>
@@ -39,7 +38,7 @@ export default function About() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content="https://toolzer.com/icons/icon-512x512.webp" />
+        <meta name="twitter:image" content="https://toolzer.com/images/about-page-social.jpg" />
 
         {/* Additional SEO tags */}
         <meta name="keywords" content="toolzer, digital tools, web utilities, online converters, developer tools, creators, digital workflows" />

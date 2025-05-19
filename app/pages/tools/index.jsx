@@ -122,7 +122,6 @@ export default function ToolsPage() {
 
   const pageTitle = "Tools | Find the Perfect Tool for Your Task";
   const pageDescription = "Explore Toolzer's comprehensive collection of free utilities for creators and developers. Search, filter, and find the perfect tool for your task.";
-  const canonicalUrl = "https://toolzer.com/tools"
 
   return (
     <>
@@ -137,7 +136,7 @@ export default function ToolsPage() {
         <meta property="og:description" content={pageDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="Toolzer" />
-        <meta property="og:image" content="https://toolzer.com/icons/icon-512x512.webp" />
+        <meta property="og:image" content="https://toolzer.com/images/tools-page-social.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
 
@@ -145,7 +144,7 @@ export default function ToolsPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content="https://toolzer.com/icons/icon-512x512.webp" />
+        <meta name="twitter:image" content="https://toolzer.com/images/tools-page-social.jpg" />
 
         {/* Additional SEO tags */}
         <meta name="keywords" content="tools, utilities, online tools, free tools, developer tools, productivity tools" />

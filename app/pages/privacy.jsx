@@ -9,7 +9,6 @@ export default function PrivacyPolicy() {
   const pageDescription =
     "Learn how Toolzer collects, uses, and safeguards your personal data. Read our privacy policy to understand your rights and our data practices.";
   const lastUpdated = "2025-04-22";
-  const canonicalUrl = "https://toolzer.pages.dev/privacy";
 
   return (
     <>
@@ -24,7 +23,7 @@ export default function PrivacyPolicy() {
         <meta property="og:description" content={pageDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="Toolzer" />
-        <meta property="og:image" content="https://toolzer.com/icons/icon-512x512.webp" />
+        <meta property="og:image" content="https://toolzer.com/images/privacy-policy-social.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
 
@@ -32,7 +31,7 @@ export default function PrivacyPolicy() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content="https://toolzer.com/icons/icon-512x512.webp" />
+        <meta name="twitter:image" content="https://toolzer.com/images/privacy-policy-social.jpg" />
 
         {/* Additional SEO tags */}
         <meta name="keywords" content="toolzer privacy policy, data collection, user rights, data security, cookies, third-party services" />
