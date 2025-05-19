@@ -2,17 +2,10 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs } from "@/components/ui/tabs";
 import {
   ArrowLeft,
-  Code,
   Key,
-  Lock,
-  BarChart2,
-  FileJson,
-  Copy,
-  Check,
   ChevronRight,
   Clock,
 } from "lucide-react";

@@ -14,14 +14,9 @@ import {
 } from "@/components/ui/select";
 import {
   ArrowLeft,
-  Mail,
-  MessageSquare,
   Send,
   CheckCircle,
-  Twitter,
-  Github,
-  Linkedin,
-  Clock,
+  Github
 } from "lucide-react";
 
 export default function Contact() {
