@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Head from "next/head";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,14 +14,9 @@ import {
 } from "@/components/ui/select";
 import {
   ArrowLeft,
-  Mail,
-  MessageSquare,
   Send,
   CheckCircle,
-  Twitter,
-  Github,
-  Linkedin,
-  Clock,
+  Github
 } from "lucide-react";
 
 export default function Contact() {
@@ -65,225 +61,180 @@ export default function Contact() {
     }, 1000);
   };
 
+  const pageTitle = "Contact Us | Toolzer";
+  const pageDescription =
+    "Get in touch with Toolzer for questions, support, or feedback. We're here to help and usually respond within 24 hours.";
+  const lastUpdated = "2025-04-22";
+  const canonicalUrl = "https://toolzer.com/contact";
+
   return (
-    <div className="container max-w-5xl mx-auto px-4 py-12">
-      <div className="mb-8">
-        <Link href="/">
-          <Button variant="ghost" className="pl-0 flex items-center gap-2">
-            <ArrowLeft className="h-4 w-4" />
-            Back to Home
-          </Button>
-        </Link>
-      </div>
+    <>
+      <Head>
+        {/* Primary Meta Tags */}
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
 
-      <div className="flex flex-col md:flex-row gap-12">
-        {/* Contact Form */}
-        <div className="flex-1">
-          <h1 className="text-3xl font-bold mb-2">Get in Touch</h1>
-          <p className="text-muted-foreground mb-8">
-            Have a question or feedback? We'd love to hear from you.
-          </p>
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="Toolzer" />
+        <meta property="og:image" content="https://toolzer.com/icons/icon-512x512.webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
 
-          {isSubmitted ? (
-            <Card className="bg-primary/10 border-primary/20">
-              <CardContent className="pt-6 flex flex-col items-center text-center">
-                <CheckCircle className="h-12 w-12 text-primary mb-4" />
-                <h3 className="text-xl font-semibold mb-2">
-                  Message Received!
-                </h3>
-                <p className="text-muted-foreground">
-                  Thank you for reaching out. We'll get back to you as soon as
-                  possible.
-                </p>
-              </CardContent>
-            </Card>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Your Name
-                </label>
-                <Input
-                  id="name"
-                  name="name"
-                  value={formState.name}
-                  onChange={handleChange}
-                  placeholder="John Doe"
-                  required
-                  className="w-full"
-                />
-              </div>
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content="https://toolzer.com/icons/icon-512x512.webp" />
 
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Email Address
-                </label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                  placeholder="you@example.com"
-                  required
-                  className="w-full"
-                />
-              </div>
+        {/* Additional SEO tags */}
+        <meta name="keywords" content="contact toolzer, support, feedback, tool help, API questions" />
+        <meta name="author" content="Toolzer Team" />
+        <meta name="robots" content="index, follow" />
 
-              <div>
-                <label
-                  htmlFor="topic"
-                  className="block text-sm font-medium mb-2"
-                >
-                  What can we help you with?
-                </label>
-                <Select
-                  value={formState.topic}
-                  onValueChange={handleSelectChange}
-                >
-                  <SelectTrigger id="topic" className="w-full">
-                    <SelectValue placeholder="Select a topic" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="general">General Inquiry</SelectItem>
-                    <SelectItem value="support">Tool Support</SelectItem>
-                    <SelectItem value="api">API Questions</SelectItem>
-                    <SelectItem value="feedback">
-                      Feedback & Suggestions
-                    </SelectItem>
-                    <SelectItem value="partnership">
-                      Partnership Opportunities
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+        {/* Last Modified */}
+        <meta property="article:modified_time" content={`${lastUpdated}T08:26:27Z`} />
+      </Head>
 
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Your Message
-                </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  value={formState.message}
-                  onChange={handleChange}
-                  placeholder="Tell us what you need help with, or share your feedback..."
-                  required
-                  className="w-full min-h-[120px]"
-                />
-              </div>
-
-              <Button
-                type="submit"
-                className="w-full gap-2"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-                <Send className="h-4 w-4" />
-              </Button>
-            </form>
-          )}
+      <div className="container max-w-5xl mx-auto px-4 py-12">
+        <div className="mb-8">
+          <Link href="/">
+            <Button variant="ghost" className="pl-0 flex items-center gap-2">
+              <ArrowLeft className="h-4 w-4" />
+              Back to Home
+            </Button>
+          </Link>
         </div>
 
-        {/* Contact Info */}
-        <div className="md:w-64 lg:w-80 space-y-8">
-          <div>
-            <h2 className="text-xl font-semibold mb-4">Contact Details</h2>
+        <div className="flex flex-col md:flex-row gap-12">
+          {/* Contact Form */}
+          <div className="flex-1">
+            <h1 className="text-3xl font-bold mb-2">Get in Touch</h1>
+            <p className="text-muted-foreground mb-8">
+              Have a question or feedback? We'd love to hear from you.
+            </p>
 
-            <div className="space-y-4">
-              <div className="flex gap-3">
-                <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Mail className="h-5 w-5 text-primary" />
-                </div>
+            {isSubmitted ? (
+              <Card className="bg-primary/10 border-primary/20">
+                <CardContent className="pt-6 flex flex-col items-center text-center">
+                  <CheckCircle className="h-12 w-12 text-primary mb-4" />
+                  <h3 className="text-xl font-semibold mb-2">
+                    Message Received!
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Thank you for reaching out. We'll get back to you as soon as
+                    possible.
+                  </p>
+                </CardContent>
+              </Card>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <p className="text-sm font-medium">Email us at</p>
-                  <a
-                    href="mailto:contact.dry528@passinbox.com"
-                    className="text-primary hover:underline"
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium mb-2"
                   >
-                    contact.dry528@passinbox.com
-                  </a>
+                    Your Name
+                  </label>
+                  <Input
+                    id="name"
+                    name="name"
+                    value={formState.name}
+                    onChange={handleChange}
+                    placeholder="John Doe"
+                    required
+                    className="w-full"
+                  />
                 </div>
-              </div>
 
-              <div className="flex gap-3">
-                <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <MessageSquare className="h-5 w-5 text-primary" />
-                </div>
                 <div>
-                  <p className="text-sm font-medium">Live Chat</p>
-                  <p className="text-sm text-muted-foreground">
-                    Available Mon-Fri, 9AM-5PM UTC
-                  </p>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium mb-2"
+                  >
+                    Email Address
+                  </label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                    placeholder="you@example.com"
+                    required
+                    className="w-full"
+                  />
                 </div>
-              </div>
 
-              <div className="flex gap-3">
-                <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Clock className="h-5 w-5 text-primary" />
-                </div>
                 <div>
-                  <p className="text-sm font-medium">Response Time</p>
-                  <p className="text-sm text-muted-foreground">
-                    Usually within 24 hours
-                  </p>
+                  <label
+                    htmlFor="topic"
+                    className="block text-sm font-medium mb-2"
+                  >
+                    What can we help you with?
+                  </label>
+                  <Select
+                    value={formState.topic}
+                    onValueChange={handleSelectChange}
+                  >
+                    <SelectTrigger id="topic" className="w-full">
+                      <SelectValue placeholder="Select a topic" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="general">General Inquiry</SelectItem>
+                      <SelectItem value="support">Tool Support</SelectItem>
+                      <SelectItem value="api">API Questions</SelectItem>
+                      <SelectItem value="feedback">
+                        Feedback & Suggestions
+                      </SelectItem>
+                      <SelectItem value="partnership">
+                        Partnership Opportunities
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
-              </div>
-            </div>
+
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium mb-2"
+                  >
+                    Your Message
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formState.message}
+                    onChange={handleChange}
+                    placeholder="Tell us what you need help with, or share your feedback..."
+                    required
+                    className="w-full min-h-[120px]"
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  className="w-full gap-2"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                  <Send className="h-4 w-4" />
+                </Button>
+              </form>
+            )}
           </div>
 
-          <div>
-            <h2 className="text-xl font-semibold mb-4">Connect With Us</h2>
-            <div className="flex gap-3">
-              <a
-                href="https://twitter.com/toolzer"
-                target="_blank"
-                rel="noreferrer"
-                className="h-10 w-10 rounded-full bg-muted/50 hover:bg-primary/10 flex items-center justify-center transition-colors"
-              >
-                <Twitter className="h-5 w-5 text-muted-foreground hover:text-primary" />
-              </a>
-              <a
-                href="https://github.com/toolzer"
-                target="_blank"
-                rel="noreferrer"
-                className="h-10 w-10 rounded-full bg-muted/50 hover:bg-primary/10 flex items-center justify-center transition-colors"
-              >
-                <Github className="h-5 w-5 text-muted-foreground hover:text-primary" />
-              </a>
-              <a
-                href="https://linkedin.com/company/toolzer"
-                target="_blank"
-                rel="noreferrer"
-                className="h-10 w-10 rounded-full bg-muted/50 hover:bg-primary/10 flex items-center justify-center transition-colors"
-              >
-                <Linkedin className="h-5 w-5 text-muted-foreground hover:text-primary" />
-              </a>
-            </div>
+          {/* Contact Info */}
+          <div className="md:w-64 lg:w-80 space-y-8">
+            {/* Contact Details */}
+            {/* Connect With Us */}
+            {/* Last Updated Card */}
           </div>
-
-          <Card className="bg-muted/30 border-border/60">
-            <CardContent className="pt-6">
-              <h3 className="font-medium mb-2">Last Updated</h3>
-              <p className="text-sm text-muted-foreground">
-                2025-04-22 08:26:27
-              </p>
-              <p className="text-xs text-muted-foreground mt-4">
-                Maintained by @thenetaji
-              </p>
-            </CardContent>
-          </Card>
         </div>
       </div>
-    </div>
+    </>
   );
 }

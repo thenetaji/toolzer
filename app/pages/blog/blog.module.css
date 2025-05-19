@@ -1,0 +1,214 @@
+.blogContent {
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+/* Improved heading styles with better spacing */
+.blogContent h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-top: 3rem;
+  margin-bottom: 2rem;  /* Increased bottom margin */
+  line-height: 1.1;
+  color: #111827;
+}
+
+.blogContent h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-top: 3rem;     /* Increased top margin */
+  margin-bottom: 2rem;  /* Increased bottom margin */
+  line-height: 1.2;
+  color: #111827;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.75rem;
+}
+
+.blogContent h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-top: 2.5rem;   /* Increased top margin */
+  margin-bottom: 1.75rem; /* Increased bottom margin */
+  line-height: 1.3;
+  color: #111827;
+}
+
+.blogContent h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem; /* Increased bottom margin */
+  color: #111827;
+}
+
+.blogContent p {
+  margin-bottom: 1.75rem;
+  line-height: 1.8;
+}
+
+/* Enhanced unordered list (bullet points) styling */
+.blogContent ul {
+  padding-left: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  list-style-type: none;
+}
+
+/* Custom bullet points styling */
+.blogContent ul li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+}
+
+.blogContent ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #3b82f6; /* Blue bullet points */
+  font-weight: bold;
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+/* Nested bullet points with different style */
+.blogContent ul ul {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.blogContent ul ul li::before {
+  content: "◦";
+  font-size: 1.2rem;
+  color: #6b7280; /* Gray for nested bullets */
+}
+
+/* Ordered list styling */
+.blogContent ol {
+  padding-left: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  counter-reset: item;
+  list-style-type: none;
+}
+
+.blogContent ol li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 1.25rem;
+  counter-increment: item;
+  line-height: 1.7;
+}
+
+.blogContent ol li::before {
+  content: counter(item) ".";
+  position: absolute;
+  left: 0;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+/* Add spacing after the last item in a list */
+.blogContent li:last-child {
+  margin-bottom: 0;
+}
+
+/* Ensure proper spacing between adjacent lists */
+.blogContent ul + ul,
+.blogContent ol + ol,
+.blogContent ul + ol,
+.blogContent ol + ul {
+  margin-top: -0.5rem; /* Reduce double spacing between adjacent lists */
+}
+
+.blogContent a {
+  color: #2563eb;
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.blogContent a:hover {
+  color: #1d4ed8;
+}
+
+.blogContent blockquote {
+  border-left-width: 4px;
+  border-left-color: #d1d5db;
+  padding: 1rem 0 1rem 1.5rem;
+  font-style: italic;
+  margin: 2.5rem 0;
+  font-size: 1.125rem;
+  color: #4b5563;
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+}
+
+.blogContent img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 2.5rem 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.blogContent pre {
+  background-color: #f3f4f6;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  overflow: auto;
+  margin: 2rem 0;
+  font-size: 0.9rem;
+}
+
+.blogContent code {
+  background-color: #f3f4f6;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.blogContent table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2.5rem 0;
+  border: 1px solid #e5e7eb;
+}
+
+.blogContent th, 
+.blogContent td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.blogContent th {
+  background-color: #f9fafb;
+  font-weight: 600;
+}
+
+/* Add space after any content element that is followed by a heading */
+.blogContent p + h2,
+.blogContent ul + h2,
+.blogContent ol + h2,
+.blogContent blockquote + h2,
+.blogContent pre + h2,
+.blogContent table + h2,
+.blogContent p + h3,
+.blogContent ul + h3,
+.blogContent ol + h3,
+.blogContent blockquote + h3,
+.blogContent pre + h3,
+.blogContent table + h3 {
+  margin-top: 3.5rem;
+}
+
+/* Improved horizontal rule styling */
+.blogContent hr {
+  margin: 3rem 0;
+  border: 0;
+  height: 1px;
+  background-color: #e5e7eb;
+}

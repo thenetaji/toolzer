@@ -5,7 +5,6 @@ export default function Document() {
   return (
     <Html lang="en" className="dark">
       <Head>
-        <meta charSet="UTF-8" />
 
         {/* Favicons */}
         {[16, 32, 48, 72, 96, 144, 152, 167, 180, 192, 256, 512].map((size) => (
@@ -94,6 +93,7 @@ export default function Document() {
               "@context": "https://schema.org",
               "@type": "WebApplication",
               name: "Toolzer",
+              alternateName: ["toolzer.pages.dev", "toolzer"],
               url: "https://toolzer.pages.dev",
               description:
                 "Toolzer brings all online tools in one place — from file converters to SEO, image editors, downloaders, and dev utilities. 100% free, fast, and ad-free.",
