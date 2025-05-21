@@ -9,7 +9,7 @@ export default function TermsOfService() {
   const pageDescription =
     "Review Toolzer's terms of service to understand your responsibilities, our policies, and the rules for using our tools and services.";
   const lastUpdated = "2025-04-22";
-  const canonicalUrl = "https://toolzer.com/terms"
+  const canonicalUrl = "https://toolzer.com/terms";
 
   return (
     <>
@@ -24,7 +24,10 @@ export default function TermsOfService() {
         <meta property="og:description" content={pageDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="Toolzer" />
-        <meta property="og:image" content="https://toolzer.com/icons/icon-512x512.webp" />
+        <meta
+          property="og:image"
+          content="https://toolzer.com/icons/icon-512x512.webp"
+        />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
 
@@ -32,15 +35,24 @@ export default function TermsOfService() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content="https://toolzer.com/icons/icon-512x512.webp" />
+        <meta
+          name="twitter:image"
+          content="https://toolzer.com/icons/icon-512x512.webp"
+        />
 
         {/* Additional SEO tags */}
-        <meta name="keywords" content="toolzer terms of service, user obligations, prohibited content, API usage, liability, service policies" />
+        <meta
+          name="keywords"
+          content="toolzer terms of service, user obligations, prohibited content, API usage, liability, service policies"
+        />
         <meta name="author" content="Toolzer Team" />
         <meta name="robots" content="index, follow" />
 
         {/* Last Modified */}
-        <meta property="article:modified_time" content={`${lastUpdated}T08:26:27Z`} />
+        <meta
+          property="article:modified_time"
+          content={`${lastUpdated}T08:26:27Z`}
+        />
       </Head>
 
       <div className="container max-w-4xl mx-auto px-4 py-12">
@@ -61,8 +73,8 @@ export default function TermsOfService() {
           <h2 className="text-xl font-semibold mt-8">1. Acceptance of Terms</h2>
           <p>
             By accessing or using Toolzer's website, tools, or API services, you
-            agree to be bound by these Terms of Service. If you disagree with any
-            part of these terms, you may not access or use our services.
+            agree to be bound by these Terms of Service. If you disagree with
+            any part of these terms, you may not access or use our services.
           </p>
 
           <h2 className="text-xl font-semibold mt-8">
@@ -81,8 +93,8 @@ export default function TermsOfService() {
             <li>Provide accurate information when required</li>
             <li>Use the services only for lawful purposes</li>
             <li>
-              Not attempt to interfere with, disrupt, or gain unauthorized access
-              to our services
+              Not attempt to interfere with, disrupt, or gain unauthorized
+              access to our services
             </li>
             <li>
               Not use automated methods to access or use our services beyond the
@@ -93,7 +105,9 @@ export default function TermsOfService() {
             </li>
           </ul>
 
-          <h2 className="text-xl font-semibold mt-8">4. Intellectual Property</h2>
+          <h2 className="text-xl font-semibold mt-8">
+            4. Intellectual Property
+          </h2>
           <p>
             The Toolzer name, logo, website design, and tool interfaces are the
             intellectual property of Toolzer and are protected by copyright and
@@ -136,25 +150,27 @@ export default function TermsOfService() {
             <li>Content that infringes on intellectual property rights</li>
             <li>Illegal, harmful, threatening, or discriminatory content</li>
             <li>Malware, spyware, or other malicious code</li>
-            <li>Content that violates any person's privacy or personal rights</li>
+            <li>
+              Content that violates any person's privacy or personal rights
+            </li>
             <li>Material that exploits children or minors in any way</li>
           </ul>
 
           <h2 className="text-xl font-semibold mt-8">8. Changes to Terms</h2>
           <p>
-            We reserve the right to modify these Terms of Service at any time. We
-            will provide notice of significant changes by posting the updated
+            We reserve the right to modify these Terms of Service at any time.
+            We will provide notice of significant changes by posting the updated
             terms on our website with a new "Last updated" date. Your continued
-            use of our services after such changes constitutes your acceptance of
-            the new terms.
+            use of our services after such changes constitutes your acceptance
+            of the new terms.
           </p>
 
           <h2 className="text-xl font-semibold mt-8">9. Termination</h2>
           <p>
             We may terminate or suspend access to our services immediately,
-            without prior notice, for conduct that we believe violates these Terms
-            of Service or is harmful to other users of our services, us, or third
-            parties, or for any other reason at our discretion.
+            without prior notice, for conduct that we believe violates these
+            Terms of Service or is harmful to other users of our services, us,
+            or third parties, or for any other reason at our discretion.
           </p>
 
           <h2 className="text-xl font-semibold mt-8">11. Contact</h2>

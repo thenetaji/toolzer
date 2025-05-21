@@ -1,5 +1,5 @@
 const config = {
-  allowedDevOrigins: ["local-origin.dev", "*.local-origin.dev"],
+  allowedDevOrigins: ["*"],
   output: "export",
 };
 

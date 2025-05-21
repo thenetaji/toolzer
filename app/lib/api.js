@@ -4,12 +4,16 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 
-const blogsDir = path.join(process.cwd(), "blogs");
+let contentPath = path.join(process.cwd(), "blogs");
 
 // Ultra simplified API with minimal processing
-export async function getSimplifiedBlog(slug) {
+export async function getSimplifiedBlog(slug, type = "blog") {
+  if (type != "blog") {
+    contentPath = path.join(process.cwd(), "data", "tools");
+  }
   try {
-    const fullPath = path.join(blogsDir, `${slug}.md`);
+    const fullPath = path.join(contentPath, `${slug}.md`);
+    console.log(fullPath);
     const fileContents = fs.readFileSync(fullPath, "utf8");
 
     const { data, content } = matter(fileContents);
@@ -32,10 +36,14 @@ export async function getSimplifiedBlog(slug) {
   }
 }
 
-export function getSimpleBlogSlugs() {
+export function getSimpleBlogSlugs(type = "blog") {
+  if (type != "blog") {
+    contentPath = path.join(process.cwd(), "data", "tools");
+  }
+
   try {
     return fs
-      .readdirSync(blogsDir)
+      .readdirSync(contentPath)
       .filter((file) => file.endsWith(".md"))
       .map((file) => ({ params: { slug: file.replace(/\.md$/, "") } }));
   } catch (error) {
@@ -47,12 +55,12 @@ export function getSimpleBlogSlugs() {
 export function getAllSimpleBlogs() {
   try {
     const slugs = fs
-      .readdirSync(blogsDir)
+      .readdirSync(contentPath)
       .filter((file) => file.endsWith(".md"))
       .map((file) => file.replace(/\.md$/, ""));
 
     return slugs.map((slug) => {
-      const fullPath = path.join(blogsDir, `${slug}.md`);
+      const fullPath = path.join(contentPath, `${slug}.md`);
       const fileContents = fs.readFileSync(fullPath, "utf8");
       const { data } = matter(fileContents);
 

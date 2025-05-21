@@ -5,7 +5,6 @@ export default function Document() {
   return (
     <Html lang="en" className="dark">
       <Head>
-
         {/* Favicons */}
         {[16, 32, 48, 72, 96, 144, 152, 167, 180, 192, 256, 512].map((size) => (
           <link

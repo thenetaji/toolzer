@@ -3,12 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Tabs } from "@/components/ui/tabs";
-import {
-  ArrowLeft,
-  Key,
-  ChevronRight,
-  Clock,
-} from "lucide-react";
+import { ArrowLeft, Key, ChevronRight, Clock } from "lucide-react";
 
 export default function API() {
   const [copied, setCopied] = useState(false);
@@ -20,12 +15,13 @@ export default function API() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const pageTitle = "Toolzer API | Integrate Powerful Tools into Your Applications";
+  const pageTitle =
+    "Toolzer API | Integrate Powerful Tools into Your Applications";
   const pageDescription =
     "Access Toolzer's API to integrate powerful tools like file conversions, text processing, and image manipulation into your own applications and workflows.";
   const lastUpdated = "2025-04-22";
   const canonicalUrl = "https://toolzer.com/dev-api";
-  
+
   return (
     <>
       <Head>
@@ -39,7 +35,10 @@ export default function API() {
         <meta property="og:description" content={pageDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="Toolzer" />
-        <meta property="og:image" content="https://toolzer.com/icons/icon-512x512.webp" />
+        <meta
+          property="og:image"
+          content="https://toolzer.com/icons/icon-512x512.webp"
+        />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
 
@@ -47,15 +46,24 @@ export default function API() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content="https://toolzer.com/icons/icon-512x512.webp" />
+        <meta
+          name="twitter:image"
+          content="https://toolzer.com/icons/icon-512x512.webp"
+        />
 
         {/* Additional SEO tags */}
-        <meta name="keywords" content="toolzer api, developer tools, file conversion api, text processing api, image manipulation api, software integration" />
+        <meta
+          name="keywords"
+          content="toolzer api, developer tools, file conversion api, text processing api, image manipulation api, software integration"
+        />
         <meta name="author" content="Toolzer Team" />
         <meta name="robots" content="index, follow" />
 
         {/* Last Modified */}
-        <meta property="article:modified_time" content={`${lastUpdated}T08:33:44Z`} />
+        <meta
+          property="article:modified_time"
+          content={`${lastUpdated}T08:33:44Z`}
+        />
       </Head>
 
       <div className="container mx-auto px-4 py-12">

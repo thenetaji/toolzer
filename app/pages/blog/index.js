@@ -10,23 +10,38 @@ export default function SimpleBlogPage({ blogs }) {
           name="description"
           content="Explore our blog to learn about our tools, technology, and innovations. Stay updated with our latest insights and articles."
         />
-        <meta name="keywords" content="blog, tools, technology, updates, articles, insights" />
+        <meta
+          name="keywords"
+          content="blog, tools, technology, updates, articles, insights"
+        />
         <meta name="author" content="Your Team Name" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Our Blog | Learn About Our Tools and Technology" />
+        <meta
+          property="og:title"
+          content="Our Blog | Learn About Our Tools and Technology"
+        />
         <meta
           property="og:description"
           content="Explore our blog to learn about our tools, technology, and innovations. Stay updated with our latest insights and articles."
         />
-        <meta property="og:image" content="https://example.com/images/blog-social.jpg" />
+        <meta
+          property="og:image"
+          content="https://example.com/images/blog-social.jpg"
+        />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Our Blog | Learn About Our Tools and Technology" />
+        <meta
+          name="twitter:title"
+          content="Our Blog | Learn About Our Tools and Technology"
+        />
         <meta
           name="twitter:description"
           content="Explore our blog to learn about our tools, technology, and innovations."
         />
-        <meta name="twitter:image" content="https://example.com/images/blog-social.jpg" />
+        <meta
+          name="twitter:image"
+          content="https://example.com/images/blog-social.jpg"
+        />
       </Head>
 
       <div

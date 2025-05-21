@@ -28,6 +28,7 @@ No installation, no sign-up—just drag, drop, and compress.
 - **Fast & Secure**: All processing is done in-browser or on secure servers
 
 This tool is ideal for:
+
 - Bloggers optimizing thumbnails
 - Developers reducing asset payload
 - Social media managers resizing content

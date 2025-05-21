@@ -16,22 +16,31 @@ import {
 import { Separator } from "@/components/ui/separator";
 import styles from "./blog.module.css";
 
-export default function EnhancedBlogPost({ blog }) {
+export default function BlogPost({ blog }) {
   if (!blog) {
     return (
       <>
         <Head>
           <title>Blog Not Found</title>
-          <meta name="description" content="The requested blog post was not found." />
+          <meta
+            name="description"
+            content="The requested blog post was not found."
+          />
           <meta property="og:title" content="Blog Not Found" />
-          <meta property="og:description" content="The requested blog post was not found." />
+          <meta
+            property="og:description"
+            content="The requested blog post was not found."
+          />
           <meta property="og:type" content="website" />
           <meta name="robots" content="noindex, nofollow" />
         </Head>
         <div className="container max-w-3xl mx-auto px-6 py-8">
           <h1 className="text-3xl font-bold mb-6">Blog not found</h1>
           <Link href="/blog" className="inline-block">
-            <Button variant="ghost" className="flex items-center gap-2 text-base">
+            <Button
+              variant="ghost"
+              className="flex items-center gap-2 text-base"
+            >
               <ChevronLeft className="h-5 w-5" />
               Back to all blogs
             </Button>
@@ -42,7 +51,7 @@ export default function EnhancedBlogPost({ blog }) {
   }
 
   const metaDescription = blog.excerpt;
-  const canonicalUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://toolzer.pages.dev'}/blog/${blog.slug}`;
+  const canonicalUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://toolzer.pages.dev"}/blog/${blog.slug}`;
   const pageTitle = `${blog.title} | Toolzer`;
 
   return (
@@ -52,32 +61,50 @@ export default function EnhancedBlogPost({ blog }) {
         <title>{pageTitle}</title>
         <meta name="description" content={metaDescription} />
         <link rel="canonical" href={canonicalUrl} />
-        
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="article" />
         <meta property="og:title" content={blog.title} />
         <meta property="og:description" content={metaDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="Your Site Name" />
-        {blog.featuredImage && <meta property="og:image" content={blog.featuredImage} />}
-        {blog.date && <meta property="article:published_time" content={new Date(blog.date).toISOString()} />}
-        {blog.tags && blog.tags.map((tag, i) => (
-          <meta property="article:tag" content={tag} key={i} />
-        ))}
-        
+        {blog.featuredImage && (
+          <meta property="og:image" content={blog.featuredImage} />
+        )}
+        {blog.date && (
+          <meta
+            property="article:published_time"
+            content={new Date(blog.date).toISOString()}
+          />
+        )}
+        {blog.tags &&
+          blog.tags.map((tag, i) => (
+            <meta property="article:tag" content={tag} key={i} />
+          ))}
+
         {/* Twitter */}
-        <meta name="twitter:card" content={blog.featuredImage ? "summary_large_image" : "summary"} />
+        <meta
+          name="twitter:card"
+          content={blog.featuredImage ? "summary_large_image" : "summary"}
+        />
         <meta name="twitter:title" content={blog.title} />
         <meta name="twitter:description" content={metaDescription} />
-        {blog.featuredImage && <meta name="twitter:image" content={blog.featuredImage} />}
-        
+        {blog.featuredImage && (
+          <meta name="twitter:image" content={blog.featuredImage} />
+        )}
+
         {/* Additional SEO tags */}
         <meta name="author" content={blog.author || "Your Site Name"} />
-        {blog.tags && <meta name="keywords" content={blog.tags.join(', ')} />}
-        
+        {blog.tags && <meta name="keywords" content={blog.tags.join(", ")} />}
+
         {/* If this is an updated article */}
-        {blog.updatedAt && <meta property="article:modified_time" content={new Date(blog.updatedAt).toISOString()} />}
-        
+        {blog.updatedAt && (
+          <meta
+            property="article:modified_time"
+            content={new Date(blog.updatedAt).toISOString()}
+          />
+        )}
+
         {/* Prevent certain pages from being indexed if needed */}
         {blog.noIndex && <meta name="robots" content="noindex, nofollow" />}
       </Head>
@@ -86,7 +113,10 @@ export default function EnhancedBlogPost({ blog }) {
         {/* Navigation */}
         <div className="mb-8">
           <Link href="/blog" className="inline-block">
-            <Button variant="ghost" className="flex items-center gap-2 text-base">
+            <Button
+              variant="ghost"
+              className="flex items-center gap-2 text-base"
+            >
               <ChevronLeft className="h-5 w-5" />
               Back to all blogs
             </Button>
@@ -171,7 +201,7 @@ export async function getStaticPaths() {
       fallback: false,
     };
   } catch (error) {
-    console.error("Error in enhanced blog post getStaticPaths:", error);
+    console.error("Error in getStaticPaths:", error);
     return { paths: [], fallback: false };
   }
 }
@@ -186,7 +216,7 @@ export async function getStaticProps({ params }) {
 
     return {
       props: {
-        blog: JSON.parse(JSON.stringify(blog)), // Force serialization
+        blog: JSON.parse(JSON.stringify(blog)),
       },
     };
   } catch (error) {

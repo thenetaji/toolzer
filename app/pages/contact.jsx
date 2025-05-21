@@ -12,12 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  ArrowLeft,
-  Send,
-  CheckCircle,
-  Github
-} from "lucide-react";
+import { ArrowLeft, Send, CheckCircle, Github } from "lucide-react";
 
 export default function Contact() {
   const [formState, setFormState] = useState({
@@ -80,7 +75,10 @@ export default function Contact() {
         <meta property="og:description" content={pageDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="Toolzer" />
-        <meta property="og:image" content="https://toolzer.com/icons/icon-512x512.webp" />
+        <meta
+          property="og:image"
+          content="https://toolzer.com/icons/icon-512x512.webp"
+        />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
 
@@ -88,15 +86,24 @@ export default function Contact() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content="https://toolzer.com/icons/icon-512x512.webp" />
+        <meta
+          name="twitter:image"
+          content="https://toolzer.com/icons/icon-512x512.webp"
+        />
 
         {/* Additional SEO tags */}
-        <meta name="keywords" content="contact toolzer, support, feedback, tool help, API questions" />
+        <meta
+          name="keywords"
+          content="contact toolzer, support, feedback, tool help, API questions"
+        />
         <meta name="author" content="Toolzer Team" />
         <meta name="robots" content="index, follow" />
 
         {/* Last Modified */}
-        <meta property="article:modified_time" content={`${lastUpdated}T08:26:27Z`} />
+        <meta
+          property="article:modified_time"
+          content={`${lastUpdated}T08:26:27Z`}
+        />
       </Head>
 
       <div className="container max-w-5xl mx-auto px-4 py-12">
