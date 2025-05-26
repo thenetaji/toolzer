@@ -15,34 +15,37 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Upload, Download, Image, Loader2 } from "lucide-react";
 
-export default function ImageTool({
-  width,
+export default function ImageTool({config}) {
+  
+  const { width,
   height,
   percentage,
   targetSize,
   quality,
   format,
-  maintainAspectRatio,
-}) {
+  maintainAspectRatio } = config;
+  
   const [uploadedImage, setUploadedImage] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [resizeMethod, setResizeMethod] = useState("dimensions");
   const [resizeSettings, setResizeSettings] = useState({
-    width: 800,
-    height: 600,
-    percentage: 50,
-    targetSize: 100,
-    quality: 90,
-    format: "jpeg",
-    maintainAspectRatio: true,
+    width,
+    height,
+    percentage,
+    targetSize,
+    quality,
+    format,
+    maintainAspectRatio
   });
   const fileInputRef = useRef(null);
+  let fileId = "";
 
   // Handle file upload
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (!file) return;
+    setUploadedImage(e.target.files[0]);
 
     // Check if file is an image
     if (!file.type.match("image.*")) {
@@ -50,32 +53,52 @@ export default function ImageTool({
       return;
     }
 
-    const reader = new FileReader();
+    /**const reader = new FileReader();
     reader.onload = (e) => {
-      setUploadedImage({
-        src: e.target.result,
-        name: file.name,
-        type: file.type,
-        size: file.size,
-      });
-      setPreviewImage(e.target.result);
     };
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(file);**/
   };
 
   // Handle resize button click
-  const handleResize = () => {
+  const handleResize = async () => {
     if (!uploadedImage) return;
 
     setIsProcessing(true);
+    const formData = new FormData();
+    formData.append("file", uploadedImage);
 
-    // Simulating processing delay (in a real app, you'd do actual image processing here)
-    setTimeout(() => {
-      // Here you would implement actual image resizing logic
-      // For now, we'll just use the original image as a placeholder
-      setPreviewImage(uploadedImage.src);
-      setIsProcessing(false);
-    }, 1500);
+    const api = process.env.API ?? "http://13.126.242.118:2626";
+
+    const uploadFile = await fetch(api + "/upload", {
+      method: "POST",
+      body: formData,
+    });
+    const uploadFileRes = await uploadFile.json();
+    if (uploadFileRes.data.fileId) {
+      fileId = uploadFileRes.data.fileId;
+    }
+
+    const processImage = await fetch(api + "/image", {
+      method: "POST",
+      body: JSON.stringify({
+        fileId: fileId,
+        action: {
+          resize: {
+            width: resizeSettings.width,
+            height: resizeSettings.height,
+          },
+          resizePercentage: resizeSettings.percentage,
+          targetSize: resizeSettings.targetSize,
+          quality: resizeSettings.quality,
+          format: resizeSettings.format,
+          maintainAspectRatio: resizeSettings.maintainAspectRatio,
+        },
+      }),
+    });
+    const imageBlob = await processImage.blob();
+    const imageUrl = URL.createObjectURL(imageBlob);
+    setPreviewImage(imageUrl);
+    setIsProcessing(false);
   };
 
   // Handle download button click
@@ -113,11 +136,11 @@ export default function ImageTool({
                 </div>
               ) : (
                 <div className="relative">
-                  <img
+                  {/**<img
                     src={uploadedImage.src}
                     alt="Uploaded image preview"
                     className="max-h-[300px] mx-auto rounded-md"
-                  />
+                  />**/}
                   <div className="mt-2 text-sm text-muted-foreground">
                     {uploadedImage.name} (
                     {Math.round(uploadedImage.size / 1024)} KB)
@@ -249,7 +272,7 @@ export default function ImageTool({
 
             {/* Common Settings */}
             <div className="space-y-4 border-t pt-4">
-              <div className="space-y-2">
+                          {!resizeMethod == "filesize" && (<div className="space-y-2">
                 <Label htmlFor="quality">
                   Quality: {resizeSettings.quality}%
                 </Label>
@@ -263,7 +286,7 @@ export default function ImageTool({
                     setResizeSettings({ ...resizeSettings, quality: value[0] })
                   }
                 />
-              </div>
+              </div>)}
 
               <div className="space-y-2">
                 <Label htmlFor="format">Output Format</Label>

@@ -6,7 +6,7 @@ tags: ["image compression", "web tools", "optimization"]
 featuredImage: "/images/blog/image-compressor-preview.jpg"
 slug: "image-compressor-tool"
 toolLink: "/image/pdf-to-image"
-excerpt: "Compress your images without losing quality. Toolzer’s Image Compressor helps you speed up your website, improve SEO, and save storage—all with a simple drag-and-drop interface."
+description: "Compress your images without losing quality. Toolzer’s Image Compressor helps you speed up your website, improve SEO, and save storage—all with a simple drag-and-drop interface."
 ---
 
 If you're running a website, blog, or e-commerce store, **image size matters**. Larger images can significantly slow down page load times, affecting user experience and SEO performance. That’s where our **Image Compressor** comes in.

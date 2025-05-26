@@ -15,21 +15,13 @@ const ToolContent = ({ blog, className = "" }) => {
   }
 
   return (
-    <Card
-      className={`p-6 max-w-full mx-auto bg-white dark:bg-slate-900 shadow-md ${className}`}
-    >
+    <Card className={`p-4 md:p-6 max-w-full mx-auto ${className}`}>
       {/* Markdown Content */}
       <article className="prose prose-sm sm:prose lg:prose-lg dark:prose-invert max-w-none break-words overflow-hidden">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeRaw, rehypeSanitize]}
           components={{
-            h1: ({ node, ...props }) => (
-              <h1
-                {...props}
-                className="text-2xl font-bold mt-6 mb-4 break-words"
-              />
-            ),
             h2: ({ node, ...props }) => (
               <h2
                 {...props}

@@ -48,6 +48,15 @@
       "isPopular": true
     },
     {
+  "id": "neet-photo-resizer",
+  "name": "NEET Photo Resizer",
+  "description": "Resize your NEET photo to 200x300 px and under 200KB JPEG as per NTA 2025 guidelines",
+  "category": "exam-tools",
+  "icon": "Image",
+  "url": "/tools/image/neet-photo-resizer",
+  "isPopular": true
+},
+    {
       "id": "word-to-pdf",
       "name": "Word to PDF",
       "description": "Convert Word documents to PDF format with perfect formatting",

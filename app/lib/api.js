@@ -13,7 +13,6 @@ export async function getSimplifiedBlog(slug, type = "blog") {
   }
   try {
     const fullPath = path.join(contentPath, `${slug}.md`);
-    console.log(fullPath);
     const fileContents = fs.readFileSync(fullPath, "utf8");
 
     const { data, content } = matter(fileContents);
@@ -25,10 +24,11 @@ export async function getSimplifiedBlog(slug, type = "blog") {
       title: String(data.title || ""),
       date: data.date ? String(data.date) : "",
       content: String(htmlContent),
-      excerpt: data.excerpt ? String(data.excerpt) : "",
+      description: data.description ? String(data.description) : "",
       coverImage: data.coverImage ? String(data.coverImage) : "",
       author: data.author ? String(data.author) : "",
       tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
+      toolConfig: data.toolConfig
     };
   } catch (error) {
     console.error(`Error in getSimplifiedBlog for ${slug}:`, error);
@@ -69,10 +69,11 @@ export function getAllSimpleBlogs() {
         slug,
         title: String(data.title || ""),
         date: data.date ? String(data.date) : "",
-        excerpt: data.excerpt ? String(data.excerpt) : "",
+        description: data.description ? String(data.description) : "",
         coverImage: data.coverImage ? String(data.coverImage) : "",
         author: data.author ? String(data.author) : "",
         tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
+        toolConfig: data.toolConfig
       };
     });
   } catch (error) {

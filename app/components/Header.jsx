@@ -67,7 +67,7 @@ export default function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 120, damping: 20 }}
-      className={`sticky top-0 z-50 ${
+      className={`relative top-0 z-50 ${
         scrolled
           ? "bg-background/80 backdrop-blur-xl shadow-lg"
           : "bg-background/40 backdrop-blur-md"

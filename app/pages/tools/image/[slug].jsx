@@ -36,25 +36,25 @@ export default function Tool({ params, blog }) {
           <meta name="twitter:image" content={blog.featuredImage} />
         )}
       </Head>
+
       <ToolContainer
+        title={blog.title}
+        description={blog.description}
         tool={
           <ImageTool
             config={{
-              width: 800,
-              height: 600,
-              percentage: 50,
-              targetSize: 100,
-              quality: 90,
-              format: "jpeg",
-              maintainAspectRatio: true,
+  width: blog.toolConfig.width,
+  height: blog.toolConfig.height,
+  percentage: blog.toolConfig.percentage,
+  targetSize: blog.toolConfig.targetSize,
+  quality: blog.toolConfig.quality,
+  format: blog.toolConfig.format,
+  maintainAspectRatio: blog.toolConfig.maintainAspectRatio
             }}
           />
         }
-        title={blog.title}
-        content={<ToolContent />}
+        content={<ToolContent blog={blog} />}
       />
-
-      <ToolContent blog={blog} />
     </>
   );
 }

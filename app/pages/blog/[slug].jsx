@@ -50,7 +50,7 @@ export default function BlogPost({ blog }) {
     );
   }
 
-  const metaDescription = blog.excerpt;
+  const metaDescription = blog.description;
   const canonicalUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://toolzer.pages.dev"}/blog/${blog.slug}`;
   const pageTitle = `${blog.title} | Toolzer`;
 

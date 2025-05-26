@@ -14,23 +14,28 @@ import {
 
 export default function About() {
   const pageTitle = "About Toolzer | Empowering Digital Creators";
-  const pageDescription = "Toolzer provides simple yet powerful tools to optimize digital workflows for creators and developers. Learn about our mission, values, and the team behind our innovative platform.";
+  const pageDescription =
+    "Toolzer provides simple yet powerful tools to optimize digital workflows for creators and developers. Learn about our mission, values, and the team behind our innovative platform.";
   const lastUpdated = "2025-04-22";
-  
+  const canonicalUrl = "https://toolzer.pages.dev/about";
+
   return (
     <>
       <Head>
         {/* Primary meta tags */}
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
-        
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="Toolzer" />
-        <meta property="og:image" content="https://toolzer.com/images/about-page-social.jpg" />
+        <meta
+          property="og:image"
+          content="https://toolzer.com/images/about-page-social.jpg"
+        />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
 
@@ -38,15 +43,24 @@ export default function About() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content="https://toolzer.com/images/about-page-social.jpg" />
+        <meta
+          name="twitter:image"
+          content="https://toolzer.com/images/about-page-social.jpg"
+        />
 
         {/* Additional SEO tags */}
-        <meta name="keywords" content="toolzer, digital tools, web utilities, online converters, developer tools, creators, digital workflows" />
+        <meta
+          name="keywords"
+          content="toolzer, digital tools, web utilities, online converters, developer tools, creators, digital workflows"
+        />
         <meta name="author" content="Toolzer Team" />
         <meta name="robots" content="index, follow" />
 
         {/* Last modified time */}
-        <meta property="article:modified_time" content={`${lastUpdated}T08:33:44Z`} />
+        <meta
+          property="article:modified_time"
+          content={`${lastUpdated}T08:33:44Z`}
+        />
       </Head>
 
       <div className="container max-w-4xl mx-auto px-4 py-12">
@@ -100,11 +114,11 @@ export default function About() {
               </div>
 
               <p>
-                Toolzer began in 2023 when our founder, tired of bouncing between
-                dozens of single-purpose websites for simple tasks like converting
-                files or generating metadata, decided to build a unified solution.
-                What started as a personal project quickly grew into a platform
-                serving thousands of users.
+                Toolzer began in 2023 when our founder, tired of bouncing
+                between dozens of single-purpose websites for simple tasks like
+                converting files or generating metadata, decided to build a
+                unified solution. What started as a personal project quickly
+                grew into a platform serving thousands of users.
               </p>
               <p>
                 Today, Toolzer continues to evolve based on user feedback and
@@ -191,8 +205,8 @@ export default function About() {
                 <div className="bg-card/50 p-5 rounded-lg border border-border/50">
                   <h3 className="font-medium mb-2">Reliability</h3>
                   <p className="text-muted-foreground text-sm">
-                    Our tools should work consistently and correctly, every single
-                    time.
+                    Our tools should work consistently and correctly, every
+                    single time.
                   </p>
                 </div>
               </div>
@@ -209,9 +223,9 @@ export default function About() {
 
               <p>
                 Toolzer is built by a small team of passionate developers and
-                designers who believe in making technology more accessible. We're
-                distributed across the globe, working together to create tools
-                that solve real problems.
+                designers who believe in making technology more accessible.
+                We're distributed across the globe, working together to create
+                tools that solve real problems.
               </p>
 
               <p>
@@ -231,8 +245,8 @@ export default function About() {
               </div>
 
               <p>
-                We're always looking for feedback, suggestions, and collaborations
-                to make Toolzer better.
+                We're always looking for feedback, suggestions, and
+                collaborations to make Toolzer better.
               </p>
 
               <div className="flex flex-wrap gap-4 mt-6">
