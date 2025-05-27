@@ -1,0 +1,26 @@
+{
+  "name": "api",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "esbuild --bundle --outfile=./dist/index.js --platform=node --target=node22 ./src/index.js",
+    "zip": "zip -j lambda.zip dist/index.js",
+    "update": "aws lambda update-function-code --zip-file fileb://lambda.zip --function-name toolzer",
+    "deploy": "run-s build zip update",
+    "dev": "node src/node.js"
+  },
+  "devDependencies": {
+    "@hono/node-server": "^1.14.2",
+    "chalk": "^5.4.1",
+    "esbuild": "^0.21.4",
+    "http-status-codes": "^2.3.0",
+    "npm-run-all2": "^6.2.0",
+    "ora": "^8.2.0"
+  },
+  "dependencies": {
+    "file-type": "^21.0.0",
+    "hono": "^4.7.10",
+    "sharp": "^0.34.2",
+    "winston": "^3.17.0"
+  }
+}
