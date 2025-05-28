@@ -28,7 +28,7 @@ export async function getSimplifiedBlog(slug, type = "blog") {
       coverImage: data.coverImage ? String(data.coverImage) : "",
       author: data.author ? String(data.author) : "",
       tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
-      toolConfig: data.toolConfig
+      toolConfig: data.toolConfig,
     };
   } catch (error) {
     console.error(`Error in getSimplifiedBlog for ${slug}:`, error);
@@ -73,7 +73,7 @@ export function getAllSimpleBlogs() {
         coverImage: data.coverImage ? String(data.coverImage) : "",
         author: data.author ? String(data.author) : "",
         tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
-        toolConfig: data.toolConfig
+        toolConfig: data.toolConfig,
       };
     });
   } catch (error) {

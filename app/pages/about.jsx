@@ -13,55 +13,15 @@ import {
 } from "lucide-react";
 
 export default function About() {
-  const pageTitle = "About Toolzer | Empowering Digital Creators";
-  const pageDescription =
-    "Toolzer provides simple yet powerful tools to optimize digital workflows for creators and developers. Learn about our mission, values, and the team behind our innovative platform.";
-  const lastUpdated = "2025-04-22";
-  const canonicalUrl = "https://toolzer.pages.dev/about";
-
   return (
     <>
-      <Head>
-        {/* Primary meta tags */}
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:site_name" content="Toolzer" />
-        <meta
-          property="og:image"
-          content="https://toolzer.com/images/about-page-social.jpg"
-        />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta
-          name="twitter:image"
-          content="https://toolzer.com/images/about-page-social.jpg"
-        />
-
-        {/* Additional SEO tags */}
-        <meta
-          name="keywords"
-          content="toolzer, digital tools, web utilities, online converters, developer tools, creators, digital workflows"
-        />
-        <meta name="author" content="Toolzer Team" />
-        <meta name="robots" content="index, follow" />
-
-        {/* Last modified time */}
-        <meta
-          property="article:modified_time"
-          content={`${lastUpdated}T08:33:44Z`}
-        />
-      </Head>
+      <Head
+        title={"Toolzer | About Us"}
+        description={
+          "Toolzer provides simple yet powerful tools to optimize digital workflows for creators and developers. Learn about our mission, values, and the team behind our innovative platform"
+        }
+        pageUrl={"/about"}
+      ></Head>
 
       <div className="container max-w-4xl mx-auto px-4 py-12">
         <div className="mb-8">

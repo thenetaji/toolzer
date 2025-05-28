@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { AnimatePresence } from "framer-motion";
-import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Loader from "@/components/Loader";
@@ -33,11 +32,6 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <Head>
-        <title>
-          Toolzer | Every Online Tool You’ll Ever Need — Free & Fast
-        </title>
-      </Head>
       <div className="min-h-screen flex flex-col dark:bg-gray-950 transition-colors duration-300">
         <Header />
         <main className="flex-1 p-4">

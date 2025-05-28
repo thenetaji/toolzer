@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Head from "next/head";
+import Head from "@/components/Head";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -56,55 +56,15 @@ export default function Contact() {
     }, 1000);
   };
 
-  const pageTitle = "Contact Us | Toolzer";
-  const pageDescription =
-    "Get in touch with Toolzer for questions, support, or feedback. We're here to help and usually respond within 24 hours.";
-  const lastUpdated = "2025-04-22";
-  const canonicalUrl = "https://toolzer.pages.dev/contact";
-
   return (
     <>
-      <Head>
-        {/* Primary Meta Tags */}
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:site_name" content="Toolzer" />
-        <meta
-          property="og:image"
-          content="https://toolzer.com/images/contact-page-social.jpg"
-        />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta
-          name="twitter:image"
-          content="https://toolzer.com/images/contact-page-social.jpg"
-        />
-
-        {/* Additional SEO tags */}
-        <meta
-          name="keywords"
-          content="contact toolzer, support, feedback, tool help, API questions"
-        />
-        <meta name="author" content="Toolzer Team" />
-        <meta name="robots" content="index, follow" />
-
-        {/* Last Modified */}
-        <meta
-          property="article:modified_time"
-          content={`${lastUpdated}T08:26:27Z`}
-        />
-      </Head>
+      <Head
+        title={"Toolzer | Contact Us"}
+        description={
+          "Get in touch with Toolzer for questions, support, or feedback. We're here to help and usually respond within 24 hours."
+        }
+        pageUrl={"/contact"}
+      ></Head>
 
       <div className="container max-w-5xl mx-auto px-4 py-12">
         <div className="mb-8">

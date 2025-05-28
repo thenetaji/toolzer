@@ -30,7 +30,7 @@ import {
   Clock,
   Music2,
 } from "lucide-react";
-
+import Head from "@/components/Head";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -39,6 +39,20 @@ import FakePingTool from "@/components/FakePing";
 export default function Home() {
   return (
     <>
+      <Head
+        title={"Toolzer | Every Online Tool You’ll Ever Need — Free & Fast"}
+        description={
+          "Toolzer brings all online tools in one place — from file converters to SEO, image editors, downloaders, and dev utilities. 100% free and fast"
+        }
+        featureList={[
+          "No login required",
+          "File conversion made easy",
+          "Powerful media processing for audio, video, and images",
+          "Versatile text and code utilities",
+          "AI-enhanced tools for smarter workflows",
+          "Seamless experience on both mobile and desktop",
+        ]}
+      />
       <HeroSection />
       <ToolsShowcase />
       <WhyToolzer />

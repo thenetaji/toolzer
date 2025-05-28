@@ -3,7 +3,7 @@ title: "NEET Photo Resizer - Resize to 200x300 px & 10KB JPEG"
 description: "Free NEET photo resizer tool to convert your image to 200x300 pixels and under 200KB JPEG, as required by NTA NEET 2025. Quick, secure, and works on mobile."
 keywords: "neet photo resizer 2025, resize image to 10kb, neet photo size, neet image upload tool, neet photo format jpeg"
 slug: "neet-photo-resizer"
-toolConfig: 
+toolConfig:
   width: 200
   height: 300
   percentage: null
@@ -25,11 +25,11 @@ This free NEET Photo Resizer tool helps you instantly convert your photo to the 
 
 According to the official NEET bulletin, your photograph must meet these requirements:
 
-- **Format:** JPEG/JPG  
-- **Size:** Between 10KB and 200KB  
-- **Dimensions:** 200 × 300 pixels  
-- **Background:** White or light-colored  
-- **Photo Date:** Recent (within the past 6 months)  
+- **Format:** JPEG/JPG
+- **Size:** Between 10KB and 200KB
+- **Dimensions:** 200 × 300 pixels
+- **Background:** White or light-colored
+- **Photo Date:** Recent (within the past 6 months)
 - **Other:** No goggles or caps; spectacles allowed if worn regularly
 
 > Uploading a non-compliant image may cause application rejection.
@@ -38,29 +38,29 @@ According to the official NEET bulletin, your photograph must meet these require
 
 ## Why Use Our NEET Photo Resizer?
 
-- **1-Click Conversion:** Automatically adjusts dimensions and size.  
-- **Mobile Friendly:** Use it from your phone or PC — no app needed.  
-- **Privacy First:** Your image is never saved. It’s processed and deleted instantly.  
-- **Optimized for NEET 2025:** Our settings strictly follow the NTA guidelines.  
+- **1-Click Conversion:** Automatically adjusts dimensions and size.
+- **Mobile Friendly:** Use it from your phone or PC — no app needed.
+- **Privacy First:** Your image is never saved. It’s processed and deleted instantly.
+- **Optimized for NEET 2025:** Our settings strictly follow the NTA guidelines.
 - **Free Forever:** No watermark, no subscription, no limits.
 
 ---
 
 ## How to Use the Tool
 
-1. Upload your photo using the "Choose File" button.  
-2. We automatically resize it to 200x300 pixels.  
-3. The file is compressed to be between 10KB and 200KB.  
+1. Upload your photo using the "Choose File" button.
+2. We automatically resize it to 200x300 pixels.
+3. The file is compressed to be between 10KB and 200KB.
 4. Click Download and submit it to the NEET application form.
 
 ---
 
 ## Tips for a Valid NEET Photo
 
-- Use a white or light background  
-- Keep your face centered and clearly visible  
-- No shadows or filters  
-- Look directly at the camera with a neutral expression  
+- Use a white or light background
+- Keep your face centered and clearly visible
+- No shadows or filters
+- Look directly at the camera with a neutral expression
 - No cap, goggles, or heavy accessories
 
 ---

@@ -2,6 +2,8 @@ import { Html, Head, Main, NextScript } from "next/document";
 import { Partytown } from "@qwik.dev/partytown/react";
 
 export default function Document() {
+  const baseImageURL = "https://res.cloudinary.com/dquw84tih/image/upload";
+
   return (
     <Html lang="en" className="dark">
       <Head>
@@ -10,9 +12,9 @@ export default function Document() {
           <link
             key={size}
             rel="icon"
-            type="image/webp"
+            type="image/png"
             sizes={`${size}x${size}`}
-            href={`/icons/icon-${size}x${size}.webp`}
+            href={`${baseImageURL}/f_auto,q_auto,c_fill,w_${size},h_${size}/toolzer-logo_cpfiyf`}
           />
         ))}
 
@@ -21,102 +23,41 @@ export default function Document() {
           <link
             key={size}
             rel="apple-touch-icon"
-            type="image/webp"
+            type="image/png"
             sizes={`${size}x${size}`}
-            href={`/icons/icon-${size}x${size}.webp`}
+            href={`${baseImageURL}/f_auto,q_auto,c_fill,w_${size},h_${size}/toolzer-logo_cpfiyf`}
           />
         ))}
 
-        {/* Microsoft */}
+        {/* Shortcut Icon */}
+        <link
+          rel="shortcut icon"
+          href={`${baseImageURL}/f_auto,q_auto,c_fill,w_64,h_64/toolzer-logo_cpfiyf`}
+        />
+
+        <link
+          rel="icon"
+          type="image/x-icon"
+          href={`${baseImageURL}/favicon_jg6fvb.ico`}
+        />
+
+        {/* Microsoft Tiles */}
         <meta
           name="msapplication-square150x150logo"
-          content="/icons/icon-150x150.webp"
+          content={`${baseImageURL}/f_auto,q_auto,c_fill,w_150,h_150/toolzer-logo_cpfiyf`}
         />
         <meta
           name="msapplication-square310x310logo"
-          content="/icons/icon-310x310.webp"
+          content={`${baseImageURL}/f_auto,q_auto,c_fill,w_310,h_310/toolzer-logo_cpfiyf`}
         />
 
-        {/* SEO */}
-        <meta
-          name="description"
-          content="Toolzer brings all online tools in one place — from file converters to SEO, image editors, downloaders, and dev utilities. 100% free, fast, and ad-free."
-        />
-        <meta
-          name="keywords"
-          content="Toolzer brings all online tools in one place — from file converters to SEO, image editors, downloaders, and dev utilities. 100% free, fast, and ad-free."
-        />
-        <meta name="author" content="thenetaji" />
         <meta name="robots" content="index, follow" />
         <meta name="theme-color" content="#1e293b" />
-
-        {/* Open Graph */}
-        <meta
-          property="og:title"
-          content="Toolzer | Every Online Tool You’ll Ever Need — Free & Fast"
-        />
-        <meta
-          property="og:description"
-          content="Toolzer brings all online tools in one place — from file converters to SEO, image editors, downloaders, and dev utilities. 100% free, fast, and ad-free."
-        />
-        <meta
-          property="og:image"
-          content="https://toolzer.pages.dev/icons/icon-512x512.webp"
-        />
-        <meta property="og:image:type" content="image/webp" />
-        <meta property="og:image:width" content="512" />
-        <meta property="og:image:height" content="512" />
-        <meta property="og:url" content="https://toolzer.pages.dev" />
-        <meta property="og:type" content="website" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Toolzer | Every Online Tool You’ll Ever Need — Free & Fast"
-        />
-        <meta
-          name="twitter:description"
-          content="Toolzer brings all online tools in one place — from file converters to SEO, image editors, downloaders, and dev utilities. 100% free, fast, and ad-free."
-        />
-        <meta
-          name="twitter:image"
-          content="https://toolzer.pages.dev/icons/icon-512x512.webp"
-        />
-
-        {/* JSON-LD Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebApplication",
-              name: "Toolzer",
-              alternateName: ["toolzer.pages.dev", "toolzer"],
-              url: "https://toolzer.pages.dev",
-              description:
-                "Toolzer brings all online tools in one place — from file converters to SEO, image editors, downloaders, and dev utilities. 100% free, fast, and ad-free.",
-              applicationCategory: "Utility",
-              operatingSystem: "All",
-              browserRequirements:
-                "Requires JavaScript. Works in all modern browsers.",
-              featureList: [
-                "No login required",
-                "Free API access",
-                "25+ online tools",
-                "File converters",
-                "Media processing (audio, video, image)",
-                "Text and code utilities",
-                "AI-powered features",
-                "Mobile and desktop compatible",
-              ],
-            }),
-          }}
-        />
 
         {/* Yandex */}
         <meta name="yandex-verification" content="313a70d4f279d51f" />
 
+        {/* Google Analytics with Partytown */}
         <Partytown forward={["dataLayer.push"]} />
         <script
           type="text/partytown"
@@ -128,8 +69,8 @@ export default function Document() {
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-75W2QXCJXB');
+              gtag("js", new Date());
+              gtag("config", "G-75W2QXCJXB");
             `,
           }}
         />
