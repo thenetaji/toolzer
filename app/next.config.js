@@ -1,5 +1,5 @@
 const config = {
-  allowedDevOrigins: ["*"],
+  allowedDevOrigins: [],
   output: "export",
 };
 

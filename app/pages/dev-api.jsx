@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Head from "next/head";
+import Head from "@/components/Head";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Tabs } from "@/components/ui/tabs";
@@ -15,56 +15,16 @@ export default function API() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const pageTitle =
-    "Toolzer API | Integrate Powerful Tools into Your Applications";
-  const pageDescription =
-    "Access Toolzer's API to integrate powerful tools like file conversions, text processing, and image manipulation into your own applications and workflows.";
-  const lastUpdated = "2025-04-22";
-  const canonicalUrl = "https://toolzer.pages.dev/api-dev";
-
   return (
     <>
-      <Head>
-        {/* Primary Meta Tags */}
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:site_name" content="Toolzer" />
-        <meta
-          property="og:image"
-          content="https://toolzer.com/images/api-page-social.jpg"
-        />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta
-          name="twitter:image"
-          content="https://toolzer.com/images/api-page-social.jpg"
-        />
-
-        {/* Additional SEO tags */}
-        <meta
-          name="keywords"
-          content="toolzer api, developer tools, file conversion api, text processing api, image manipulation api, software integration"
-        />
-        <meta name="author" content="Toolzer Team" />
-        <meta name="robots" content="index, follow" />
-
-        {/* Last Modified */}
-        <meta
-          property="article:modified_time"
-          content={`${lastUpdated}T08:33:44Z`}
-        />
-      </Head>
+      <Head
+        title={"Toolzer API | Integrate Powerful Tools into Your Applications"}
+        description={
+          "Access Toolzer's API to integrate powerful tools like file conversions, text processing, and image manipulation into your own applications and workflows"
+        }
+        pageUrl={"/dev-api"}
+        lastModified={"2025-04-22"}
+      ></Head>
 
       <div className="container mx-auto px-4 py-12">
         <div className="mb-8">

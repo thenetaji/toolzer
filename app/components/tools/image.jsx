@@ -15,16 +15,17 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Upload, Download, Image, Loader2 } from "lucide-react";
 
-export default function ImageTool({config}) {
-  
-  const { width,
-  height,
-  percentage,
-  targetSize,
-  quality,
-  format,
-  maintainAspectRatio } = config;
-  
+export default function ImageTool({ config }) {
+  const {
+    width,
+    height,
+    percentage,
+    targetSize,
+    quality,
+    format,
+    maintainAspectRatio,
+  } = config;
+
   const [uploadedImage, setUploadedImage] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -36,7 +37,7 @@ export default function ImageTool({config}) {
     targetSize,
     quality,
     format,
-    maintainAspectRatio
+    maintainAspectRatio,
   });
   const fileInputRef = useRef(null);
   let fileId = "";
@@ -272,21 +273,26 @@ export default function ImageTool({config}) {
 
             {/* Common Settings */}
             <div className="space-y-4 border-t pt-4">
-                          {!resizeMethod == "filesize" && (<div className="space-y-2">
-                <Label htmlFor="quality">
-                  Quality: {resizeSettings.quality}%
-                </Label>
-                <Slider
-                  id="quality"
-                  min={10}
-                  max={100}
-                  step={1}
-                  value={[resizeSettings.quality]}
-                  onValueChange={(value) =>
-                    setResizeSettings({ ...resizeSettings, quality: value[0] })
-                  }
-                />
-              </div>)}
+              {!resizeMethod == "filesize" && (
+                <div className="space-y-2">
+                  <Label htmlFor="quality">
+                    Quality: {resizeSettings.quality}%
+                  </Label>
+                  <Slider
+                    id="quality"
+                    min={10}
+                    max={100}
+                    step={1}
+                    value={[resizeSettings.quality]}
+                    onValueChange={(value) =>
+                      setResizeSettings({
+                        ...resizeSettings,
+                        quality: value[0],
+                      })
+                    }
+                  />
+                </div>
+              )}
 
               <div className="space-y-2">
                 <Label htmlFor="format">Output Format</Label>

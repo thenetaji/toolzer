@@ -1,59 +1,19 @@
 import React from "react";
-import Head from "next/head";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import Head from "@/components/Head";
 
 export default function TermsOfService() {
-  const pageTitle = "Terms of Service | Toolzer";
-  const pageDescription =
-    "Review Toolzer's terms of service to understand your responsibilities, our policies, and the rules for using our tools and services.";
-  const lastUpdated = "2025-04-22";
-  const canonicalUrl = "https://toolzer.pages.dev/terms";
-
   return (
     <>
-      <Head>
-        {/* Primary Meta Tags */}
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:site_name" content="Toolzer" />
-        <meta
-          property="og:image"
-          content="https://toolzer.com/images/terms-of-service-social.jpg"
-        />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta
-          name="twitter:image"
-          content="https://toolzer.com/images/terms-of-service-social.jpg"
-        />
-
-        {/* Additional SEO tags */}
-        <meta
-          name="keywords"
-          content="toolzer terms of service, user obligations, prohibited content, API usage, liability, service policies"
-        />
-        <meta name="author" content="Toolzer Team" />
-        <meta name="robots" content="index, follow" />
-
-        {/* Last Modified */}
-        <meta
-          property="article:modified_time"
-          content={`${lastUpdated}T08:26:27Z`}
-        />
-      </Head>
+      <Head
+        title={"Terms of Service | Toolzer"}
+        description={
+          "Review Toolzer's terms of service to understand your responsibilities, our policies, and the rules for using our tools and services."
+        }
+        pageUrl={"/terms"}
+      ></Head>
 
       <div className="container max-w-4xl mx-auto px-4 py-12">
         <div className="mb-8">

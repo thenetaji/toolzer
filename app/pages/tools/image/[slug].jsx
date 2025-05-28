@@ -43,13 +43,13 @@ export default function Tool({ params, blog }) {
         tool={
           <ImageTool
             config={{
-  width: blog.toolConfig.width,
-  height: blog.toolConfig.height,
-  percentage: blog.toolConfig.percentage,
-  targetSize: blog.toolConfig.targetSize,
-  quality: blog.toolConfig.quality,
-  format: blog.toolConfig.format,
-  maintainAspectRatio: blog.toolConfig.maintainAspectRatio
+              width: blog.toolConfig.width,
+              height: blog.toolConfig.height,
+              percentage: blog.toolConfig.percentage,
+              targetSize: blog.toolConfig.targetSize,
+              quality: blog.toolConfig.quality,
+              format: blog.toolConfig.format,
+              maintainAspectRatio: blog.toolConfig.maintainAspectRatio,
             }}
           />
         }
