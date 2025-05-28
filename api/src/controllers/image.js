@@ -47,26 +47,26 @@ async function imageController(c) {
 
     if (format) {
       const outputFormat = format.toLowerCase();
-      const quality = !(targetSize && targetSize != 0)
+      const imgQuality = !(targetSize && targetSize != 0)
         ? parseInt(quality)
         : null;
 
       switch (outputFormat) {
         case "jpeg":
         case "jpg":
-          image = image.jpeg({ quality });
+          image = image.jpeg({ imgQuality });
           break;
         case "png":
-          image = image.png({ quality });
+          image = image.png({ imgQuality });
           break;
         case "webp":
-          image = image.webp({ quality });
+          image = image.webp({ imgQuality });
           break;
         case "webm":
-          image = image.webp({ quality });
+          image = image.webp({ imgQuality });
           break;
         case "avif":
-          image = image.avif({ quality });
+          image = image.avif({ imgQuality });
           break;
         default:
           return c.json(

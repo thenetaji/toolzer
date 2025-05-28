@@ -1,4 +1,3 @@
-import path from "path";
 import { createWriteStream, existsSync, mkdirSync } from "fs";
 import { fileTypeFromBuffer } from "file-type";
 import { StatusCodes } from "http-status-codes";

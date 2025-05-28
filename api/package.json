@@ -1,7 +1,7 @@
 {
   "name": "api",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "build": "esbuild --bundle --outfile=./dist/index.js --platform=node --target=node22 ./src/index.js",
     "zip": "zip -j lambda.zip dist/index.js",
