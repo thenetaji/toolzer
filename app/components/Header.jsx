@@ -83,8 +83,7 @@ export default function Header() {
             <Link href="/" className="flex items-center">
               <div className="relative flex items-center justify-center">
                 <div className="absolute -inset-1 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-200"></div>
-                <div className="relative bg-background rounded-full p-1 flex items-center justify-center">
-                </div>
+                <div className="relative bg-background rounded-full p-1 flex items-center justify-center"></div>
               </div>
 
               <motion.span

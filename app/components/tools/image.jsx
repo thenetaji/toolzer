@@ -273,7 +273,7 @@ export default function ImageTool({ config }) {
 
             {/* Common Settings */}
             <div className="space-y-4 border-t pt-4">
-              {!resizeMethod == "filesize" && (
+              {resizeMethod != "filesize" && (
                 <div className="space-y-2">
                   <Label htmlFor="quality">
                     Quality: {resizeSettings.quality}%

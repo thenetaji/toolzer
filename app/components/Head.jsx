@@ -31,7 +31,7 @@ export default function Head({
       />
       <meta
         property="og:url"
-        content={`https://toolzer.pages.dev${pageUrl || "/"}`}
+        content={`https://toolzer.studio${pageUrl || "/"}`}
       />
       <meta property="og:site_name" content="Toolzer" />
       <meta property="og:type" content="website" />
@@ -54,8 +54,8 @@ export default function Head({
               "@context": "https://schema.org",
               "@type": "WebApplication",
               name: "Toolzer",
-              alternateName: ["toolzer.pages.dev", "toolzer"],
-              url: `https://toolzer.pages.dev${pageUrl}`,
+              alternateName: ["Toolzer Studio"],
+              url: `https://toolzer.studio${pageUrl}`,
               description,
               applicationCategory: "Utility",
               operatingSystem: "All",

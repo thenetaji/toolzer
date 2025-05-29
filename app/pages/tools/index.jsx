@@ -123,7 +123,7 @@ export default function ToolsPage() {
   const pageTitle = "Tools | Find the Perfect Tool for Your Task";
   const pageDescription =
     "Explore Toolzer's comprehensive collection of free utilities for creators and developers. Search, filter, and find the perfect tool for your task.";
-  const canonicalUrl = "https://toolzer.pages.dev/tools";
+  const canonicalUrl = "https://toolzer.studio/tools";
 
   return (
     <>
