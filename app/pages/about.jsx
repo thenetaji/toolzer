@@ -1,5 +1,5 @@
 import React from "react";
-import Head from "next/head";
+import Head from "@/components/Head";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {

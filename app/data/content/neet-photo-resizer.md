@@ -1,4 +1,4 @@
-# Resize Your NEET Photo to 10KB JPEG (200x300 px)
+## Resize Your NEET Photo to 10KB JPEG (200x300 px)
 
 If you're applying for NEET 2025, one of the first steps is uploading your photo as per official NTA guidelines. Many students get stuck when their image exceeds the size limit or has the wrong dimensions.
 
