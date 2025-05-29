@@ -2,7 +2,6 @@ import { Html, Head, Main, NextScript } from "next/document";
 import { Partytown } from "@qwik.dev/partytown/react";
 
 export default function Document() {
-
   return (
     <Html lang="en" className="dark">
       <Head>
@@ -34,11 +33,7 @@ export default function Document() {
           href="/icons/icon-32x32.webp"
         />
 
-        <link
-          rel="icon"
-          type="image/x-icon"
-          href="/icons/favicon.ico"
-        />
+        <link rel="icon" type="image/x-icon" href="/icons/favicon.ico" />
 
         {/* Microsoft Tiles */}
         <meta
@@ -54,14 +49,14 @@ export default function Document() {
         <meta name="theme-color" content="#1e293b" />
 
         {/* Yandex */}
-        <meta name="yandex-verification" content="313a70d4f279d51f" />
+        <meta name="yandex-verification" content="b5c3a28f16fc141a" />
 
         {/* Google Analytics with Partytown */}
         <Partytown forward={["dataLayer.push"]} />
         <script
-          type="text/partytown"
-          src="https://www.googletagmanager.com/gtag/js?id=G-75W2QXCJXB"
-        />
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-V8DHJ6KM0Y"
+        ></script>
         <script
           type="text/partytown"
           dangerouslySetInnerHTML={{
@@ -69,7 +64,7 @@ export default function Document() {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag("js", new Date());
-              gtag("config", "G-75W2QXCJXB");
+              gtag("config", "G-V8DHJ6KM0Y");
             `,
           }}
         />

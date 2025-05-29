@@ -66,7 +66,7 @@ export async function getStaticProps({ params }) {
 
     const { content } = await getMdContent(data.contentPath);
 
-    if (!data || !content) {
+    if ((data && data.length == 0) || !content) {
       return { notFound: true };
     }
 

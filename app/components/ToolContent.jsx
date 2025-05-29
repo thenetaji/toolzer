@@ -9,7 +9,6 @@ import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
 const ToolContent = ({ content, className = "" }) => {
-  if (!content) return null;
   if (!content) {
     return <div className="text-red-500">No content available</div>;
   }

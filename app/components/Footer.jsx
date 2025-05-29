@@ -58,8 +58,7 @@ export default function Footer() {
             <div className="flex items-center gap-2">
               <div className="relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-200"></div>
-                <div className="relative bg-background rounded-full p-1 flex items-center justify-center">
-                </div>
+                <div className="relative bg-background rounded-full p-1 flex items-center justify-center"></div>
               </div>
               <span className="font-bold text-transparent text-xl bg-clip-text bg-gradient-to-r from-primary to-purple-600">
                 Toolzer

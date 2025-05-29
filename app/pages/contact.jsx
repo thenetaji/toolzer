@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ArrowLeft, Send, CheckCircle, Github } from "lucide-react";
+import { ArrowLeft, Send, CheckCircle } from "lucide-react";
 
 export default function Contact() {
   const [formState, setFormState] = useState({
