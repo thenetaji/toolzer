@@ -81,3 +81,20 @@ export function getAllSimpleBlogs() {
     return [];
   }
 }
+
+export const getMdContent = async (contentPath) => {
+  try {
+    const fullPath = path.join(process.cwd(), "data", "content", contentPath);
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+
+    const { content } = matter(fileContents);
+    const htmlContent = await remark().use(html).process(content);
+
+    return {
+      content: String(htmlContent),
+    };
+  } catch (err) {
+    console.error("Error in getting tool content", err);
+    return null;
+  }
+};

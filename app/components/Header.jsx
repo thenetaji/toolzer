@@ -27,8 +27,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-const SITE_NAME = "Toolzer";
-
 const navItems = [
   { name: "Tools", href: "/tools", icon: <Rocket className="w-4 h-4 mr-2" /> },
   { name: "About", href: "/about", icon: <Zap className="w-4 h-4 mr-2" /> },
@@ -82,15 +80,10 @@ export default function Header() {
             onHoverStart={() => setIsHovering(true)}
             onHoverEnd={() => setIsHovering(false)}
           >
-            <Link href="/" className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center">
               <div className="relative flex items-center justify-center">
                 <div className="absolute -inset-1 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-200"></div>
                 <div className="relative bg-background rounded-full p-1 flex items-center justify-center">
-                  <img
-                    src="/icons/icon-16x16.webp"
-                    alt={SITE_NAME}
-                    className="h-6 w-6 rounded"
-                  />
                 </div>
               </div>
 
@@ -106,7 +99,7 @@ export default function Header() {
                   repeatType: "reverse",
                 }}
               >
-                {SITE_NAME}
+                Toolzer
               </motion.span>
             </Link>
 
@@ -219,12 +212,12 @@ export default function Header() {
                 <SheetHeader className="flex flex-row items-center justify-between">
                   <SheetTitle className="flex items-center">
                     <img
-                      src="/icons/icon-16x16.webp"
+                      src={`${process.env.BASE_IMAGE_URL || ""}/f_auto,q_auto,c_fill,w_16,h_16/toolzer-logo_cpfiyf`}
                       alt="logo-icon"
                       className="h-5 w-5 mr-2 rounded"
                     />
                     <span className="font-bold text-transparent text-lg bg-clip-text bg-gradient-to-r from-primary to-purple-600">
-                      {SITE_NAME}
+                      Toolzer
                     </span>
                   </SheetTitle>
                 </SheetHeader>

@@ -5,13 +5,12 @@ import { Github, Twitter, Instagram, Youtube, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-const SITE_NAME = "Toolzer";
-const CURRENT_YEAR = new Date().getFullYear();
+const CURRENT_YEAR = "2025";
 
 const mainLinks = [
   { name: "Tools", href: "/tools" },
   { name: "About", href: "/about" },
-  { name: "API", href: "/api" },
+  { name: "API", href: "/dev-api" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -60,15 +59,10 @@ export default function Footer() {
               <div className="relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-200"></div>
                 <div className="relative bg-background rounded-full p-1 flex items-center justify-center">
-                  <img
-                    className="h-6 w-6 text-primary rounded"
-                    src="/icons/icon-16x16.webp"
-                    alt="SITE_LOGO"
-                  />
                 </div>
               </div>
               <span className="font-bold text-transparent text-xl bg-clip-text bg-gradient-to-r from-primary to-purple-600">
-                {SITE_NAME}
+                Toolzer
               </span>
             </div>
             <p className="text-muted-foreground text-sm">
@@ -156,7 +150,7 @@ export default function Footer() {
         {/* Bottom Row */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-xs text-muted-foreground">
-            © {CURRENT_YEAR} {SITE_NAME}. All rights reserved.
+            © {CURRENT_YEAR} Toolzer. All rights reserved.
           </div>
 
           <div className="flex flex-wrap gap-6">

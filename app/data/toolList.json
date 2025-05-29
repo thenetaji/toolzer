@@ -1,0 +1,31 @@
+{
+  "image": [
+    {
+      "title": "NEET Photo Resizer - Resize to 200x300 px & 10KB JPEG",
+      "description": "Free NEET photo resizer tool to convert your image to 200x300 pixels and under 200KB JPEG, as required by NTA NEET 2025. Quick, secure, and works on mobile",
+      "slug": "neet-photo-resizer",
+      "imageName": "",
+      "contentPath": "/neet-photo-resizer.md",
+      "featureList": [
+        "📸 Upload photo or signature from any device",
+        "📐 Resize image to exact NEET specifications",
+        "🖼 Auto-crop and background adjustment",
+        "🧠 Smart detection for photo vs signature",
+        "⚖️ Compress image under size limits (e.g. 100KB)",
+        "📁 Convert to required formats like JPG or JPEG",
+        "🔍 Instant preview before and after resizing",
+        "🌐 No signup or installation needed",
+        "🛡️ Secure processing – no data stored"
+      ],
+      "config": {
+        "width": 200,
+        "height": 300,
+        "percentage": null,
+        "targetSize": 100,
+        "quality": 0.7,
+        "format": "jpeg",
+        "maintainAspectRatio": true
+      }
+    }
+  ]
+}

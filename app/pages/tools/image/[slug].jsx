@@ -1,59 +1,37 @@
 import ToolContainer from "@/components/ToolContainer";
 import ToolContent from "@/components/ToolContent";
-import { getSimplifiedBlog, getSimpleBlogSlugs } from "@/lib/api";
 import ImageTool from "@/components/tools/image";
+import ToolList from "@/data/toolList";
+import { getMdContent } from "@/lib/api.js";
+import Head from "@/components/Head";
 
-import Head from "next/head";
-
-export default function Tool({ params, blog }) {
-  const pageUrl = `https://toolzer.pages.dev/tools/image/${blog.slug}`;
+export default function Tool({ meta, content }) {
   return (
     <>
-      <Head>
-        {/* Primary Meta Tags */}
-        <title>{blog.title}</title>
-        <meta name="description" content={blog.description} />
-        <link rel="canonical" href={pageUrl} />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={blog.title} />
-        <meta property="og:description" content={blog.description} />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:site_name" content="Toolzer" />
-        {blog.featuredImage && (
-          <meta property="og:image" content={blog.featuredImage} />
-        )}
-
-        {/* Twitter */}
-        <meta
-          name="twitter:card"
-          content={blog.featuredImage ? "summary_large_image" : "summary"}
-        />
-        <meta name="twitter:title" content={blog.title} />
-        <meta name="twitter:description" content={blog.description} />
-        {blog.featuredImage && (
-          <meta name="twitter:image" content={blog.featuredImage} />
-        )}
-      </Head>
-
+      <Head
+        title={meta.title}
+        description={meta.description}
+        pageUrl={`/tools/image/${meta.slug}`}
+        imageName={meta.imageName}
+        featureList={meta.featureList}
+      ></Head>
       <ToolContainer
-        title={blog.title}
-        description={blog.description}
+        title={meta.title}
+        description={meta.description}
         tool={
           <ImageTool
             config={{
-              width: blog.toolConfig.width,
-              height: blog.toolConfig.height,
-              percentage: blog.toolConfig.percentage,
-              targetSize: blog.toolConfig.targetSize,
-              quality: blog.toolConfig.quality,
-              format: blog.toolConfig.format,
-              maintainAspectRatio: blog.toolConfig.maintainAspectRatio,
+              width: meta.config.width,
+              height: meta.config.height,
+              percentage: meta.config.percentage,
+              targetSize: meta.config.targetSize,
+              quality: meta.config.quality,
+              format: meta.config.format,
+              maintainAspectRatio: meta.config.maintainAspectRatio,
             }}
           />
         }
-        content={<ToolContent blog={blog} />}
+        content={<ToolContent content={content} />}
       />
     </>
   );
@@ -61,36 +39,45 @@ export default function Tool({ params, blog }) {
 
 export async function getStaticPaths() {
   try {
-    const paths = getSimpleBlogSlugs("tool");
+    const paths = ToolList.image.map((item) => {
+      return {
+        params: {
+          slug: item.slug,
+        },
+      };
+    });
 
     return {
       paths,
       fallback: false,
     };
-  } catch (error) {
-    console.error("Error in getStaticPaths:", error);
-    return { paths: [], fallback: false };
+  } catch (err) {
+    console.error("Error in getStaticPaths:", err);
+    return {
+      paths: [],
+      fallback: false,
+    };
   }
 }
 
 export async function getStaticProps({ params }) {
   try {
-    const blog = await getSimplifiedBlog(params.slug, "tool");
+    const data = ToolList.image.find((item) => params.slug == item.slug);
 
-    if (!blog) {
+    const { content } = await getMdContent(data.contentPath);
+
+    if (!data || !content) {
       return { notFound: true };
     }
 
     return {
       props: {
-        blog: JSON.parse(JSON.stringify(blog)),
+        meta: data,
+        content,
       },
     };
-  } catch (error) {
-    console.error(
-      `Error in enhanced blog post getStaticProps for ${params.slug}:`,
-      error,
-    );
+  } catch (err) {
+    console.error("Error in getStaticProps", err);
     return { notFound: true };
   }
 }
