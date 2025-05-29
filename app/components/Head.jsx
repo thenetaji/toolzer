@@ -4,7 +4,7 @@ export default function Head({
   title,
   description,
   imageName = "homepage-preview_ki1ld9", //transformation will be auto handled according to the place where it is being used, no ext
-  pageUrl,
+  pageUrl, //should be started with /
   featureList,
   lastModified,
 }) {
@@ -12,7 +12,6 @@ export default function Head({
    * ideal cloudinary img url
    * https://res.cloudinary.com/<cloud_name>/image/upload/<transformation>/<public_id>.<extension>
    */
-  const baseImageURL = "https://res.cloudinary.com/dquw84tih/image/upload";
 
   return (
     <NextHead>
@@ -28,7 +27,7 @@ export default function Head({
       <meta property="og:description" content={description} />
       <meta
         property="og:image"
-        content={`${baseImageURL}/f_auto,q_auto,c_fill,w_1200,h_630/${imageName}`}
+        content={`${process.env.BASE_IMAGE_URL || ""}/f_auto,q_auto,c_fill,w_1200,h_630/${imageName}`}
       />
       <meta
         property="og:url"
@@ -43,7 +42,7 @@ export default function Head({
       <meta name="twitter:card" content="summary_large_image" />
       <meta
         name="twitter:image"
-        content={`${baseImageURL}/f_auto,q_auto,c_fill,w_1200,h_630/${imageName}`}
+        content={`${process.env.BASE_IMAGE_URL || ""}/f_auto,q_auto,c_fill,w_1200,h_630/${imageName}`}
       />
 
       {/* JSON-LD Schema */}
@@ -56,13 +55,18 @@ export default function Head({
               "@type": "WebApplication",
               name: "Toolzer",
               alternateName: ["toolzer.pages.dev", "toolzer"],
-              url: "https://toolzer.pages.dev",
+              url: `https://toolzer.pages.dev${pageUrl}`,
               description,
               applicationCategory: "Utility",
               operatingSystem: "All",
               browserRequirements:
                 "Requires JavaScript. Works in all modern browsers.",
               featureList,
+              offers: {
+                "@type": "Offer",
+                price: "0.00",
+                priceCurrency: "USD",
+              },
             }),
           }}
         />

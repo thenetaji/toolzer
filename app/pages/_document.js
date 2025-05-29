@@ -2,7 +2,6 @@ import { Html, Head, Main, NextScript } from "next/document";
 import { Partytown } from "@qwik.dev/partytown/react";
 
 export default function Document() {
-  const baseImageURL = "https://res.cloudinary.com/dquw84tih/image/upload";
 
   return (
     <Html lang="en" className="dark">
@@ -12,43 +11,43 @@ export default function Document() {
           <link
             key={size}
             rel="icon"
-            type="image/png"
+            type="image/webp"
             sizes={`${size}x${size}`}
-            href={`${baseImageURL}/f_auto,q_auto,c_fill,w_${size},h_${size}/toolzer-logo_cpfiyf`}
+            href={`/icons/icon-${size}x${size}.webp`}
           />
         ))}
-
         {/* Apple Touch Icons */}
         {[120, 152, 167, 180].map((size) => (
           <link
             key={size}
             rel="apple-touch-icon"
-            type="image/png"
+            type="image/webp"
             sizes={`${size}x${size}`}
-            href={`${baseImageURL}/f_auto,q_auto,c_fill,w_${size},h_${size}/toolzer-logo_cpfiyf`}
+            href={`/icons/icon-${size}x${size}.webp`}
           />
         ))}
 
         {/* Shortcut Icon */}
         <link
           rel="shortcut icon"
-          href={`${baseImageURL}/f_auto,q_auto,c_fill,w_64,h_64/toolzer-logo_cpfiyf`}
+          type="image/webp"
+          href="/icons/icon-32x32.webp"
         />
 
         <link
           rel="icon"
           type="image/x-icon"
-          href={`${baseImageURL}/favicon_jg6fvb.ico`}
+          href="/icons/favicon.ico"
         />
 
         {/* Microsoft Tiles */}
         <meta
           name="msapplication-square150x150logo"
-          content={`${baseImageURL}/f_auto,q_auto,c_fill,w_150,h_150/toolzer-logo_cpfiyf`}
+          content="/icons/icon-150x150.webp"
         />
         <meta
           name="msapplication-square310x310logo"
-          content={`${baseImageURL}/f_auto,q_auto,c_fill,w_310,h_310/toolzer-logo_cpfiyf`}
+          content="/icons/icon-310x310.webp"
         />
 
         <meta name="robots" content="index, follow" />

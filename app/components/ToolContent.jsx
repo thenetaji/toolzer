@@ -8,9 +8,9 @@ import rehypeSanitize from "rehype-sanitize";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
-const ToolContent = ({ blog, className = "" }) => {
-  if (!blog) return null;
-  if (!blog || !blog.content) {
+const ToolContent = ({ content, className = "" }) => {
+  if (!content) return null;
+  if (!content) {
     return <div className="text-red-500">No content available</div>;
   }
 
@@ -62,7 +62,7 @@ const ToolContent = ({ blog, className = "" }) => {
               <img
                 {...props}
                 className="max-w-full h-auto rounded-md my-4 object-contain"
-                alt={props.alt || "Blog image"}
+                alt={props.alt || "content image"}
               />
             ),
             table: ({ node, ...props }) => (
@@ -110,7 +110,7 @@ const ToolContent = ({ blog, className = "" }) => {
             },
           }}
         >
-          {blog.content}
+          {content}
         </ReactMarkdown>
       </article>
     </Card>

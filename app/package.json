@@ -1,7 +1,7 @@
 {
   "name": "app",
   "private": true,
-  "version": "2.1.8",
+  "version": "2.2.8",
   "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
@@ -58,6 +58,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
+    "postcss-preset-env": "^10.2.0",
     "rollup-plugin-visualizer": "^5.14.0",
     "tailwindcss-animate": "^1.0.7",
     "tw-animate-css": "^1.2.6"
