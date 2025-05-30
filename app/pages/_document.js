@@ -5,45 +5,21 @@ export default function Document() {
   return (
     <Html lang="en" className="dark">
       <Head>
-        {/* Favicons */}
-        {[16, 32, 48, 72, 96, 144, 152, 167, 180, 192, 256, 512].map((size) => (
-          <link
-            key={size}
-            rel="icon"
-            type="image/webp"
-            sizes={`${size}x${size}`}
-            href={`/icons/icon-${size}x${size}.webp`}
-          />
-        ))}
-        {/* Apple Touch Icons */}
-        {[120, 152, 167, 180].map((size) => (
-          <link
-            key={size}
-            rel="apple-touch-icon"
-            type="image/webp"
-            sizes={`${size}x${size}`}
-            href={`/icons/icon-${size}x${size}.webp`}
-          />
-        ))}
-
-        {/* Shortcut Icon */}
         <link
-          rel="shortcut icon"
-          type="image/webp"
-          href="/icons/icon-32x32.webp"
+          rel="icon"
+          type="image/png"
+          href="/favicon-96x96.png"
+          sizes="96x96"
         />
-
-        <link rel="icon" type="image/x-icon" href="/icons/favicon.ico" />
-
-        {/* Microsoft Tiles */}
-        <meta
-          name="msapplication-square150x150logo"
-          content="/icons/icon-150x150.webp"
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
         />
-        <meta
-          name="msapplication-square310x310logo"
-          content="/icons/icon-310x310.webp"
-        />
+        <meta name="apple-mobile-web-app-title" content="Toolzer" />
+        <link rel="manifest" href="/site.webmanifest" />
 
         <meta name="robots" content="index, follow" />
         <meta name="theme-color" content="#1e293b" />
