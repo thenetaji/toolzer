@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Head from "next/head";
+import Head from "@/components/Head";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -120,49 +120,13 @@ export default function ToolsPage() {
   // Calculate popular tools
   const popularTools = tools.filter((tool) => tool.isPopular);
 
-  const pageTitle = "Tools | Find the Perfect Tool for Your Task";
-  const pageDescription =
-    "Explore Toolzer's comprehensive collection of free utilities for creators and developers. Search, filter, and find the perfect tool for your task.";
-  const canonicalUrl = "https://toolzer.studio/tools";
-
   return (
     <>
-      <Head>
-        {/* Primary meta tags */}
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:site_name" content="Toolzer" />
-        <meta
-          property="og:image"
-          content="https://toolzer.com/images/tools-page-social.jpg"
-        />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta
-          name="twitter:image"
-          content="https://toolzer.com/images/tools-page-social.jpg"
-        />
-
-        {/* Additional SEO tags */}
-        <meta
-          name="keywords"
-          content="tools, utilities, online tools, free tools, developer tools, productivity tools"
-        />
-        <meta name="author" content="Toolzer Team" />
-        <meta name="robots" content="index, follow" />
-      </Head>
-
+      <Head title={"Tools | Find the Perfect Tool for Your Task"}
+      description={"Explore Toolzer's comprehensive collection of free utilities for creators and developers."}
+      pageUrl={"/tools"}
+      />
+      
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto mb-10">
           <h1 className="text-4xl font-bold mb-4">All Tools</h1>
@@ -393,11 +357,6 @@ export default function ToolsPage() {
               );
             })}
           </Tabs>
-        </div>
-
-        <div className="text-xs text-muted-foreground mt-16 border-t pt-6 max-w-4xl mx-auto">
-          <p>Last Updated: 2025-04-23 06:11:24 (UTC)</p>
-          <p>Maintained by @thenetaji</p>
         </div>
       </div>
     </>

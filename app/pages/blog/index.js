@@ -1,122 +1,42 @@
-import Head from "next/head";
+import Head from "@/components/Head";
 import { getAllSimpleBlogs } from "@/lib/api";
 
-export default function SimpleBlogPage({ blogs }) {
+export default function BlogPage({ blogs }) {
   return (
     <>
-      <Head>
-        <title>Our Blog | Learn About Our Tools and Technology</title>
-        <meta
-          name="description"
-          content="Explore our blog to learn about our tools, technology, and innovations. Stay updated with our latest insights and articles."
-        />
-        <meta
-          name="keywords"
-          content="blog, tools, technology, updates, articles, insights"
-        />
-        <meta name="author" content="Your Team Name" />
-        <meta name="robots" content="index, follow" />
-        <meta
-          property="og:title"
-          content="Our Blog | Learn About Our Tools and Technology"
-        />
-        <meta
-          property="og:description"
-          content="Explore our blog to learn about our tools, technology, and innovations. Stay updated with our latest insights and articles."
-        />
-        <meta
-          property="og:image"
-          content="https://example.com/images/blog-social.jpg"
-        />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Our Blog | Learn About Our Tools and Technology"
-        />
-        <meta
-          name="twitter:description"
-          content="Explore our blog to learn about our tools, technology, and innovations."
-        />
-        <meta
-          name="twitter:image"
-          content="https://example.com/images/blog-social.jpg"
-        />
-      </Head>
+      <Head
+        title="Our Blog | Learn about tools to ease your life"
+        descriiption="Explore our blog to learn about our tools, technology, and innovations. Stay updated with our latest insights and articles."
+        pageUrl="/blog"
+      />
 
-      <div
-        style={{
-          padding: "2rem",
-          maxWidth: "1000px",
-          margin: "0 auto",
-          fontFamily: "system-ui, -apple-system, sans-serif",
-          color: "#333",
-        }}
-      >
-        <header
-          style={{
-            textAlign: "center",
-            marginBottom: "3rem",
-            borderBottom: "1px solid #eaeaea",
-            paddingBottom: "1.5rem",
-          }}
-        >
-          <h1
-            style={{
-              fontSize: "2.5rem",
-              marginBottom: "1rem",
-              color: "#222",
-            }}
-          >
-            Our Blog
-          </h1>
-          <p style={{ color: "#666", fontSize: "1.1rem" }}>
+      <div className="px-4 py-8 max-w-4xl mx-auto font-sans text-gray-900 dark:text-gray-100">
+        <header className="text-center mb-12 border-b border-gray-300 dark:border-gray-700 pb-6">
+          <h1 className="text-4xl font-bold mb-2">Our Blog</h1>
+          <p className="text-lg text-gray-600 dark:text-gray-400">
             Learn about our tools and technology
           </p>
         </header>
 
         <div>
-          {!blogs || !blogs.length ? (
+          {!blogs || blogs.length === 0 ? (
             <div>
-              <h1 style={{ fontSize: "2rem", marginBottom: "1rem" }}>
-                No blogs found
-              </h1>
-              <p>Could not find any blog posts.</p>
+              <h2 className="text-2xl font-semibold mb-2">No blogs found</h2>
+              <p className="text-gray-600 dark:text-gray-400">Could not find any blog posts.</p>
             </div>
           ) : (
             blogs.map((blog) => (
               <div
                 key={blog.slug}
-                style={{
-                  border: "1px solid #eaeaea",
-                  borderRadius: "8px",
-                  padding: "1.5rem",
-                  marginBottom: "1.5rem",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
-                  transition: "transform 0.3s ease",
-                  cursor: "pointer",
-                }}
                 onClick={() => (window.location.href = `/blog/${blog.slug}`)}
+                className="cursor-pointer border border-gray-200 dark:border-gray-700 rounded-lg p-6 mb-6 shadow hover:shadow-md transition-transform hover:scale-[1.01] bg-white dark:bg-gray-800"
               >
-                <h2
-                  style={{
-                    fontSize: "1.6rem",
-                    marginBottom: "0.75rem",
-                    color: "#222",
-                    fontWeight: "600",
-                  }}
-                >
+                <h2 className="text-2xl font-semibold mb-2 text-gray-900 dark:text-white">
                   {blog.title}
                 </h2>
 
                 {blog.date && (
-                  <p
-                    style={{
-                      color: "#666",
-                      marginBottom: "0.75rem",
-                      fontSize: "0.9rem",
-                    }}
-                  >
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
                     {new Date(blog.date).toLocaleDateString("en-US", {
                       year: "numeric",
                       month: "long",
@@ -126,36 +46,17 @@ export default function SimpleBlogPage({ blogs }) {
                 )}
 
                 {blog.excerpt && (
-                  <p
-                    style={{
-                      marginBottom: "1.2rem",
-                      color: "#444",
-                      lineHeight: "1.6",
-                    }}
-                  >
+                  <p className="mb-4 text-gray-700 dark:text-gray-300 leading-relaxed">
                     {blog.excerpt}
                   </p>
                 )}
 
                 {blog.tags && blog.tags.length > 0 && (
-                  <div
-                    style={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      gap: "0.5rem",
-                      marginBottom: "1rem",
-                    }}
-                  >
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {blog.tags.map((tag) => (
                       <span
                         key={tag}
-                        style={{
-                          backgroundColor: "#f0f0f0",
-                          color: "#555",
-                          padding: "0.15rem 0.6rem",
-                          borderRadius: "999px",
-                          fontSize: "0.75rem",
-                        }}
+                        className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs px-3 py-1 rounded-full"
                       >
                         {tag}
                       </span>
@@ -165,12 +66,7 @@ export default function SimpleBlogPage({ blogs }) {
 
                 <a
                   href={`/blog/${blog.slug}`}
-                  style={{
-                    color: "#0066cc",
-                    textDecoration: "none",
-                    display: "inline-block",
-                    fontWeight: "500",
-                  }}
+                  className="text-blue-600 dark:text-blue-400 font-medium hover:underline"
                 >
                   Read more &rarr;
                 </a>
@@ -190,7 +86,7 @@ export function getStaticProps() {
 
     return {
       props: {
-        blogs: JSON.parse(JSON.stringify(blogs)), // Force serialization
+        blogs: JSON.parse(JSON.stringify(blogs)),
       },
     };
   } catch (error) {

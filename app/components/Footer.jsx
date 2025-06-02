@@ -15,8 +15,8 @@ const mainLinks = [
 ];
 
 const resourceLinks = [
-  { name: "Documentation", href: "/docs" },
-  { name: "Help Center", href: "/help" },
+  { name: "Documentation", href: "/dev-api" },
+  { name: "Help Center", href: "/contact" },
   { name: "Blog", href: "/blog" },
 ];
 

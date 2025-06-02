@@ -2,33 +2,79 @@ import React, { useRef, useEffect } from "react";
 import Link from "next/link";
 import { motion, useAnimation, useInView } from "framer-motion";
 import {
+  Activity,
+  AlignHorizontalSpaceBetween,
+  AppWindow,
   ArrowRight,
   ArrowUpRight,
-  Sparkles,
-  Zap,
-  FileText,
-  Image,
   BarChart3,
-  Wand2,
-  MessageSquareText,
-  Volume2,
-  Instagram,
-  Video,
-  FileImage,
-  Code2,
-  Tag,
-  Users,
-  Code,
-  CheckCircle2,
-  Smartphone,
-  AppWindow,
-  Server,
-  Infinity as Infinite,
-  Braces as Json,
   Bot,
+  Boxes,
+  Brain,
+  Braces,
+  Braces as Json,
+  Bug,
+  BugPlay,
+  Calculator,
   CheckCircle,
+  CheckCircle2,
   Clock,
+  Code,
+  Code2,
+  Coins,
+  Cpu,
+  Database,
+  Eye,
+  FileBarChart,
+  FileCheck2,
+  FileCode,
+  FileCode2,
+  FileDown,
+  FileImage,
+  FileLock,
+  FileSearch,
+  FileStack,
+  FileText,
+  Globe,
+  HardDriveDownload,
+  Hash,
+  Image,
+  ImageDown,
+  Info,
+  Instagram,
+  Key,
+  KeyRound,
+  Lock,
+  LockKeyhole,
+  MapPin,
+  MessageSquareText,
+  Mic,
   Music2,
+  Network,
+  Pdf,
+  Radio,
+  RefreshCcw,
+  Search,
+  Server,
+  Settings,
+  Settings2,
+  Shield,
+  ShieldAlert,
+  ShieldCheck,
+  Smartphone,
+  Sparkles,
+  Tag,
+  Terminal,
+  TerminalSquare,
+  Text,
+  Users,
+  Video,
+  Volume2,
+  Wand2,
+  Wallet,
+  Zap,
+  Infinity as Infinite,
+  ListTree
 } from "lucide-react";
 import Head from "@/components/Head";
 import { Button } from "@/components/ui/button";
@@ -69,98 +115,9 @@ function ToolsShowcase() {
   const controls = useAnimation();
 
   // Define tool categories directly
-  const toolCategories = [
-    {
-      id: "ai",
-      name: "AI Tools",
-      tools: [
-        {
-          id: "ai-image-enhancer",
-          name: "AI Image Enhancer",
-          description: "Upscale and enhance images with AI",
-          icon: Wand2,
-          color: "violet",
-          isPopular: true,
-        },
-        {
-          id: "ai-summarizer",
-          name: "AI Summarizer",
-          description: "Generate concise summaries from any text",
-          icon: MessageSquareText,
-          color: "blue",
-          isPopular: true,
-        },
-        {
-          id: "text-to-speech",
-          name: "Text-to-Speech",
-          description: "Convert text to natural-sounding voice",
-          icon: Volume2,
-          color: "emerald",
-          isPopular: true,
-        },
-      ],
-    },
-    {
-      id: "downloaders",
-      name: "Downloaders",
-      tools: [
-        {
-          id: "instagram-downloader",
-          name: "Instagram Downloader",
-          description: "Save photos and videos from Instagram",
-          icon: Instagram,
-          color: "pink",
-          isPopular: true,
-        },
-        {
-          id: "tiktok-video-grabber",
-          name: "TikTok Video Grabber",
-          description: "Download TikTok videos without watermarks",
-          icon: Video,
-          color: "cyan",
-          isPopular: true,
-        },
-        {
-          id: "youtube-mp3",
-          name: "YouTube MP3 Converter",
-          description: "Convert YouTube videos to MP3 format",
-          icon: Music2,
-          color: "purple",
-          isPopular: true,
-        },
-      ],
-    },
-    {
-      id: "utilities",
-      name: "Web Utilities",
-      tools: [
-        {
-          id: "html-markdown",
-          name: "HTML to Markdown",
-          description: "Convert HTML code to clean Markdown",
-          icon: Code2,
-          color: "amber",
-          isPopular: true,
-        },
-        {
-          id: "pdf-image",
-          name: "PDF to Image",
-          description: "Extract images from PDF documents",
-          icon: FileImage,
-          color: "red",
-          isPopular: true,
-        },
-        {
-          id: "meta-tags",
-          name: "Meta Tag Generator",
-          description: "Create optimized meta tags for SEO friendly sites",
-          icon: Tag,
-          color: "green",
-          isPopular: true,
-        },
-      ],
-    },
-  ];
+  const toolCategories = [ { id: "network", name: "Network & DNS Tools", tools: [ { id: "dns-resolver", name: "DNS Resolver", description: "Resolve domain to DNS records", icon: Globe, color: "blue", isPopular: true }, { id: "reverse-dns", name: "Reverse DNS Lookup", description: "Find PTR for an IP address", icon: RefreshCcw, color: "indigo" }, { id: "whois-lookup", name: "WHOIS Lookup", description: "Fetch domain/IP WHOIS data", icon: Info, color: "cyan" }, { id: "ip-geolocation", name: "IP Geolocation", description: "Map IP to country, region, ISP", icon: MapPin, color: "green" }, { id: "port-scanner", name: "Port Scanner", description: "Scan open TCP/UDP ports", icon: Shield, color: "red" }, { id: "traceroute", name: "Traceroute Analyzer", description: "Trace route to a destination IP", icon: Activity, color: "orange" }, { id: "ping", name: "Ping Utility", description: "Measure packet loss and latency", icon: Zap, color: "yellow" }, { id: "subnet-calc", name: "Subnet Calculator", description: "Calculate network info from CIDR", icon: Calculator, color: "purple" }, ], }, { id: "security", name: "Security Tools", tools: [ { id: "ssl-checker", name: "SSL Certificate Checker", description: "Inspect TLS cert details", icon: Lock, color: "emerald" }, { id: "open-port", name: "Open Port Lookup", description: "Check if a port is open", icon: TerminalSquare, color: "rose" }, { id: "http-security-headers", name: "HTTP Security Headers", description: "Scan for missing headers", icon: ShieldCheck, color: "lime" }, { id: "jwt-inspector", name: "JWT Token Inspector", description: "Decode and verify JWTs", icon: Key, color: "fuchsia" }, { id: "cert-decoder", name: "X.509 Decoder", description: "View fields from a PEM cert", icon: FileText, color: "amber" }, { id: "hash-cracker", name: "Hash Cracker", description: "Crack hashes via dictionary", icon: Bug, color: "red" }, ], }, { id: "devtools", name: "Developer Tools", tools: [ { id: "graphql-tester", name: "GraphQL Tester", description: "Send GraphQL queries & view response", icon: Code2, color: "sky" }, { id: "rest-composer", name: "REST API Composer", description: "Craft & test REST calls", icon: Braces, color: "blue" }, { id: "websocket-tester", name: "WebSocket Tester", description: "Connect & send messages", icon: Radio, color: "green" }, { id: "curl-generator", name: "cURL Generator", description: "Generate curl from request data", icon: Terminal, color: "zinc" }, { id: "jsonpath-evaluator", name: "JSONPath Evaluator", description: "Extract data from JSON", icon: FileCode2, color: "cyan" }, { id: "xpath-tester", name: "XPath Tester", description: "Evaluate XPath on XML/HTML", icon: Search, color: "yellow" }, ], }, { id: "crypto", name: "Crypto & Encoding Tools", tools: [ { id: "rsa-keygen", name: "RSA Keypair Generator", description: "Generate RSA PEM keys", icon: KeyRound, color: "amber" }, { id: "aes-tool", name: "AES Encrypt/Decrypt", description: "Run AES-CBC or GCM", icon: LockKeyhole, color: "lime" }, { id: "hash-calc", name: "Hash Calculator", description: "Generate MD5/SHA/CRC32", icon: Hash, color: "indigo" }, { id: "base-enc", name: "Base Encoder/Decoder", description: "Base64/58/32 encoding tools", icon: Text, color: "fuchsia" }, { id: "pgp-verify", name: "PGP Signature Verifier", description: "Validate PGP signed text", icon: FileLock, color: "rose" }, { id: "blockchain-decoder", name: "Blockchain Address Decoder", description: "Decode BTC/ETH address or txn", icon: Coins, color: "yellow" }, ], }, { id: "files", name: "Advanced File Tools", tools: [ { id: "binary-hex", name: "Binary/Hex Converter", description: "Convert binary ↔ hex", icon: AlignHorizontalSpaceBetween, color: "violet" }, { id: "elf-pe-parser", name: "ELF/PE Inspector", description: "Read headers of ELF/PE files", icon: FileCheck2, color: "orange" }, { id: "exif-reader", name: "EXIF Extractor", description: "Extract metadata from JPEG", icon: ImageDown, color: "green" }, { id: "disk-img-analyzer", name: "Disk Image Analyzer", description: "Parse ISO/IMG without mount", icon: HardDriveDownload, color: "slate" }, { id: "pdf-inspector", name: "PDF Inspector", description: "Explore internal PDF structure", icon: FileSearch, color: "purple" }, ], }, { id: "ai", name: "AI & ML Tools", tools: [ { id: "ai-image-enhancer", name: "AI Image Enhancer", description: "Upscale and enhance images", icon: Wand2, color: "violet", isPopular: true }, { id: "ai-summarizer", name: "AI Summarizer", description: "Summarize long articles", icon: MessageSquareText, color: "blue" }, { id: "speech-to-text", name: "Speech to Text", description: "Transcribe audio files", icon: Mic, color: "lime" }, { id: "text-to-speech", name: "Text to Speech", description: "Convert text to voice", icon: Volume2, color: "emerald" }, { id: "ai-linter", name: "AI Code Linter", description: "Lint code using ML", icon: BugPlay, color: "cyan" }, { id: "ai-vuln-scanner", name: "AI Vulnerability Scanner", description: "Detect security issues in code", icon: ShieldAlert, color: "red" }, ], }, { id: "deep-dive", name: "Deep Dive Tools", tools: [ { id: "pcap-parser", name: "PCAP Parser", description: "Analyze .pcap network captures", icon: FileBarChart, color: "blue" }, { id: "docker-analyzer", name: "Dockerfile Analyzer", description: "Suggest Dockerfile optimizations", icon: Boxes, color: "slate" }, { id: "k8s-validator", name: "Kubernetes YAML Validator", description: "Validate K8s manifests", icon: FileStack, color: "indigo" }, { id: "terraform-visualizer", name: "Terraform Visualizer", description: "Visualize Terraform plan", icon: ListTree, color: "green" }, ], }, ];
+
+
 
   // Total tool count for display
   const totalToolCount = toolCategories.reduce(
@@ -354,9 +311,7 @@ function HeroSection() {
           </h1>
 
           <h2 className="text-lg text-muted-foreground mx-auto">
-            Convert files, edit media, optimize SEO, and boost productivity —
-            Toolzer gives you fast, free access to powerful tools, all in your
-            browser* or using API.
+            Toolzer offers fast, free browser and API access to powerful tools for file conversion, media editing, SEO optimization, and productivity boosting.
           </h2>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
@@ -387,7 +342,7 @@ function HeroSection() {
               Transform files between formats with just a few clicks.
             </p>
             <div className="flex items-center text-sm font-medium text-primary">
-              <Link href="/tools/converters" className="flex items-center">
+              <Link href="/tools" className="flex items-center">
                 <span>Explore Converters</span>
                 <ArrowRight className="ml-1 h-3.5 w-3.5" />
               </Link>
@@ -404,7 +359,7 @@ function HeroSection() {
               Process images, videos, and audio files with ease.
             </p>
             <div className="flex items-center text-sm font-medium text-primary">
-              <Link href="/tools/media" className="flex items-center">
+              <Link href="/tools" className="flex items-center">
                 <span>Explore Media Tools</span>
                 <ArrowRight className="ml-1 h-3.5 w-3.5" />
               </Link>
@@ -421,7 +376,7 @@ function HeroSection() {
               Boost your workflow with time-saving productivity tools.
             </p>
             <div className="flex items-center text-sm font-medium text-primary">
-              <Link href="/tools/productivity" className="flex items-center">
+              <Link href="/tools" className="flex items-center">
                 <span>Explore Productivity</span>
                 <ArrowRight className="ml-1 h-3.5 w-3.5" />
               </Link>

@@ -30,7 +30,7 @@ import {
 const navItems = [
   { name: "Tools", href: "/tools", icon: <Rocket className="w-4 h-4 mr-2" /> },
   { name: "About", href: "/about", icon: <Zap className="w-4 h-4 mr-2" /> },
-  { name: "API", href: "/api", icon: <Code className="w-4 h-4 mr-2" /> },
+  { name: "API", href: "/dev-api", icon: <Code className="w-4 h-4 mr-2" /> },
   {
     name: "Contact",
     href: "/contact",
@@ -87,7 +87,7 @@ export default function Header() {
               </div>
 
               <motion.span
-                className="font-extrabold text-transparent text-xl bg-clip-text bg-gradient-to-r from-primary to-purple-600"
+                className="font-extrabold text-transparent text-xl bg-clip-text bg-gradient-to-r from-primary to-purple-800"
                 animate={{
                   backgroundPosition: isHovering ? ["0%", "100%"] : ["0%"],
                   backgroundSize: "200%",
@@ -210,11 +210,6 @@ export default function Header() {
               >
                 <SheetHeader className="flex flex-row items-center justify-between">
                   <SheetTitle className="flex items-center">
-                    <img
-                      src={`${process.env.BASE_IMAGE_URL || ""}/f_auto,q_auto,c_fill,w_16,h_16/toolzer-logo_cpfiyf`}
-                      alt="logo-icon"
-                      className="h-5 w-5 mr-2 rounded"
-                    />
                     <span className="font-bold text-transparent text-lg bg-clip-text bg-gradient-to-r from-primary to-purple-600">
                       Toolzer
                     </span>

@@ -10,7 +10,6 @@
   margin-top: 3rem;
   margin-bottom: 2rem; /* Increased bottom margin */
   line-height: 1.1;
-  color: #111827;
 }
 
 .blogContent h2 {
@@ -19,7 +18,6 @@
   margin-top: 3rem; /* Increased top margin */
   margin-bottom: 2rem; /* Increased bottom margin */
   line-height: 1.2;
-  color: #111827;
   border-bottom: 1px solid #e5e7eb;
   padding-bottom: 0.75rem;
 }
@@ -30,7 +28,6 @@
   margin-top: 2.5rem; /* Increased top margin */
   margin-bottom: 1.75rem; /* Increased bottom margin */
   line-height: 1.3;
-  color: #111827;
 }
 
 .blogContent h4 {
@@ -38,7 +35,6 @@
   font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 1.5rem; /* Increased bottom margin */
-  color: #111827;
 }
 
 .blogContent p {
@@ -211,7 +207,7 @@
 
 /* Improved horizontal rule styling */
 .blogContent hr {
-  margin: 3rem 0;
+  margin: 1rem 0;
   border: 0;
   height: 1px;
   background-color: #e5e7eb;

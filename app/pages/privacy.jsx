@@ -125,7 +125,7 @@ export default function PrivacyPolicy() {
             If you have any questions or concerns about this Privacy Policy or
             our data practices, please contact us at{" "}
             <a
-              href="mailto:privacy@toolzer.io"
+              href="mailto:hello@toolzer.studio"
               className="text-primary hover:underline"
             >
               contact.dry528@passinbox.com
