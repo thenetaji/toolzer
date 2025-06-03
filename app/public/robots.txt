@@ -1,4 +1,6 @@
 User-agent: *
 Disallow: /~partytown
+Disallow: /coming-soon
 Disallow: /cdn-cgi/l/email-protection
+Disallow: /blog/example
 Allow: *

@@ -1,8 +1,9 @@
 import Head from "@/components/Head";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronLeft } from "lucide-react";
 import { format } from "date-fns";
-import { getSimplifiedBlog, getSimpleBlogSlugs } from "@/lib/api";
+import { getMdContent, getAllBlogSlug } from "@/lib/api";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -18,13 +19,22 @@ import styles from "./blog.module.css";
 
 export default function BlogPost({ blog }) {
   if (!blog) {
-    return (<> 
-    <p> Blog not found</p>
-    </>)
+    return (
+      <>
+        <p> Blog not found</p>
+      </>
+    );
   }
-  
+
   return (
     <>
+      <Head
+        title={blog.data.title}
+        description={blog.data.description}
+        pageUrl={blog.data.pageUrl}
+        imageName={blog.data.imageName}
+      />
+
       <div className="container max-w-3xl mx-auto px-6 py-12">
         {/* Navigation */}
         <div className="mb-8">
@@ -70,7 +80,7 @@ export default function BlogPost({ blog }) {
         {/* Featured Image (if available) */}
         {blog.featuredImage && (
           <div className="mb-10">
-            <img
+            <Image
               src={blog.featuredImage}
               alt={`Featured image for ${blog.title}`}
               className="w-full h-auto object-cover rounded-lg"
@@ -96,7 +106,7 @@ export default function BlogPost({ blog }) {
             </CardDescription>
           </CardHeader>
           <CardFooter className="flex justify-center py-4">
-            <Link href={blog.toolLink ? `/tool${blog.toolLink}` : "/tool"}>
+            <Link href={blog.toolLink ? `/tools${blog.toolLink}` : "/tools"}>
               <Button size="lg" className="px-10 py-4 text-lg font-medium">
                 Try It Now
               </Button>
@@ -110,7 +120,7 @@ export default function BlogPost({ blog }) {
 
 export async function getStaticPaths() {
   try {
-    const paths = getSimpleBlogSlugs();
+    const paths = await getAllBlogSlug();
 
     return {
       paths,
@@ -124,7 +134,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   try {
-    const blog = await getSimplifiedBlog(params.slug);
+    const blog = await getMdContent(params.slug, "blog");
 
     if (!blog) {
       return { notFound: true };

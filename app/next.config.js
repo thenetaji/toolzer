@@ -1,6 +1,8 @@
 const config = {
   allowedDevOrigins: [],
-  output: "export",
+  experimental: {
+    nextScriptWorkers: true,
+  },
 };
 
 export default config;

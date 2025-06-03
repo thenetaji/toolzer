@@ -122,11 +122,14 @@ export default function ToolsPage() {
 
   return (
     <>
-      <Head title={"Tools | Find the Perfect Tool for Your Task"}
-      description={"Explore Toolzer's comprehensive collection of free utilities for creators and developers."}
-      pageUrl={"/tools"}
+      <Head
+        title={"Tools | Find the Perfect Tool for Your Task"}
+        description={
+          "Explore Toolzer's comprehensive collection of free utilities for creators and developers."
+        }
+        pageUrl={"/tools"}
       />
-      
+
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto mb-10">
           <h1 className="text-4xl font-bold mb-4">All Tools</h1>

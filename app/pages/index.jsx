@@ -38,7 +38,7 @@ import {
   Globe,
   HardDriveDownload,
   Hash,
-  Image,
+  Image as ImageIcon,
   ImageDown,
   Info,
   Instagram,
@@ -74,7 +74,7 @@ import {
   Wallet,
   Zap,
   Infinity as Infinite,
-  ListTree
+  ListTree,
 } from "lucide-react";
 import Head from "@/components/Head";
 import { Button } from "@/components/ui/button";
@@ -115,9 +115,339 @@ function ToolsShowcase() {
   const controls = useAnimation();
 
   // Define tool categories directly
-  const toolCategories = [ { id: "network", name: "Network & DNS Tools", tools: [ { id: "dns-resolver", name: "DNS Resolver", description: "Resolve domain to DNS records", icon: Globe, color: "blue", isPopular: true }, { id: "reverse-dns", name: "Reverse DNS Lookup", description: "Find PTR for an IP address", icon: RefreshCcw, color: "indigo" }, { id: "whois-lookup", name: "WHOIS Lookup", description: "Fetch domain/IP WHOIS data", icon: Info, color: "cyan" }, { id: "ip-geolocation", name: "IP Geolocation", description: "Map IP to country, region, ISP", icon: MapPin, color: "green" }, { id: "port-scanner", name: "Port Scanner", description: "Scan open TCP/UDP ports", icon: Shield, color: "red" }, { id: "traceroute", name: "Traceroute Analyzer", description: "Trace route to a destination IP", icon: Activity, color: "orange" }, { id: "ping", name: "Ping Utility", description: "Measure packet loss and latency", icon: Zap, color: "yellow" }, { id: "subnet-calc", name: "Subnet Calculator", description: "Calculate network info from CIDR", icon: Calculator, color: "purple" }, ], }, { id: "security", name: "Security Tools", tools: [ { id: "ssl-checker", name: "SSL Certificate Checker", description: "Inspect TLS cert details", icon: Lock, color: "emerald" }, { id: "open-port", name: "Open Port Lookup", description: "Check if a port is open", icon: TerminalSquare, color: "rose" }, { id: "http-security-headers", name: "HTTP Security Headers", description: "Scan for missing headers", icon: ShieldCheck, color: "lime" }, { id: "jwt-inspector", name: "JWT Token Inspector", description: "Decode and verify JWTs", icon: Key, color: "fuchsia" }, { id: "cert-decoder", name: "X.509 Decoder", description: "View fields from a PEM cert", icon: FileText, color: "amber" }, { id: "hash-cracker", name: "Hash Cracker", description: "Crack hashes via dictionary", icon: Bug, color: "red" }, ], }, { id: "devtools", name: "Developer Tools", tools: [ { id: "graphql-tester", name: "GraphQL Tester", description: "Send GraphQL queries & view response", icon: Code2, color: "sky" }, { id: "rest-composer", name: "REST API Composer", description: "Craft & test REST calls", icon: Braces, color: "blue" }, { id: "websocket-tester", name: "WebSocket Tester", description: "Connect & send messages", icon: Radio, color: "green" }, { id: "curl-generator", name: "cURL Generator", description: "Generate curl from request data", icon: Terminal, color: "zinc" }, { id: "jsonpath-evaluator", name: "JSONPath Evaluator", description: "Extract data from JSON", icon: FileCode2, color: "cyan" }, { id: "xpath-tester", name: "XPath Tester", description: "Evaluate XPath on XML/HTML", icon: Search, color: "yellow" }, ], }, { id: "crypto", name: "Crypto & Encoding Tools", tools: [ { id: "rsa-keygen", name: "RSA Keypair Generator", description: "Generate RSA PEM keys", icon: KeyRound, color: "amber" }, { id: "aes-tool", name: "AES Encrypt/Decrypt", description: "Run AES-CBC or GCM", icon: LockKeyhole, color: "lime" }, { id: "hash-calc", name: "Hash Calculator", description: "Generate MD5/SHA/CRC32", icon: Hash, color: "indigo" }, { id: "base-enc", name: "Base Encoder/Decoder", description: "Base64/58/32 encoding tools", icon: Text, color: "fuchsia" }, { id: "pgp-verify", name: "PGP Signature Verifier", description: "Validate PGP signed text", icon: FileLock, color: "rose" }, { id: "blockchain-decoder", name: "Blockchain Address Decoder", description: "Decode BTC/ETH address or txn", icon: Coins, color: "yellow" }, ], }, { id: "files", name: "Advanced File Tools", tools: [ { id: "binary-hex", name: "Binary/Hex Converter", description: "Convert binary ↔ hex", icon: AlignHorizontalSpaceBetween, color: "violet" }, { id: "elf-pe-parser", name: "ELF/PE Inspector", description: "Read headers of ELF/PE files", icon: FileCheck2, color: "orange" }, { id: "exif-reader", name: "EXIF Extractor", description: "Extract metadata from JPEG", icon: ImageDown, color: "green" }, { id: "disk-img-analyzer", name: "Disk Image Analyzer", description: "Parse ISO/IMG without mount", icon: HardDriveDownload, color: "slate" }, { id: "pdf-inspector", name: "PDF Inspector", description: "Explore internal PDF structure", icon: FileSearch, color: "purple" }, ], }, { id: "ai", name: "AI & ML Tools", tools: [ { id: "ai-image-enhancer", name: "AI Image Enhancer", description: "Upscale and enhance images", icon: Wand2, color: "violet", isPopular: true }, { id: "ai-summarizer", name: "AI Summarizer", description: "Summarize long articles", icon: MessageSquareText, color: "blue" }, { id: "speech-to-text", name: "Speech to Text", description: "Transcribe audio files", icon: Mic, color: "lime" }, { id: "text-to-speech", name: "Text to Speech", description: "Convert text to voice", icon: Volume2, color: "emerald" }, { id: "ai-linter", name: "AI Code Linter", description: "Lint code using ML", icon: BugPlay, color: "cyan" }, { id: "ai-vuln-scanner", name: "AI Vulnerability Scanner", description: "Detect security issues in code", icon: ShieldAlert, color: "red" }, ], }, { id: "deep-dive", name: "Deep Dive Tools", tools: [ { id: "pcap-parser", name: "PCAP Parser", description: "Analyze .pcap network captures", icon: FileBarChart, color: "blue" }, { id: "docker-analyzer", name: "Dockerfile Analyzer", description: "Suggest Dockerfile optimizations", icon: Boxes, color: "slate" }, { id: "k8s-validator", name: "Kubernetes YAML Validator", description: "Validate K8s manifests", icon: FileStack, color: "indigo" }, { id: "terraform-visualizer", name: "Terraform Visualizer", description: "Visualize Terraform plan", icon: ListTree, color: "green" }, ], }, ];
-
-
+  const toolCategories = [
+    {
+      id: "network",
+      name: "Network & DNS Tools",
+      tools: [
+        {
+          id: "dns-resolver",
+          name: "DNS Resolver",
+          description: "Resolve domain to DNS records",
+          icon: Globe,
+          color: "blue",
+          isPopular: true,
+        },
+        {
+          id: "reverse-dns",
+          name: "Reverse DNS Lookup",
+          description: "Find PTR for an IP address",
+          icon: RefreshCcw,
+          color: "indigo",
+        },
+        {
+          id: "whois-lookup",
+          name: "WHOIS Lookup",
+          description: "Fetch domain/IP WHOIS data",
+          icon: Info,
+          color: "cyan",
+        },
+        {
+          id: "ip-geolocation",
+          name: "IP Geolocation",
+          description: "Map IP to country, region, ISP",
+          icon: MapPin,
+          color: "green",
+        },
+        {
+          id: "port-scanner",
+          name: "Port Scanner",
+          description: "Scan open TCP/UDP ports",
+          icon: Shield,
+          color: "red",
+        },
+        {
+          id: "traceroute",
+          name: "Traceroute Analyzer",
+          description: "Trace route to a destination IP",
+          icon: Activity,
+          color: "orange",
+        },
+        {
+          id: "ping",
+          name: "Ping Utility",
+          description: "Measure packet loss and latency",
+          icon: Zap,
+          color: "yellow",
+        },
+        {
+          id: "subnet-calc",
+          name: "Subnet Calculator",
+          description: "Calculate network info from CIDR",
+          icon: Calculator,
+          color: "purple",
+        },
+      ],
+    },
+    {
+      id: "security",
+      name: "Security Tools",
+      tools: [
+        {
+          id: "ssl-checker",
+          name: "SSL Certificate Checker",
+          description: "Inspect TLS cert details",
+          icon: Lock,
+          color: "emerald",
+        },
+        {
+          id: "open-port",
+          name: "Open Port Lookup",
+          description: "Check if a port is open",
+          icon: TerminalSquare,
+          color: "rose",
+        },
+        {
+          id: "http-security-headers",
+          name: "HTTP Security Headers",
+          description: "Scan for missing headers",
+          icon: ShieldCheck,
+          color: "lime",
+        },
+        {
+          id: "jwt-inspector",
+          name: "JWT Token Inspector",
+          description: "Decode and verify JWTs",
+          icon: Key,
+          color: "fuchsia",
+        },
+        {
+          id: "cert-decoder",
+          name: "X.509 Decoder",
+          description: "View fields from a PEM cert",
+          icon: FileText,
+          color: "amber",
+        },
+        {
+          id: "hash-cracker",
+          name: "Hash Cracker",
+          description: "Crack hashes via dictionary",
+          icon: Bug,
+          color: "red",
+        },
+      ],
+    },
+    {
+      id: "devtools",
+      name: "Developer Tools",
+      tools: [
+        {
+          id: "graphql-tester",
+          name: "GraphQL Tester",
+          description: "Send GraphQL queries & view response",
+          icon: Code2,
+          color: "sky",
+        },
+        {
+          id: "rest-composer",
+          name: "REST API Composer",
+          description: "Craft & test REST calls",
+          icon: Braces,
+          color: "blue",
+        },
+        {
+          id: "websocket-tester",
+          name: "WebSocket Tester",
+          description: "Connect & send messages",
+          icon: Radio,
+          color: "green",
+        },
+        {
+          id: "curl-generator",
+          name: "cURL Generator",
+          description: "Generate curl from request data",
+          icon: Terminal,
+          color: "zinc",
+        },
+        {
+          id: "jsonpath-evaluator",
+          name: "JSONPath Evaluator",
+          description: "Extract data from JSON",
+          icon: FileCode2,
+          color: "cyan",
+        },
+        {
+          id: "xpath-tester",
+          name: "XPath Tester",
+          description: "Evaluate XPath on XML/HTML",
+          icon: Search,
+          color: "yellow",
+        },
+      ],
+    },
+    {
+      id: "crypto",
+      name: "Crypto & Encoding Tools",
+      tools: [
+        {
+          id: "rsa-keygen",
+          name: "RSA Keypair Generator",
+          description: "Generate RSA PEM keys",
+          icon: KeyRound,
+          color: "amber",
+        },
+        {
+          id: "aes-tool",
+          name: "AES Encrypt/Decrypt",
+          description: "Run AES-CBC or GCM",
+          icon: LockKeyhole,
+          color: "lime",
+        },
+        {
+          id: "hash-calc",
+          name: "Hash Calculator",
+          description: "Generate MD5/SHA/CRC32",
+          icon: Hash,
+          color: "indigo",
+        },
+        {
+          id: "base-enc",
+          name: "Base Encoder/Decoder",
+          description: "Base64/58/32 encoding tools",
+          icon: Text,
+          color: "fuchsia",
+        },
+        {
+          id: "pgp-verify",
+          name: "PGP Signature Verifier",
+          description: "Validate PGP signed text",
+          icon: FileLock,
+          color: "rose",
+        },
+        {
+          id: "blockchain-decoder",
+          name: "Blockchain Address Decoder",
+          description: "Decode BTC/ETH address or txn",
+          icon: Coins,
+          color: "yellow",
+        },
+      ],
+    },
+    {
+      id: "files",
+      name: "Advanced File Tools",
+      tools: [
+        {
+          id: "binary-hex",
+          name: "Binary/Hex Converter",
+          description: "Convert binary ↔ hex",
+          icon: AlignHorizontalSpaceBetween,
+          color: "violet",
+        },
+        {
+          id: "elf-pe-parser",
+          name: "ELF/PE Inspector",
+          description: "Read headers of ELF/PE files",
+          icon: FileCheck2,
+          color: "orange",
+        },
+        {
+          id: "exif-reader",
+          name: "EXIF Extractor",
+          description: "Extract metadata from JPEG",
+          icon: ImageDown,
+          color: "green",
+        },
+        {
+          id: "disk-img-analyzer",
+          name: "Disk Image Analyzer",
+          description: "Parse ISO/IMG without mount",
+          icon: HardDriveDownload,
+          color: "slate",
+        },
+        {
+          id: "pdf-inspector",
+          name: "PDF Inspector",
+          description: "Explore internal PDF structure",
+          icon: FileSearch,
+          color: "purple",
+        },
+      ],
+    },
+    {
+      id: "ai",
+      name: "AI & ML Tools",
+      tools: [
+        {
+          id: "ai-image-enhancer",
+          name: "AI Image Enhancer",
+          description: "Upscale and enhance images",
+          icon: Wand2,
+          color: "violet",
+          isPopular: true,
+        },
+        {
+          id: "ai-summarizer",
+          name: "AI Summarizer",
+          description: "Summarize long articles",
+          icon: MessageSquareText,
+          color: "blue",
+        },
+        {
+          id: "speech-to-text",
+          name: "Speech to Text",
+          description: "Transcribe audio files",
+          icon: Mic,
+          color: "lime",
+        },
+        {
+          id: "text-to-speech",
+          name: "Text to Speech",
+          description: "Convert text to voice",
+          icon: Volume2,
+          color: "emerald",
+        },
+        {
+          id: "ai-linter",
+          name: "AI Code Linter",
+          description: "Lint code using ML",
+          icon: BugPlay,
+          color: "cyan",
+        },
+        {
+          id: "ai-vuln-scanner",
+          name: "AI Vulnerability Scanner",
+          description: "Detect security issues in code",
+          icon: ShieldAlert,
+          color: "red",
+        },
+      ],
+    },
+    {
+      id: "deep-dive",
+      name: "Deep Dive Tools",
+      tools: [
+        {
+          id: "pcap-parser",
+          name: "PCAP Parser",
+          description: "Analyze .pcap network captures",
+          icon: FileBarChart,
+          color: "blue",
+        },
+        {
+          id: "docker-analyzer",
+          name: "Dockerfile Analyzer",
+          description: "Suggest Dockerfile optimizations",
+          icon: Boxes,
+          color: "slate",
+        },
+        {
+          id: "k8s-validator",
+          name: "Kubernetes YAML Validator",
+          description: "Validate K8s manifests",
+          icon: FileStack,
+          color: "indigo",
+        },
+        {
+          id: "terraform-visualizer",
+          name: "Terraform Visualizer",
+          description: "Visualize Terraform plan",
+          icon: ListTree,
+          color: "green",
+        },
+      ],
+    },
+  ];
 
   // Total tool count for display
   const totalToolCount = toolCategories.reduce(
@@ -311,7 +641,9 @@ function HeroSection() {
           </h1>
 
           <h2 className="text-lg text-muted-foreground mx-auto">
-            Toolzer offers fast, free browser and API access to powerful tools for file conversion, media editing, SEO optimization, and productivity boosting.
+            Toolzer offers fast, free browser and API access to powerful tools
+            for file conversion, media editing, SEO optimization, and
+            productivity boosting.
           </h2>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
@@ -352,7 +684,7 @@ function HeroSection() {
           {/* Media Tools */}
           <div className="bg-card rounded-lg border shadow-sm p-6">
             <div className="h-10 w-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4">
-              <Image className="h-5 w-5" />
+              <ImageIcon className="h-5 w-5" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Media Tools</h3>
             <p className="text-muted-foreground mb-4">

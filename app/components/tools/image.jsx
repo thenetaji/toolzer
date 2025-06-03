@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import NextImage from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -13,7 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Upload, Download, Image, Loader2 } from "lucide-react";
+import { Upload, Download, Image as ImageIcon, Loader2 } from "lucide-react";
 
 export default function ImageTool({ config }) {
   const {
@@ -46,7 +47,7 @@ export default function ImageTool({ config }) {
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    setUploadedImage(e.target.files[0]);
+    setUploadedmage(e.target.files[0]);
 
     // Check if file is an image
     if (!file.type.match("image.*")) {
@@ -341,7 +342,7 @@ export default function ImageTool({ config }) {
             <h3 className="text-lg font-semibold mb-4">Preview</h3>
             <div className="flex flex-col items-center">
               <div className="bg-muted rounded-md p-2">
-                <img
+                <NextImage
                   src={previewImage}
                   alt="Preview of resized image"
                   className="max-h-[300px] rounded"
@@ -368,7 +369,7 @@ export default function ImageTool({ config }) {
               </>
             ) : (
               <>
-                <Image className="mr-2 h-4 w-4" />
+                <ImageIcon className="mr-2 h-4 w-4" />
                 Resize Image
               </>
             )}

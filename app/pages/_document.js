@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import { Partytown } from "@qwik.dev/partytown/react";
+import Script from "next/script";
 
 export default function Document() {
   return (
@@ -27,14 +27,15 @@ export default function Document() {
         {/* Yandex */}
         <meta name="yandex-verification" content="b5c3a28f16fc141a" />
 
-        {/* Google Analytics with Partytown */}
-        <Partytown forward={["dataLayer.push"]} />
-        <script
-          async
+        {/* Google Analytics */}
+        <Script
+          strategy="worker"
+          id="tag"
           src="https://www.googletagmanager.com/gtag/js?id=G-V8DHJ6KM0Y"
-        ></script>
-        <script
-          type="text/partytown"
+        ></Script>
+        <Script
+          strategy="worker"
+          id="window-layer"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

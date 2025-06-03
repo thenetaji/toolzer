@@ -15,7 +15,7 @@ export default function Tool({ meta, content }) {
         imageName={meta.imageName}
         featureList={meta.featureList}
       ></Head>
-      
+
       <ToolContainer
         title={meta.title}
         description={meta.description}

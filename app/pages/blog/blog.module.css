@@ -8,15 +8,15 @@
   font-size: 3rem;
   font-weight: 800;
   margin-top: 3rem;
-  margin-bottom: 2rem; /* Increased bottom margin */
+  margin-bottom: 1rem; /* Increased bottom margin */
   line-height: 1.1;
 }
 
 .blogContent h2 {
   font-size: 2.25rem;
   font-weight: 700;
-  margin-top: 3rem; /* Increased top margin */
-  margin-bottom: 2rem; /* Increased bottom margin */
+  margin-top: 2rem; /* Increased top margin */
+  margin-bottom: 1rem; /* Increased bottom margin */
   line-height: 1.2;
   border-bottom: 1px solid #e5e7eb;
   padding-bottom: 0.75rem;
@@ -25,35 +25,35 @@
 .blogContent h3 {
   font-size: 1.75rem;
   font-weight: 600;
-  margin-top: 2.5rem; /* Increased top margin */
-  margin-bottom: 1.75rem; /* Increased bottom margin */
+  margin-top: 1.5rem; /* Increased top margin */
+  margin-bottom: 1rem; /* Increased bottom margin */
   line-height: 1.3;
 }
 
 .blogContent h4 {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-top: 2rem;
-  margin-bottom: 1.5rem; /* Increased bottom margin */
+  margin-top: 1rem;
+  margin-bottom: 1rem; /* Increased bottom margin */
 }
 
 .blogContent p {
-  margin-bottom: 1.75rem;
-  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
 }
 
 /* Enhanced unordered list (bullet points) styling */
 .blogContent ul {
-  padding-left: 1rem;
+  padding-left: 0.4rem;
   margin-top: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   list-style-type: none;
 }
 
 /* Custom bullet points styling */
 .blogContent ul li {
   position: relative;
-  padding-left: 1.75rem;
+  padding-left: 1rem;
   margin-bottom: 1.25rem;
   line-height: 1.7;
 }
@@ -82,7 +82,7 @@
 
 /* Ordered list styling */
 .blogContent ol {
-  padding-left: 1.5rem;
+  padding-left: 1rem;
   margin-top: 1.5rem;
   margin-bottom: 2rem;
   counter-reset: item;
@@ -91,7 +91,7 @@
 
 .blogContent ol li {
   position: relative;
-  padding-left: 1.25rem;
+  padding-left: 1rem;
   margin-bottom: 1.25rem;
   counter-increment: item;
   line-height: 1.7;

@@ -4,93 +4,25 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 
-let contentPath = path.join(process.cwd(), "blogs");
+const root = process.cwd();
 
-// Ultra simplified API with minimal processing
-export async function getSimplifiedBlog(slug, type = "blog") {
-  if (type != "blog") {
-    contentPath = path.join(process.cwd(), "data", "tools");
-  }
+/**
+ * getting single md file for only tool rendering
+ */
+export const getMdContent = async (contentPath, type = null) => {
   try {
-    const fullPath = path.join(contentPath, `${slug}.md`);
+    let fullPath = path.join(root, "data", "tool", contentPath);
+    if (type == "blog") {
+      fullPath = path.join(root, "blogs", `${contentPath}.md`);
+    }
+
     const fileContents = fs.readFileSync(fullPath, "utf8");
 
     const { data, content } = matter(fileContents);
     const htmlContent = await remark().use(html).process(content);
 
-    // Return plain JS object with stringified values
     return {
-      slug,
-      title: String(data.title || ""),
-      date: data.date ? String(data.date) : "",
-      content: String(htmlContent),
-      description: data.description ? String(data.description) : "",
-      coverImage: data.coverImage ? String(data.coverImage) : "",
-      author: data.author ? String(data.author) : "",
-      tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
-      toolConfig: data.toolConfig,
-    };
-  } catch (error) {
-    console.error(`Error in getSimplifiedBlog for ${slug}:`, error);
-    return null;
-  }
-}
-
-export function getSimpleBlogSlugs(type = "blog") {
-  if (type != "blog") {
-    contentPath = path.join(process.cwd(), "data", "tools");
-  }
-
-  try {
-    return fs
-      .readdirSync(contentPath)
-      .filter((file) => file.endsWith(".md"))
-      .map((file) => ({ params: { slug: file.replace(/\.md$/, "") } }));
-  } catch (error) {
-    console.error("Error in getSimpleBlogSlugs:", error);
-    return [];
-  }
-}
-
-export function getAllSimpleBlogs() {
-  try {
-    const slugs = fs
-      .readdirSync(contentPath)
-      .filter((file) => file.endsWith(".md"))
-      .map((file) => file.replace(/\.md$/, ""));
-
-    return slugs.map((slug) => {
-      const fullPath = path.join(contentPath, `${slug}.md`);
-      const fileContents = fs.readFileSync(fullPath, "utf8");
-      const { data } = matter(fileContents);
-
-      // Return only essential data without complex processing
-      return {
-        slug,
-        title: String(data.title || ""),
-        date: data.date ? String(data.date) : "",
-        description: data.description ? String(data.description) : "",
-        coverImage: data.coverImage ? String(data.coverImage) : "",
-        author: data.author ? String(data.author) : "",
-        tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
-        toolConfig: data.toolConfig,
-      };
-    });
-  } catch (error) {
-    console.error("Error in getAllSimpleBlogs:", error);
-    return [];
-  }
-}
-
-export const getMdContent = async (contentPath) => {
-  try {
-    const fullPath = path.join(process.cwd(), "data", "content", contentPath);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-
-    const { content } = matter(fileContents);
-    const htmlContent = await remark().use(html).process(content);
-
-    return {
+      data,
       content: String(htmlContent),
     };
   } catch (err) {
@@ -98,3 +30,50 @@ export const getMdContent = async (contentPath) => {
     return null;
   }
 };
+
+/**
+ * get all slug for blog rendering for getStaticPaths
+ */
+export async function getAllBlogSlug() {
+  try {
+    const blogDir = path.join(root, "blogs");
+
+    return fs
+      .readdirSync(blogDir)
+      .filter((file) => file.endsWith(".md"))
+      .map((file) => ({ params: { slug: file.replace(/\.md$/, "") } }));
+  } catch (err) {
+    console.error("Error while getting  all blog slug", err);
+  }
+}
+
+/**
+ * get all blog content for blog index page rendering
+ */
+export async function getAllBlogs() {
+  try {
+    const blogsDir = path.join(root, "blogs");
+    const files = fs.readdirSync(blogsDir);
+
+    const blogs = await Promise.all(
+      files.map(async (filename) => {
+        const fullPath = path.join(blogsDir, filename);
+        const fileContents = fs.readFileSync(fullPath, "utf8");
+
+        const { data, content } = matter(fileContents);
+        const htmlContent = await remark().use(html).process(content);
+
+        return {
+          slug: filename.replace(/\.md$/, ""),
+          data,
+          content: htmlContent.toString(),
+        };
+      }),
+    );
+
+    return blogs;
+  } catch (error) {
+    console.error("Error in getAllBlogs:", error);
+    return [];
+  }
+}

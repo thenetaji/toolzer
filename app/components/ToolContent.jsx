@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
+import Image from "next/image";
 
 // Shadcn components
 import { Card } from "@/components/ui/card";
@@ -58,7 +59,7 @@ const ToolContent = ({ content, className = "" }) => {
               />
             ),
             img: ({ node, ...props }) => (
-              <img
+              <Image
                 {...props}
                 className="max-w-full h-auto rounded-md my-4 object-contain"
                 alt={props.alt || "content image"}
