@@ -5,8 +5,8 @@ export default function BlogPage({ blogs }) {
   return (
     <>
       <Head
-        title={"Our Blog | Learn about tools to ease your life"}
-        descriiption={
+        title={"Blog | Toolzer"}
+        description={
           "Explore our blog to learn about our tools, technology, and innovations. Stay updated with our latest insights and articles."
         }
         pageUrl={"/blog"}

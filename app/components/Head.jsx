@@ -1,22 +1,23 @@
 import NextHead from "next/head";
+import { useRouter } from "next/router";
 
 export default function Head({
   title,
   description,
-  imageName = "homepage-preview_ki1ld9", //transformation will be auto handled according to the place where it is being used, no ext
-  pageUrl, //should be started with /
+  imageName = "homepage-preview_ki1ld9",
   featureList,
   lastModified,
 }) {
-  /**
-   * ideal cloudinary img url
-   * https://res.cloudinary.com/<cloud_name>/image/upload/<transformation>/<public_id>.<extension>
-   */
+  const router = useRouter();
+  const currentPath = router.asPath || "/";
+  const fullUrl = `https://toolzer.studio${currentPath}`;
 
   return (
     <NextHead>
       <title>{title}</title>
       <meta name="description" content={description} />
+
+      <link rel="canonical" href={fullUrl} />
 
       {lastModified && (
         <meta property="article:modified_time" content={lastModified} />
@@ -29,10 +30,7 @@ export default function Head({
         property="og:image"
         content={`${process.env.BASE_IMAGE_URL || ""}/f_auto,q_auto,c_fill,w_1200,h_630/${imageName}`}
       />
-      <meta
-        property="og:url"
-        content={`https://toolzer.studio${pageUrl || "/"}`}
-      />
+      <meta property="og:url" content={fullUrl} />
       <meta property="og:site_name" content="Toolzer" />
       <meta property="og:type" content="website" />
 
@@ -55,7 +53,7 @@ export default function Head({
               "@type": "WebApplication",
               name: "Toolzer",
               alternateName: ["Toolzer Studio"],
-              url: `https://toolzer.studio${pageUrl}`,
+              url: fullUrl,
               description,
               applicationCategory: "Utility",
               operatingSystem: "All",

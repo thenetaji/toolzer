@@ -6,7 +6,7 @@ import {
   Moon,
   Sun,
   Rocket,
-  Zap,
+  BookText,
   Code,
   MessageCircle,
 } from "lucide-react";
@@ -29,7 +29,7 @@ import {
 
 const navItems = [
   { name: "Tools", href: "/tools", icon: <Rocket className="w-4 h-4 mr-2" /> },
-  { name: "About", href: "/about", icon: <Zap className="w-4 h-4 mr-2" /> },
+  { name: "Blog", href: "/blog", icon: <BookText className="w-4 h-4 mr-2" /> },
   { name: "API", href: "/dev-api", icon: <Code className="w-4 h-4 mr-2" /> },
   {
     name: "Contact",

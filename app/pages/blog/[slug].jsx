@@ -1,6 +1,6 @@
 import Head from "@/components/Head";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { format } from "date-fns";
 import { getMdContent, getAllBlogSlug } from "@/lib/api";
@@ -52,19 +52,19 @@ export default function BlogPost({ blog }) {
         {/* Blog Header */}
         <div className="mb-12">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-            {blog.title}
+            {blog.data.title}
           </h1>
 
-          {blog.date && (
+          {blog.data.date && (
             <p className="text-base text-muted-foreground mb-6">
-              {format(new Date(blog.date), "MMMM d, yyyy")}
-              {blog.author && ` • ${blog.author}`}
+              {format(new Date(blog.data.date), "MMMM d, yyyy")}
+              {blog.data.author && ` • ${blog.data.author}`}
             </p>
           )}
 
-          {blog.tags && blog.tags.length > 0 && (
+          {blog.data.tags && blog.data.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-6">
-              {blog.tags.map((tag) => (
+              {blog.data.tags.map((tag) => (
                 <Badge
                   key={tag}
                   variant="secondary"
@@ -78,10 +78,10 @@ export default function BlogPost({ blog }) {
         </div>
 
         {/* Featured Image (if available) */}
-        {blog.featuredImage && (
+        {blog.data.featuredImage && (
           <div className="mb-10">
             <Image
-              src={blog.featuredImage}
+              src={blog.data.featuredImage}
               alt={`Featured image for ${blog.title}`}
               className="w-full h-auto object-cover rounded-lg"
               style={{ maxHeight: "500px" }}

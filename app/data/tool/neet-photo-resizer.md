@@ -2,7 +2,7 @@
 
 If you're applying for NEET 2025, one of the first steps is uploading your photo as per official NTA guidelines. Many students get stuck when their image exceeds the size limit or has the wrong dimensions.
 
-This free [NEET Photo Resizer tool](/after-tools-path) helps you instantly convert your photo to the correct format and size — no software needed.
+This free [NEET Photo Resizer tool](/tools/image/neet-photo-resizer) helps you instantly convert your photo to the correct format and size — no software needed.
 
 ---
 

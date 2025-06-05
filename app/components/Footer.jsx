@@ -9,7 +9,6 @@ const CURRENT_YEAR = "2025";
 
 const mainLinks = [
   { name: "Tools", href: "/tools" },
-  { name: "About", href: "/about" },
   { name: "API", href: "/dev-api" },
   { name: "Contact", href: "/contact" },
 ];

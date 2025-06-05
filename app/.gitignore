@@ -8,6 +8,13 @@ pnpm-debug.log*
 lerna-debug.log*
 .env
 
+#deployment
+sitemap.xml
+.vercel/
+.open-next/
+.wrangler/
+.output/
+
 node_modules
 dist
 dist-ssr

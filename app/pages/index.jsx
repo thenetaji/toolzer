@@ -968,7 +968,7 @@ function CTASection() {
                 </Button>
               </Link>
 
-              <Link href="/api" className="block w-full">
+              <Link href="/dev-api" className="block w-full">
                 <Button size="lg" variant="outline" className="gap-2">
                   Explore API Docs
                   <svg
@@ -1057,7 +1057,7 @@ function TrustedBySection() {
               Explore Tools
             </Button>
           </Link>
-          <Link href="/docs" className="block w-full">
+          <Link href="/dev-api" className="block w-full">
             <Button size="lg" variant="outline" className="gap-2 w-full">
               View Documentation
             </Button>
@@ -1224,7 +1224,7 @@ function WhyToolzer() {
               <Zap className="h-4 w-4" />
             </Button>
           </Link>
-          <Link href="/api" className="block w-full">
+          <Link href="/dev-api" className="block w-full">
             <Button size="lg" variant="outline" className="w-full gap-2">
               View API Docs
               <ArrowRight className="h-4 w-4" />
