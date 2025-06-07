@@ -71,7 +71,7 @@ A: Absolutely. It’s designed to work on any device or browser.
 
 ## Bonus: Resize Signature for NEET Too
 
-Need to upload your signature along with the photo? Try our [NEET Signature Resizer Tool](/coming-soon) to get the exact format required.
+Need to upload your signature along with the photo? Try our [NEET Signature Resizer Tool](/tools/image/neet-signature-resizer) to get the exact format required.
 
 ---
 

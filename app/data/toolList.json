@@ -1,6 +1,43 @@
 {
   "image": [
     {
+      "title": "NEET Photo Resizer - Resize to 200x300 px & 10KB JPEG",
+      "description": "Free NEET photo resizer tool to convert your image to 200x300 pixels and under 200KB JPEG, as required by NTA NEET 2025. Quick, secure, and works on mobile",
+      "slug": "neet-photo-resizer",
+      "imageName": "",
+      "contentPath": "/neet-photo-resizer.md",
+      "featureList": [
+        "📸 Upload your NEET photo",
+        "📐 Resize to 200x300 pixels",
+        "⚖️ Compress image to 10–200KB",
+        "📁 Export as JPEG format",
+        "🔍 Instant preview available",
+        "🛡️ Works securely in your browser"
+      ],
+      "config": {
+        "width": 200,
+        "height": 300,
+        "unit": "px",
+        "dpi": 96,
+        "rotate": 0,
+        "percentage": null,
+        "targetSize": 200,
+        "quality": null,
+        "format": "jpeg",
+        "maintainAspectRatio": true
+      },
+      "tags": [
+        "NEET",
+        "photo resizer",
+        "200x300 pixels",
+        "10KB JPEG",
+        "NTA photo requirement",
+        "NEET 2025",
+        "image upload",
+        "online tool"
+      ]
+    },
+    {
       "title": "NEET Passport Photo Resizer - 2.5x3.5 inch / 200KB JPG",
       "description": "Resize your passport-size photo to the exact NEET 2025 specifications: 2.5 x 3.5 inches, JPG format, and under 200KB file size. Quick, accurate, and secure.",
       "slug": "neet-passport-photo-resizer",
@@ -30,7 +67,13 @@
       "tags": [
         "NEET",
         "passport photo",
-        "photo resizer"
+        "photo resizer",
+        "200KB JPEG",
+        "2.5x3.5 inch photo",
+        "NTA guidelines",
+        "NEET 2025",
+        "exam photo",
+        "upload photo"
       ]
     },
     {
@@ -63,9 +106,88 @@
       },
       "tags": [
         "NEET",
+        "postcard photo",
         "photo resizer",
+        "4x6 inch",
         "jpeg converter",
-        "photo compressor"
+        "photo compressor",
+        "NTA photo requirements",
+        "NEET 2025 tools",
+        "exam upload"
+      ]
+    },
+    {
+      "title": "NEET Signature Resizer - 4x1.5 cm / 50KB JPEG",
+      "description": "Compress and resize your NEET signature image to 4x1.5 cm, 200 DPI, under 50KB. Meets official NTA NEET 2025 signature upload requirements.",
+      "slug": "neet-signature-resizer",
+      "imageName": "",
+      "contentPath": "/neet-signature-resizer.md",
+      "featureList": [
+        "✍️ Upload your NEET signature image",
+        "📐 Resize to 4 x 1.5 cm at 200 DPI",
+        "⚖️ Compress under 50KB as per NTA specs",
+        "📁 Convert to JPEG or JPG format",
+        "🔍 Check preview before submission",
+        "🛡️ Fully secure and device-friendly"
+      ],
+      "config": {
+        "width": 4,
+        "height": 1.5,
+        "unit": "cm",
+        "dpi": 200,
+        "rotate": 0,
+        "percentage": null,
+        "targetSize": 50,
+        "quality": null,
+        "format": "jpeg",
+        "maintainAspectRatio": true
+      },
+      "tags": [
+        "NEET",
+        "signature upload",
+        "image resizer",
+        "4x1.5 cm",
+        "50KB JPEG",
+        "NTA signature requirements",
+        "exam form",
+        "neet 2025 signature"
+      ]
+    },
+    {
+      "title": "NEET Fingerprint Resizer - Compress Under 200KB JPEG",
+      "description": "Compress and optimize your fingerprint image for NEET 2025 form submission. JPEG output under 200KB, no DPI or dimension enforcement.",
+      "slug": "neet-fingerprint-resizer",
+      "imageName": "",
+      "contentPath": "/neet-fingerprint-resizer.md",
+      "featureList": [
+        "🖐️ Upload your fingerprint image securely",
+        "⚖️ Auto-compress under 200KB",
+        "📁 Export to high-quality JPEG format",
+        "🔍 Instant preview before download",
+        "📱 Works perfectly on mobile and desktop",
+        "🛡️ 100% privacy, no storage or tracking"
+      ],
+      "config": {
+        "width": null,
+        "height": null,
+        "unit": "px",
+        "dpi": 96,
+        "rotate": 0,
+        "percentage": null,
+        "targetSize": 200,
+        "quality": null,
+        "format": "jpeg",
+        "maintainAspectRatio": true
+      },
+      "tags": [
+        "NEET",
+        "fingerprint resizer",
+        "image compression",
+        "under 200KB",
+        "finger upload",
+        "exam form",
+        "jpeg optimizer",
+        "NEET 2025 form tools"
       ]
     }
   ]
