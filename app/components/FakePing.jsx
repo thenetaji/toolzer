@@ -150,6 +150,7 @@ function FakePingTool() {
                 <Button
                   variant="ghost"
                   size="icon"
+                  aria-label="reset-ping"
                   className="h-8 w-8 rounded-full bg-zinc-900 text-zinc-400 hover:text-emerald-500 hover:bg-zinc-800"
                   onClick={resetPing}
                 >

@@ -1,5 +1,6 @@
 import ToolContainer from "@/components/ToolContainer";
 import ToolContent from "@/components/ToolContent";
+import SimilarTools from "@/components/SimilarTools";
 import ImageTool from "@/components/tools/image";
 import ToolList from "@/data/toolList";
 import { getMdContent } from "@/lib/api.js";
@@ -19,6 +20,7 @@ export default function Tool({ meta, content }) {
       <ToolContainer
         title={meta.title}
         description={meta.description}
+        similarTools={<SimilarTools tags={meta.tags} toolType={"image"} />}
         tool={
           <ImageTool
             config={{
@@ -29,6 +31,9 @@ export default function Tool({ meta, content }) {
               quality: meta.config.quality,
               format: meta.config.format,
               maintainAspectRatio: meta.config.maintainAspectRatio,
+              unit: meta.config.unit,
+              dpi: meta.config.dpi,
+              rotate: meta.config.rotate
             }}
           />
         }

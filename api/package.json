@@ -1,7 +1,7 @@
 {
   "name": "api",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "build": "esbuild --bundle --outfile=./dist/index.js --platform=node --target=node22 ./src/index.js",
     "zip": "zip -j lambda.zip dist/index.js",
@@ -22,5 +22,6 @@
     "hono": "^4.7.10",
     "sharp": "^0.34.2",
     "winston": "^3.17.0"
-  }
+  },
+  "packageManager": "pnpm@10.11.1+sha512.e519b9f7639869dc8d5c3c5dfef73b3f091094b0a006d7317353c72b124e80e1afd429732e28705ad6bfa1ee879c1fce46c128ccebd3192101f43dd67c667912"
 }

@@ -1,31 +1,72 @@
 {
   "image": [
     {
-      "title": "NEET Photo Resizer - Resize to 200x300 px & 10KB JPEG",
-      "description": "Free NEET photo resizer tool to convert your image to 200x300 pixels and under 200KB JPEG, as required by NTA NEET 2025. Quick, secure, and works on mobile",
-      "slug": "neet-photo-resizer",
+      "title": "NEET Passport Photo Resizer - 2.5x3.5 inch / 200KB JPG",
+      "description": "Resize your passport-size photo to the exact NEET 2025 specifications: 2.5 x 3.5 inches, JPG format, and under 200KB file size. Quick, accurate, and secure.",
+      "slug": "neet-passport-photo-resizer",
       "imageName": "",
-      "contentPath": "/neet-photo-resizer.md",
+      "contentPath": "/neet-passport-photo-resizer.md",
       "featureList": [
-        "📸 Upload photo or signature from any device",
-        "📐 Resize image to exact NEET specifications",
+        "📸 Upload NEET passport photo from any device",
+        "📐 Resize to 2.5 x 3.5 inches at 300 DPI",
         "🖼 Auto-crop and background adjustment",
-        "🧠 Smart detection for photo vs signature",
-        "⚖️ Compress image under size limits (e.g. 100KB)",
-        "📁 Convert to required formats like JPG or JPEG",
-        "🔍 Instant preview before and after resizing",
-        "🌐 No signup or installation needed",
-        "🛡️ Secure processing – no data stored"
+        "⚖️ Compress image under 200KB as per NTA rules",
+        "📁 Convert to required JPG format",
+        "🔍 Preview before and after resizing",
+        "🛡️ Secure, mobile-friendly, and no login needed"
       ],
       "config": {
-        "width": 200,
-        "height": 300,
+        "width": 2.5,
+        "height": 3.5,
+        "unit": "in",
+        "dpi": 300,
+        "rotate": 0,
         "percentage": null,
-        "targetSize": 100,
-        "quality": 0.7,
+        "targetSize": 200,
+        "quality": null,
         "format": "jpeg",
         "maintainAspectRatio": true
-      }
+      },
+      "tags": [
+        "NEET",
+        "passport photo",
+        "photo resizer"
+      ]
+    },
+    {
+      "title": "NEET Postcard Photo Resizer - 4x6 inch / 200KB JPG",
+      "description": "Resize your NEET postcard-size photo to 4 x 6 inches, 300 DPI, and under 200KB JPEG. Compliant with NEET 2025 upload and admit card specifications.",
+      "slug": "neet-postcard-photo-resizer",
+      "imageName": "",
+      "contentPath": "/neet-postcard-photo-resizer.md",
+      "featureList": [
+        "📸 Upload your 4 x 6 inch NEET postcard photo",
+        "📐 Resize to exact 4 x 6 inch size at 300 DPI",
+        "⚖️ Compress under 200KB without quality loss",
+        "📁 Export as high-quality JPEG",
+        "🖼 Auto-crop and aspect ratio lock",
+        "🔍 Instant preview for verification",
+        "🌐 Works on mobile and desktop",
+        "🛡️ Safe processing, no image storage"
+      ],
+      "config": {
+        "width": 4,
+        "height": 6,
+        "unit": "in",
+        "dpi": 300,
+        "rotate": 0,
+        "percentage": null,
+        "targetSize": 200,
+        "quality": null,
+        "format": "jpeg",
+        "maintainAspectRatio": true
+      },
+      "tags": [
+        "NEET",
+        "photo resizer",
+        "jpeg converter",
+        "photo compressor"
+      ]
     }
   ]
 }

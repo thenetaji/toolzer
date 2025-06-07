@@ -18,7 +18,7 @@ export default function About() {
       <Head
         title={"Toolzer | About Us"}
         description={
-          "Learn about Toolzer journey, how it started and what are the future plans"
+          "Learn how Toolzer started as a small idea and grew into a handy set of free tools for creators and developers—with more exciting things coming soon"
         }
         pageUrl={"/about"}
       ></Head>

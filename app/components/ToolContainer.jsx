@@ -1,10 +1,10 @@
 import React from "react";
 
-function ToolContainer({ title, description, tool, content }) {
+function ToolContainer({ title, description, tool, content, similarTools }) {
   return (
-    <div className="w-full max-w-5xl mx-auto">
+    <div className="md:p-6">
       {/* Title and Description Section */}
-      <section className="about-tool mb-8 text-center p-2 mt-2">
+      <section className="about-tool mb-8 text-center p-2 mt-2 md:mt-4 md:mb-4">
         <h1 className="text-2xl md:text-4xl font-bold bg-clip-text mb-2">
           {title}
         </h1>
@@ -16,6 +16,10 @@ function ToolContainer({ title, description, tool, content }) {
       {/* Tool Section*/}
       <section className="tool mb-8 w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg">
         {tool}
+      </section>
+
+      <section>
+        <div className="mt-12 mb-10">{similarTools}</div>
       </section>
 
       {/* Content Section */}

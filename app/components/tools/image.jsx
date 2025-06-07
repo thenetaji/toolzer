@@ -20,10 +20,13 @@ export default function ImageTool({ config }) {
   const {
     width,
     height,
+    unit,
+    dpi,
     percentage,
     targetSize,
     quality,
     format,
+    rotate,
     maintainAspectRatio,
   } = config;
 
@@ -34,6 +37,8 @@ export default function ImageTool({ config }) {
   const [resizeSettings, setResizeSettings] = useState({
     width,
     height,
+    unit,
+    dpi,
     percentage,
     targetSize,
     quality,
@@ -42,12 +47,27 @@ export default function ImageTool({ config }) {
   });
   const fileInputRef = useRef(null);
   let fileId = "";
+  
+  const unitValue = resizeSettings.unit;
+  const dpiValue = resizeSettings.dpi ?? 72;
+
+const inchToPx = (value) => value * dpiValue;
+const cmToPx = (value) => (value / 2.54) * dpiValue;
+
+const getPixelValue = (value) => {
+  if (unitValue === "in") return inchToPx(value);
+  if (unitValue === "cm") return cmToPx(value);
+  return value;
+};
+
+const pixelWidth = getPixelValue(resizeSettings.width);
+const pixelHeight = getPixelValue(resizeSettings.height);
 
   // Handle file upload
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    setUploadedmage(e.target.files[0]);
+    setUploadedImage(e.target.files[0]);
 
     // Check if file is an image
     if (!file.type.match("image.*")) {
@@ -69,9 +89,9 @@ export default function ImageTool({ config }) {
     const formData = new FormData();
     formData.append("file", uploadedImage);
 
-    const api = process.env.API ?? "http://13.126.242.118:2626";
+    const apiURL = process.env.API_URL ?? "http://13.235.79.119:2626";
 
-    const uploadFile = await fetch(api + "/upload", {
+    const uploadFile = await fetch(apiURL + "/upload", {
       method: "POST",
       body: formData,
     });
@@ -80,15 +100,18 @@ export default function ImageTool({ config }) {
       fileId = uploadFileRes.data.fileId;
     }
 
-    const processImage = await fetch(api + "/image", {
+    const processImage = await fetch(apiURL + "/image", {
       method: "POST",
       body: JSON.stringify({
         fileId: fileId,
         action: {
           resize: {
+            unit: resizeSettings.unit,
+            dpi: resizeSettings.dpi,
             width: resizeSettings.width,
             height: resizeSettings.height,
           },
+          rotate: resizeSettings.rotate,
           resizePercentage: resizeSettings.percentage,
           targetSize: resizeSettings.targetSize,
           quality: resizeSettings.quality,
@@ -187,7 +210,7 @@ export default function ImageTool({ config }) {
               <TabsContent value="dimensions" className="space-y-4 mt-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="width">Width (px)</Label>
+                    <Label htmlFor="width">Width ({unit})</Label>
                     <Input
                       id="width"
                       type="number"
@@ -201,7 +224,7 @@ export default function ImageTool({ config }) {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="height">Height (px)</Label>
+                    <Label htmlFor="height">Height ({unit})</Label>
                     <Input
                       id="height"
                       type="number"
@@ -214,86 +237,140 @@ export default function ImageTool({ config }) {
                       }
                     />
                   </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="unit">Unit</Label>
+                    <select
+                      id="unit"
+                      className="w-full border rounded px-3 py-2"
+                      value={resizeSettings.unit}
+                      onChange={(e) =>
+                        setResizeSettings({
+                          ...resizeSettings,
+                          unit: e.target.value,
+                        })
+                      }
+                    >
+                      <option value="px">Pixels (px)</option>
+                      <option value="in">Inches (in)</option>
+                      <option value="cm">Centimeters (cm)</option>
+                    </select>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="dpi">DPI</Label>
+                    <Input
+                      id="dpi"
+                      type="number"
+                      value={resizeSettings.dpi}
+                      onChange={(e) =>
+                        setResizeSettings({
+                          ...resizeSettings,
+                          dpi: parseInt(e.target.value),
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="space-y-2">
+  <Label htmlFor="rotate">Rotate (°) optional</Label>
+  <input
+    id="rotate"
+    type="number"
+    className="w-full border rounded px-3 py-2"
+    value={resizeSettings.rotate}
+    onChange={(e) =>
+      setResizeSettings({
+        ...resizeSettings,
+        rotate: parseFloat(e.target.value) || 0,
+      })
+    }
+    placeholder="Enter angle e.g. 90"
+  />
+</div>
                 </div>
               </TabsContent>
 
               {/* Percentage Tab */}
-              <TabsContent value="percentage" className="space-y-4 mt-4">
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <Label htmlFor="percentage">
-                      Resize to {resizeSettings.percentage}%
-                    </Label>
-                    <span className="text-muted-foreground">
-                      {resizeSettings.percentage}%
-                    </span>
+              {percentage && (
+                <TabsContent value="percentage" className="space-y-4 mt-4">
+                  <div className="space-y-2">
+                    <div className="flex justify-between">
+                      <Label htmlFor="percentage">
+                        Resize to {resizeSettings.percentage}%
+                      </Label>
+                      <span className="text-muted-foreground">
+                        {resizeSettings.percentage}%
+                      </span>
+                    </div>
+                    <Slider
+                      id="percentage"
+                      min={1}
+                      max={100}
+                      step={1}
+                      value={[resizeSettings.percentage]}
+                      onValueChange={(value) =>
+                        setResizeSettings({
+                          ...resizeSettings,
+                          percentage: value[0],
+                        })
+                      }
+                    />
                   </div>
-                  <Slider
-                    id="percentage"
-                    min={1}
-                    max={100}
-                    step={1}
-                    value={[resizeSettings.percentage]}
-                    onValueChange={(value) =>
-                      setResizeSettings({
-                        ...resizeSettings,
-                        percentage: value[0],
-                      })
-                    }
-                  />
-                </div>
-              </TabsContent>
+                </TabsContent>
+              )}
 
               {/* File Size Tab */}
-              <TabsContent value="filesize" className="space-y-4 mt-4">
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <Label htmlFor="filesize">
-                      Target File Size: {resizeSettings.targetSize} KB
-                    </Label>
-                    <span className="text-muted-foreground">
-                      {resizeSettings.targetSize} KB
-                    </span>
+              {targetSize && (
+                <TabsContent value="filesize" className="space-y-4 mt-4">
+                  <div className="space-y-2">
+                    <div className="flex justify-between">
+                      <Label htmlFor="filesize">
+                        Target File Size: {resizeSettings.targetSize} KB
+                      </Label>
+                      <span className="text-muted-foreground">
+                        {resizeSettings.targetSize} KB
+                      </span>
+                    </div>
+                    <Slider
+                      id="filesize"
+                      min={10}
+                      max={1000}
+                      step={10}
+                      value={[resizeSettings.targetSize]}
+                      onValueChange={(value) =>
+                        setResizeSettings({
+                          ...resizeSettings,
+                          targetSize: value[0],
+                        })
+                      }
+                    />
                   </div>
-                  <Slider
-                    id="filesize"
-                    min={10}
-                    max={1000}
-                    step={10}
-                    value={[resizeSettings.targetSize]}
-                    onValueChange={(value) =>
-                      setResizeSettings({
-                        ...resizeSettings,
-                        targetSize: value[0],
-                      })
-                    }
-                  />
-                </div>
-              </TabsContent>
+                </TabsContent>
+              )}
             </Tabs>
 
             {/* Common Settings */}
             <div className="space-y-4 border-t pt-4">
-              {resizeMethod != "filesize" && (
-                <div className="space-y-2">
-                  <Label htmlFor="quality">
-                    Quality: {resizeSettings.quality}%
-                  </Label>
-                  <Slider
-                    id="quality"
-                    min={10}
-                    max={100}
-                    step={1}
-                    value={[resizeSettings.quality]}
-                    onValueChange={(value) =>
-                      setResizeSettings({
-                        ...resizeSettings,
-                        quality: value[0],
-                      })
-                    }
-                  />
-                </div>
-              )}
+              {resizeMethod &&
+                resizeMethod !== "filesize" &&
+                resizeSettings.quality != null && (
+                  <div className="space-y-2">
+                    <Label htmlFor="quality">
+                      Quality: {resizeSettings.quality}%
+                    </Label>
+                    <Slider
+                      id="quality"
+                      min={10}
+                      max={100}
+                      step={1}
+                      value={[resizeSettings.quality]}
+                      onValueChange={(value) =>
+                        setResizeSettings({
+                          ...resizeSettings,
+                          quality: value[0],
+                        })
+                      }
+                    />
+                  </div>
+                )}
 
               <div className="space-y-2">
                 <Label htmlFor="format">Output Format</Label>
@@ -342,14 +419,17 @@ export default function ImageTool({ config }) {
             <h3 className="text-lg font-semibold mb-4">Preview</h3>
             <div className="flex flex-col items-center">
               <div className="bg-muted rounded-md p-2">
-                <NextImage
-                  src={previewImage}
-                  alt="Preview of resized image"
-                  className="max-h-[300px] rounded"
-                />
+               <NextImage
+  src={previewImage}
+  alt="Preview of resized image"
+  height={pixelHeight}
+  width={pixelWidth}
+  className="max-h-[300px] rounded"
+/>
               </div>
-              <p className="text-sm text-muted-foreground mt-2">
-                Resized image preview
+              <p className="text-sm text-muted-foreground mt-2 text-center">
+                Resized image preview <br /> Downloadable image will be in good
+                quality, don't worry!
               </p>
             </div>
           </div>

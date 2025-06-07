@@ -12,35 +12,43 @@ async function imageController(c) {
       targetSize,
       quality,
       format,
+      rotate,
       maintainAspectRatio,
     } = action;
-    /**
-   * action object 
-      resize: { 
-        width,
-        height
-      },
-      percentage, it means change the width and height according to the value like if the value is 50% then width would be reduced to 50% and same with height
-      targetSize, the size of the image to be made, if its present the quality would be ignored and would be dynamically decided
-      quality, 70% of the original image
-      format, jpeg, png
-      maintainAspectRatio
-  */
+    console.log(action)
 
     let image = sharp(imageFullPath(fileId));
 
-    if (resize && Object.keys(resize).length != 0) {
+    if (resize && Object.keys(resize).length !== 0) {
+      const { width, height, unit = "px", dpi = 72 } = resize;
       const resizeParam = {};
+
+      // Convert cm/inch to px if needed
+      const convertToPixels = (value) => {
+        if (!value) return undefined;
+        switch (unit) {
+          case "cm":
+            return Math.round((value / 2.54) * dpi);
+          case "in":
+            return Math.round(value * dpi);
+          case "px":
+          default:
+            return Math.round(value);
+        }
+      };
 
       if (percentage) {
         const imageMeta = await getImageMetadata(image);
-        resizeParam.width = (imageMeta.width * percentage) / 100;
-        resizeParam.height = (imageMeta.height * percentage) / 100;
+        resizeParam.width = Math.round((imageMeta.width * percentage) / 100);
+        resizeParam.height = Math.round((imageMeta.height * percentage) / 100);
+      } else {
+        resizeParam.width = convertToPixels(width);
+        resizeParam.height = convertToPixels(height);
       }
 
       image = image.resize(
-        resizeParam.width ?? resize.width,
-        resizeParam.height ?? resize.height,
+        resizeParam.width,
+        resizeParam.height,
         { fit: maintainAspectRatio ? "inside" : "fill" },
       );
     }
@@ -54,19 +62,17 @@ async function imageController(c) {
       switch (outputFormat) {
         case "jpeg":
         case "jpg":
-          image = image.jpeg({ imgQuality });
+          image = image.jpeg({ quality: imgQuality });
           break;
         case "png":
-          image = image.png({ imgQuality });
+          image = image.png({ quality: imgQuality });
           break;
         case "webp":
-          image = image.webp({ imgQuality });
-          break;
         case "webm":
-          image = image.webp({ imgQuality });
+          image = image.webp({ quality: imgQuality });
           break;
         case "avif":
-          image = image.avif({ imgQuality });
+          image = image.avif({ quality: imgQuality });
           break;
         default:
           return c.json(
@@ -74,7 +80,7 @@ async function imageController(c) {
               success: false,
               error: {
                 code: StatusCodes.BAD_REQUEST,
-                message: "Unsupported file format" + outputFormat,
+                message: "Unsupported file format " + outputFormat,
               },
               data: null,
             },
@@ -93,8 +99,7 @@ async function imageController(c) {
 
       for (let i = 0; i < 7; i++) {
         const quality = Math.floor((min + max) / 2);
-
-        const cloned = image.clone(); // avoid reuse issues
+        const cloned = image.clone();
 
         let buffer;
         switch (imageFormat) {
@@ -136,8 +141,12 @@ async function imageController(c) {
       }
     }
 
+    if (rotate) {
+      await image.rotate(parseInt(rotate));
+    }
+
     const buffer = await image.toBuffer();
-    const contentType = `image/${format}`;
+    const contentType = `image/${format || "jpeg"}`;
     return new Response(buffer, {
       headers: {
         "Content-Type": contentType,
@@ -160,8 +169,7 @@ async function imageController(c) {
 }
 
 const getImageMetadata = async (image) => {
-  const meta = image.metadata();
-  return meta;
+  return await image.metadata();
 };
 
 export default imageController;

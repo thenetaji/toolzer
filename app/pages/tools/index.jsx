@@ -125,7 +125,7 @@ export default function ToolsPage() {
       <Head
         title={"Tools | Find the Perfect Tool for Your Task"}
         description={
-          "Explore Toolzer's comprehensive collection of free utilities for creators and developers."
+          "Toolzer is a free toolkit with smart utilities for developers, creators, and students—convert, format, edit, and get things done faster."
         }
         pageUrl={"/tools"}
       />

@@ -45,6 +45,12 @@ export default function Document() {
             `,
           }}
         />
+        <Script
+          strategy="worker"
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="C5aYtfiMQkYT/orxDj9DTA"
+          async
+        ></Script>
       </Head>
       <body>
         <Main />

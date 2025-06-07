@@ -204,6 +204,7 @@ export default function Header() {
                   </Button>
                 </motion.div>
               </SheetTrigger>
+
               <SheetContent
                 side="right"
                 className="bg-background/95 backdrop-blur-xl border-l border-border/40 pr-0"

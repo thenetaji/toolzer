@@ -1,5 +1,5 @@
 ---
-title: "NEET 2025 Photo Upload Guide for Gen Z"
+title: "NEET 2025 Photo Upload Guide"
 date: "2025-05-18"
 author: "Toolzer"
 tags: ["neet", "photo requirements", "nta", "genz"]

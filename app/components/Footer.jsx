@@ -22,6 +22,7 @@ const resourceLinks = [
 const legalLinks = [
   { name: "Privacy", href: "/privacy" },
   { name: "Terms", href: "/terms" },
+  { name: "About", href: "/about" },
 ];
 
 const socialLinks = [

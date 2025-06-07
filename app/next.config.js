@@ -1,5 +1,5 @@
 const config = {
-  allowedDevOrigins: [],
+  allowedDevOrigins: ["13.235.79.119"],
   experimental: {
     nextScriptWorkers: true,
   },
