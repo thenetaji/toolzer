@@ -10,11 +10,11 @@ Our free [NEET Fingerprint Resizer tool](/tools/image/neet-fingerprint-resizer) 
 
 Based on common NEET guidelines and biometric submission standards, your fingerprint image should meet the following:
 
-- **Format:** JPEG/JPG or PNG  
-- **File Size:** Typically under 100KB (check your specific application instructions)  
-- **Dimensions:** Around 150 x 150 pixels (square image)  
-- **Background:** Plain, clear, and non-distracting  
-- **Image Quality:** Clear ridges and no blur  
+- **Format:** JPEG/JPG or PNG
+- **File Size:** Typically under 100KB (check your specific application instructions)
+- **Dimensions:** Around 150 x 150 pixels (square image)
+- **Background:** Plain, clear, and non-distracting
+- **Image Quality:** Clear ridges and no blur
 - **Other:** No watermarks, stamps, or signatures on the fingerprint
 
 > Submitting a fingerprint image that does not meet these specs may delay or invalidate your application.
@@ -23,30 +23,30 @@ Based on common NEET guidelines and biometric submission standards, your fingerp
 
 ## Why Use Our NEET Fingerprint Resizer?
 
-- **Correct Dimensions:** Resize your fingerprint to 150x150 pixels (or as required).  
-- **File Size Optimization:** Compress images under 100KB while preserving clarity.  
-- **Simple and Fast:** Upload, resize, and download in seconds.  
-- **Mobile Compatible:** Works perfectly on phones, tablets, and PCs.  
-- **Privacy First:** Your images are processed securely and never stored.  
+- **Correct Dimensions:** Resize your fingerprint to 150x150 pixels (or as required).
+- **File Size Optimization:** Compress images under 100KB while preserving clarity.
+- **Simple and Fast:** Upload, resize, and download in seconds.
+- **Mobile Compatible:** Works perfectly on phones, tablets, and PCs.
+- **Privacy First:** Your images are processed securely and never stored.
 - **No Installation:** Fully web-based tool, no downloads or sign-ups.
 
 ---
 
 ## How to Use the Tool
 
-1. Upload your fingerprint image using the “Choose File” button.  
-2. The tool resizes the image to 150x150 pixels and compresses it under 100KB.  
-3. Preview the resized fingerprint to ensure clarity.  
+1. Upload your fingerprint image using the “Choose File” button.
+2. The tool resizes the image to 150x150 pixels and compresses it under 100KB.
+3. Preview the resized fingerprint to ensure clarity.
 4. Download the optimized fingerprint image ready for NEET upload.
 
 ---
 
 ## Tips for a Good Fingerprint Image
 
-- Use a clean, well-inked fingerprint  
-- Scan or photograph on a plain, light background  
-- Avoid smudges or blurriness  
-- Ensure the image is square and centered  
+- Use a clean, well-inked fingerprint
+- Scan or photograph on a plain, light background
+- Avoid smudges or blurriness
+- Ensure the image is square and centered
 - Do not use filters or add text/watermarks
 
 ---

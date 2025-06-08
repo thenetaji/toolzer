@@ -11,7 +11,7 @@ import { Separator } from "@/components/ui/separator";
 
 const ToolContent = ({ content, className = "" }) => {
   if (!content) {
-    return <div className="text-red-500">No content available</div>;
+    return <div className="text-red-500 text-center">No content available</div>;
   }
 
   return (

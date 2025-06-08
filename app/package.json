@@ -10,7 +10,6 @@
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "lint": "next lint"
   },
-  "packageManager": "pnpm@10.11.1",
   "dependencies": {
     "next": "^15.3.2",
     "react": "^19.0.0",
@@ -39,6 +38,7 @@
     "date-fns": "^4.1.0",
     "eslint": "^9.28.0",
     "eslint-config-next": "^15.3.3",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "framer-motion": "^12.16.0",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.513.0",
@@ -55,5 +55,6 @@
     "tailwindcss": "^4.1.8",
     "tailwindcss-animate": "^1.0.7",
     "tw-animate-css": "^1.3.4"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

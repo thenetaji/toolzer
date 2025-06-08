@@ -117,43 +117,6 @@
       ]
     },
     {
-      "title": "NEET Signature Resizer - 4x1.5 cm / 50KB JPEG",
-      "description": "Compress and resize your NEET signature image to 4x1.5 cm, 200 DPI, under 50KB. Meets official NTA NEET 2025 signature upload requirements.",
-      "slug": "neet-signature-resizer",
-      "imageName": "",
-      "contentPath": "/neet-signature-resizer.md",
-      "featureList": [
-        "✍️ Upload your NEET signature image",
-        "📐 Resize to 4 x 1.5 cm at 200 DPI",
-        "⚖️ Compress under 50KB as per NTA specs",
-        "📁 Convert to JPEG or JPG format",
-        "🔍 Check preview before submission",
-        "🛡️ Fully secure and device-friendly"
-      ],
-      "config": {
-        "width": 4,
-        "height": 1.5,
-        "unit": "cm",
-        "dpi": 200,
-        "rotate": 0,
-        "percentage": null,
-        "targetSize": 50,
-        "quality": null,
-        "format": "jpeg",
-        "maintainAspectRatio": true
-      },
-      "tags": [
-        "NEET",
-        "signature upload",
-        "image resizer",
-        "4x1.5 cm",
-        "50KB JPEG",
-        "NTA signature requirements",
-        "exam form",
-        "neet 2025 signature"
-      ]
-    },
-    {
       "title": "NEET Fingerprint Resizer - Compress Under 200KB JPEG",
       "description": "Compress and optimize your fingerprint image for NEET 2025 form submission. JPEG output under 200KB, no DPI or dimension enforcement.",
       "slug": "neet-fingerprint-resizer",
@@ -188,6 +151,43 @@
         "exam form",
         "jpeg optimizer",
         "NEET 2025 form tools"
+      ]
+    },
+    {
+      "title": "NEET Signature Resizer - 4x1.5 cm / 50KB JPEG",
+      "description": "Compress and resize your NEET signature image to 4x1.5 cm, 200 DPI, under 50KB. Meets official NTA NEET 2025 signature upload requirements.",
+      "imageName": "",
+      "contentPath": "/neet-signature-resizer.md",
+      "slug": "neet-signature-resizer",
+      "featureList": [
+        "✍️ Upload your NEET signature image",
+        "📐 Resize to 4 x 1.5 cm at 200 DPI",
+        "⚖️ Compress under 50KB as per NTA specs",
+        "📁 Convert to JPEG or JPG format",
+        "🔍 Check preview before submission",
+        "🛡️ Fully secure and device-friendly"
+      ],
+      "config": {
+        "width": 4,
+        "height": 1.5,
+        "unit": "cm",
+        "dpi": 200,
+        "rotate": 0,
+        "percentage": null,
+        "targetSize": 50,
+        "quality": null,
+        "format": "jpeg",
+        "maintainAspectRatio": true
+      },
+      "tags": [
+        "NEET",
+        "signature upload",
+        "image resizer",
+        "4x1.5 cm",
+        "50KB JPEG",
+        "NTA signature requirements",
+        "exam form",
+        "neet 2025 signature"
       ]
     }
   ]

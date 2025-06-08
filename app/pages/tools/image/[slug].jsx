@@ -33,7 +33,7 @@ export default function Tool({ meta, content }) {
               maintainAspectRatio: meta.config.maintainAspectRatio,
               unit: meta.config.unit,
               dpi: meta.config.dpi,
-              rotate: meta.config.rotate
+              rotate: meta.config.rotate,
             }}
           />
         }
@@ -71,10 +71,6 @@ export async function getStaticProps({ params }) {
     const data = ToolList.image.find((item) => params.slug == item.slug);
 
     const { content } = await getMdContent(data.contentPath);
-
-    if ((data && data.length == 0) || !content) {
-      return { notFound: true };
-    }
 
     return {
       props: {

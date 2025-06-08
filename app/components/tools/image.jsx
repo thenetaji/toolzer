@@ -47,21 +47,21 @@ export default function ImageTool({ config }) {
   });
   const fileInputRef = useRef(null);
   let fileId = "";
-  
+
   const unitValue = resizeSettings.unit;
   const dpiValue = resizeSettings.dpi ?? 72;
 
-const inchToPx = (value) => value * dpiValue;
-const cmToPx = (value) => (value / 2.54) * dpiValue;
+  const inchToPx = (value) => value * dpiValue;
+  const cmToPx = (value) => (value / 2.54) * dpiValue;
 
-const getPixelValue = (value) => {
-  if (unitValue === "in") return inchToPx(value);
-  if (unitValue === "cm") return cmToPx(value);
-  return value;
-};
+  const getPixelValue = (value) => {
+    if (unitValue === "in") return inchToPx(value);
+    if (unitValue === "cm") return cmToPx(value);
+    return value;
+  };
 
-const pixelWidth = getPixelValue(resizeSettings.width);
-const pixelHeight = getPixelValue(resizeSettings.height);
+  const pixelWidth = getPixelValue(resizeSettings.width);
+  const pixelHeight = getPixelValue(resizeSettings.height);
 
   // Handle file upload
   const handleFileUpload = (e) => {
@@ -270,21 +270,21 @@ const pixelHeight = getPixelValue(resizeSettings.height);
                     />
                   </div>
                   <div className="space-y-2">
-  <Label htmlFor="rotate">Rotate (°) optional</Label>
-  <input
-    id="rotate"
-    type="number"
-    className="w-full border rounded px-3 py-2"
-    value={resizeSettings.rotate}
-    onChange={(e) =>
-      setResizeSettings({
-        ...resizeSettings,
-        rotate: parseFloat(e.target.value) || 0,
-      })
-    }
-    placeholder="Enter angle e.g. 90"
-  />
-</div>
+                    <Label htmlFor="rotate">Rotate (°) optional</Label>
+                    <input
+                      id="rotate"
+                      type="number"
+                      className="w-full border rounded px-3 py-2"
+                      value={resizeSettings.rotate}
+                      onChange={(e) =>
+                        setResizeSettings({
+                          ...resizeSettings,
+                          rotate: parseFloat(e.target.value) || 0,
+                        })
+                      }
+                      placeholder="Enter angle e.g. 90"
+                    />
+                  </div>
                 </div>
               </TabsContent>
 
@@ -419,13 +419,13 @@ const pixelHeight = getPixelValue(resizeSettings.height);
             <h3 className="text-lg font-semibold mb-4">Preview</h3>
             <div className="flex flex-col items-center">
               <div className="bg-muted rounded-md p-2">
-               <NextImage
-  src={previewImage}
-  alt="Preview of resized image"
-  height={pixelHeight}
-  width={pixelWidth}
-  className="max-h-[300px] rounded"
-/>
+                <NextImage
+                  src={previewImage}
+                  alt="Preview of resized image"
+                  height={pixelHeight}
+                  width={pixelWidth}
+                  className="max-h-[300px] rounded"
+                />
               </div>
               <p className="text-sm text-muted-foreground mt-2 text-center">
                 Resized image preview <br /> Downloadable image will be in good

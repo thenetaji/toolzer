@@ -37,8 +37,7 @@ export default function SimilarTools({ tags, toolType }) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   // Get similar tools by matching tags and exclude the one which are same same
-  const similarTools = toolData[toolType]
-  .filter((tool) =>
+  const similarTools = toolData[toolType].filter((tool) =>
     tags.some((tag) => tool.tags.includes(tag)),
   );
 
@@ -74,20 +73,20 @@ export default function SimilarTools({ tags, toolType }) {
             key={tool.slug}
             className="h-full hover:shadow-md transition-shadow"
           >
-<Link href={`/tools/${toolType}/${tool.slug}`}>
-            <CardHeader>
-              <CardTitle className="text-lg">{tool.title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription>{tool.description}</CardDescription>
-            </CardContent>
-            <CardFooter className="flex flex-wrap gap-2">
-              {tool.tags.slice(0, 3).map((tag) => (
-                <Badge key={tag} variant="outline" className="text-xs">
-                  {tag}
-                </Badge>
-              ))}
-            </CardFooter>
+            <Link href={`/tools/${toolType}/${tool.slug}`}>
+              <CardHeader>
+                <CardTitle className="text-lg">{tool.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription>{tool.description}</CardDescription>
+              </CardContent>
+              <CardFooter className="flex flex-wrap gap-2">
+                {tool.tags.slice(0, 3).map((tag) => (
+                  <Badge key={tag} variant="outline" className="text-xs">
+                    {tag}
+                  </Badge>
+                ))}
+              </CardFooter>
             </Link>
           </Card>
         ))}

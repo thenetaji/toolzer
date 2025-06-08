@@ -11,14 +11,17 @@ const root = process.cwd();
  */
 export const getMdContent = async (contentPath, type = null) => {
   try {
-    let fullPath = path.join(root, "data", "tool", contentPath);
+    let fullPath = path.join(root, "data", "tool-content", contentPath);
     if (type == "blog") {
       fullPath = path.join(root, "blogs", `${contentPath}.md`);
     }
+    if (!contentPath) console.error("path is empty");
 
     const fileContents = fs.readFileSync(fullPath, "utf8");
+    if (fileContents) console.error("tool content is empty");
 
     const { data, content } = matter(fileContents);
+
     const htmlContent = await remark().use(html).process(content);
 
     return {
