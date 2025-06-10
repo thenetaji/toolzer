@@ -108,11 +108,6 @@ export default function API() {
             </div>
           </div>
         </div>
-
-        <div className="text-xs text-muted-foreground mt-16 max-w-5xl mx-auto border-t pt-6">
-          <p>Last Updated: 2025-04-22 08:33:44 (UTC)</p>
-          <p>Maintained by @thenetaji</p>
-        </div>
       </div>
     </>
   );

@@ -123,14 +123,10 @@ export default function PrivacyPolicy() {
           <h2 className="text-xl font-semibold mt-8">9. Contact Us</h2>
           <p>
             If you have any questions or concerns about this Privacy Policy or
-            our data practices, please contact us at{" "}
-            <a
-              href="mailto:hello@toolzer.studio"
-              className="text-primary hover:underline"
-            >
-              contact.dry528@passinbox.com
-            </a>
-            .
+            our data practices, please{" "}
+            <Link href="/contact" className="text-primary underline">
+              Contact Us
+            </Link>
           </p>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import NextImage from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -17,7 +17,31 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Upload, Download, Image as ImageIcon, Loader2 } from "lucide-react";
 
 export default function ImageTool({ config }) {
+  // Initialize with config values or defaults
   const {
+    width = 800,
+    height = 600,
+    unit = "px",
+    dpi = 72,
+    percentage = 100,
+    targetSize = 500,
+    quality = 80,
+    format = "jpeg",
+    rotate = 0,
+    maintainAspectRatio = true,
+  } = config || {};
+
+  const [uploadedImage, setUploadedImage] = useState(null);
+  const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
+  const [previewImage, setPreviewImage] = useState(null);
+  const [originalDimensions, setOriginalDimensions] = useState({
+    width: 0,
+    height: 0,
+  });
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [resizeMethod, setResizeMethod] = useState("dimensions");
+  const [resizedImageSize, setResizedImageSize] = useState(0); // Store the resized file size
+  const [resizeSettings, setResizeSettings] = useState({
     width,
     height,
     unit,
@@ -28,26 +52,12 @@ export default function ImageTool({ config }) {
     format,
     rotate,
     maintainAspectRatio,
-  } = config;
-
-  const [uploadedImage, setUploadedImage] = useState(null);
-  const [previewImage, setPreviewImage] = useState(null);
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [resizeMethod, setResizeMethod] = useState("dimensions");
-  const [resizeSettings, setResizeSettings] = useState({
-    width,
-    height,
-    unit,
-    dpi,
-    percentage,
-    targetSize,
-    quality,
-    format,
-    maintainAspectRatio,
   });
-  const fileInputRef = useRef(null);
-  let fileId = "";
 
+  const fileInputRef = useRef(null);
+  const canvasRef = useRef(null);
+
+  // Handle unit conversion
   const unitValue = resizeSettings.unit;
   const dpiValue = resizeSettings.dpi ?? 72;
 
@@ -63,11 +73,54 @@ export default function ImageTool({ config }) {
   const pixelWidth = getPixelValue(resizeSettings.width);
   const pixelHeight = getPixelValue(resizeSettings.height);
 
+  // Format file size for display
+  const formatFileSize = (bytes) => {
+    if (bytes < 1024) return bytes + " B";
+    else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + " KB";
+    else return (bytes / 1048576).toFixed(2) + " MB";
+  };
+
+  // Load image and get original dimensions when uploaded
+  useEffect(() => {
+    if (uploadedImage) {
+      const imgUrl = URL.createObjectURL(uploadedImage);
+      setUploadedImageUrl(imgUrl);
+
+      // Get original dimensions
+      const img = new Image();
+      img.onload = () => {
+        setOriginalDimensions({
+          width: img.width,
+          height: img.height,
+        });
+
+        // Set initial dimensions based on the uploaded image
+        if (resizeMethod === "dimensions") {
+          setResizeSettings((prev) => ({
+            ...prev,
+            width:
+              unitValue === "px"
+                ? img.width
+                : unitValue === "in"
+                  ? img.width / dpiValue
+                  : (img.width / dpiValue) * 2.54,
+            height:
+              unitValue === "px"
+                ? img.height
+                : unitValue === "in"
+                  ? img.height / dpiValue
+                  : (img.height / dpiValue) * 2.54,
+          }));
+        }
+      };
+      img.src = imgUrl;
+    }
+  }, [uploadedImage, resizeMethod, unitValue, dpiValue]);
+
   // Handle file upload
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    setUploadedImage(e.target.files[0]);
 
     // Check if file is an image
     if (!file.type.match("image.*")) {
@@ -75,54 +128,131 @@ export default function ImageTool({ config }) {
       return;
     }
 
-    /**const reader = new FileReader();
-    reader.onload = (e) => {
-    };
-    reader.readAsDataURL(file);**/
+    setUploadedImage(file);
+    setPreviewImage(null); // Reset preview when new image is uploaded
+    setResizedImageSize(0); // Reset resized image size
   };
 
-  // Handle resize button click
+  // Handle resize button click - browser-based processing
   const handleResize = async () => {
     if (!uploadedImage) return;
-
     setIsProcessing(true);
-    const formData = new FormData();
-    formData.append("file", uploadedImage);
 
-    const apiURL = process.env.API_URL ?? "http://13.235.79.119:2626";
+    try {
+      // Create a canvas for processing
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
 
-    const uploadFile = await fetch(apiURL + "/upload", {
-      method: "POST",
-      body: formData,
-    });
-    const uploadFileRes = await uploadFile.json();
-    if (uploadFileRes.data.fileId) {
-      fileId = uploadFileRes.data.fileId;
+      // Create an image object to draw on canvas
+      const img = new Image();
+      img.onload = () => {
+        // Calculate dimensions based on resize method
+        let targetWidth, targetHeight;
+
+        if (resizeMethod === "dimensions") {
+          targetWidth = getPixelValue(resizeSettings.width);
+          targetHeight = getPixelValue(resizeSettings.height);
+
+          // Maintain aspect ratio if needed
+          if (resizeSettings.maintainAspectRatio) {
+            const aspectRatio = img.width / img.height;
+
+            // Determine which dimension to adjust
+            if (targetWidth / targetHeight > aspectRatio) {
+              targetWidth = targetHeight * aspectRatio;
+            } else {
+              targetHeight = targetWidth / aspectRatio;
+            }
+          }
+        } else if (resizeMethod === "percentage") {
+          const scale = resizeSettings.percentage / 100;
+          targetWidth = img.width * scale;
+          targetHeight = img.height * scale;
+        } else {
+          // filesize method - start with original size and adjust quality later
+          targetWidth = img.width;
+          targetHeight = img.height;
+        }
+
+        // Set canvas dimensions
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+
+        // Handle rotation if needed
+        if (resizeSettings.rotate && resizeSettings.rotate !== 0) {
+          const angleInRadians = (resizeSettings.rotate * Math.PI) / 180;
+
+          // Adjust canvas size for rotation
+          if (resizeSettings.rotate % 180 !== 0) {
+            // Swap dimensions for 90/270 degree rotations
+            canvas.width = targetHeight;
+            canvas.height = targetWidth;
+          }
+
+          // Translate and rotate
+          ctx.translate(canvas.width / 2, canvas.height / 2);
+          ctx.rotate(angleInRadians);
+          ctx.drawImage(
+            img,
+            -targetWidth / 2,
+            -targetHeight / 2,
+            targetWidth,
+            targetHeight,
+          );
+        } else {
+          // No rotation, just resize
+          ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+        }
+
+        // Convert canvas to blob with proper format and quality
+        const mimeType = `image/${resizeSettings.format === "jpg" ? "jpeg" : resizeSettings.format}`;
+
+        // For filesize method, we need to iteratively adjust quality
+        if (resizeMethod === "filesize") {
+          // Start with a high quality and decrease until target size is reached
+          let quality = 0.9;
+          const targetBytes = resizeSettings.targetSize * 1024; // Convert KB to bytes
+
+          const reduceQualityUntilSize = () => {
+            canvas.toBlob(
+              (blob) => {
+                if (blob.size > targetBytes && quality > 0.1) {
+                  quality -= 0.05; // Reduce quality
+                  reduceQualityUntilSize(); // Try again
+                } else {
+                  // We have a blob with acceptable size
+                  handleProcessedBlob(blob);
+                }
+              },
+              mimeType,
+              quality,
+            );
+          };
+
+          reduceQualityUntilSize();
+        } else {
+          // Use specified quality for other methods
+          canvas.toBlob(
+            (blob) => handleProcessedBlob(blob),
+            mimeType,
+            resizeSettings.quality / 100,
+          );
+        }
+      };
+
+      // Load the image
+      img.src = URL.createObjectURL(uploadedImage);
+    } catch (error) {
+      console.error("Error processing image:", error);
+      setIsProcessing(false);
     }
+  };
 
-    const processImage = await fetch(apiURL + "/image", {
-      method: "POST",
-      body: JSON.stringify({
-        fileId: fileId,
-        action: {
-          resize: {
-            unit: resizeSettings.unit,
-            dpi: resizeSettings.dpi,
-            width: resizeSettings.width,
-            height: resizeSettings.height,
-          },
-          rotate: resizeSettings.rotate,
-          resizePercentage: resizeSettings.percentage,
-          targetSize: resizeSettings.targetSize,
-          quality: resizeSettings.quality,
-          format: resizeSettings.format,
-          maintainAspectRatio: resizeSettings.maintainAspectRatio,
-        },
-      }),
-    });
-    const imageBlob = await processImage.blob();
-    const imageUrl = URL.createObjectURL(imageBlob);
+  // Handle the processed image blob
+  const handleProcessedBlob = (blob) => {
+    const imageUrl = URL.createObjectURL(blob);
     setPreviewImage(imageUrl);
+    setResizedImageSize(blob.size); // Store the size of the resized image
     setIsProcessing(false);
   };
 
@@ -130,9 +260,17 @@ export default function ImageTool({ config }) {
   const handleDownload = () => {
     if (!previewImage) return;
 
+    // Create extension based on format
+    const extension =
+      resizeSettings.format === "jpg" ? "jpeg" : resizeSettings.format;
+
+    // Create file name
+    const originalName = uploadedImage.name.split(".")[0] || "image";
+    const fileName = `${originalName}-resized.${extension}`;
+
     const link = document.createElement("a");
     link.href = previewImage;
-    link.download = `resized-${uploadedImage.name}`;
+    link.download = fileName;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -161,14 +299,15 @@ export default function ImageTool({ config }) {
                 </div>
               ) : (
                 <div className="relative">
-                  {/**<img
-                    src={uploadedImage.src}
+                  <img
+                    src={uploadedImageUrl}
                     alt="Uploaded image preview"
-                    className="max-h-[300px] mx-auto rounded-md"
-                  />**/}
-                  <div className="mt-2 text-sm text-muted-foreground">
-                    {uploadedImage.name} (
-                    {Math.round(uploadedImage.size / 1024)} KB)
+                    className="max-h-[300px] mx-auto rounded-md object-contain"
+                  />
+                  <div className="mt-2 text-sm text-muted-foreground overflow-scroll">
+                    {uploadedImage.name} ({formatFileSize(uploadedImage.size)})
+                    <br />
+                    {originalDimensions.width} × {originalDimensions.height} px
                   </div>
                 </div>
               )}
@@ -188,7 +327,9 @@ export default function ImageTool({ config }) {
                   size="sm"
                   onClick={() => {
                     setUploadedImage(null);
+                    setUploadedImageUrl(null);
                     setPreviewImage(null);
+                    setResizedImageSize(0);
                   }}
                 >
                   Remove Image
@@ -210,7 +351,7 @@ export default function ImageTool({ config }) {
               <TabsContent value="dimensions" className="space-y-4 mt-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="width">Width ({unit})</Label>
+                    <Label htmlFor="width">Width ({resizeSettings.unit})</Label>
                     <Input
                       id="width"
                       type="number"
@@ -218,13 +359,24 @@ export default function ImageTool({ config }) {
                       onChange={(e) =>
                         setResizeSettings({
                           ...resizeSettings,
-                          width: parseInt(e.target.value),
+                          width: parseInt(e.target.value) || 0,
+                          height:
+                            resizeSettings.maintainAspectRatio &&
+                            originalDimensions.width
+                              ? Math.round(
+                                  ((parseInt(e.target.value) || 0) *
+                                    originalDimensions.height) /
+                                    originalDimensions.width,
+                                )
+                              : resizeSettings.height,
                         })
                       }
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="height">Height ({unit})</Label>
+                    <Label htmlFor="height">
+                      Height ({resizeSettings.unit})
+                    </Label>
                     <Input
                       id="height"
                       type="number"
@@ -232,28 +384,53 @@ export default function ImageTool({ config }) {
                       onChange={(e) =>
                         setResizeSettings({
                           ...resizeSettings,
-                          height: parseInt(e.target.value),
+                          height: parseInt(e.target.value) || 0,
+                          width:
+                            resizeSettings.maintainAspectRatio &&
+                            originalDimensions.height
+                              ? Math.round(
+                                  ((parseInt(e.target.value) || 0) *
+                                    originalDimensions.width) /
+                                    originalDimensions.height,
+                                )
+                              : resizeSettings.width,
                         })
                       }
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="unit">Unit</Label>
-                    <select
-                      id="unit"
-                      className="w-full border rounded px-3 py-2"
+                    <Select
                       value={resizeSettings.unit}
-                      onChange={(e) =>
+                      onValueChange={(value) =>
                         setResizeSettings({
                           ...resizeSettings,
-                          unit: e.target.value,
+                          unit: value,
+                          // Convert current values to new unit
+                          width:
+                            value === "px"
+                              ? pixelWidth
+                              : value === "in"
+                                ? pixelWidth / dpiValue
+                                : (pixelWidth / dpiValue) * 2.54,
+                          height:
+                            value === "px"
+                              ? pixelHeight
+                              : value === "in"
+                                ? pixelHeight / dpiValue
+                                : (pixelHeight / dpiValue) * 2.54,
                         })
                       }
                     >
-                      <option value="px">Pixels (px)</option>
-                      <option value="in">Inches (in)</option>
-                      <option value="cm">Centimeters (cm)</option>
-                    </select>
+                      <SelectTrigger id="unit">
+                        <SelectValue placeholder="Select unit" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="px">Pixels (px)</SelectItem>
+                        <SelectItem value="in">Inches (in)</SelectItem>
+                        <SelectItem value="cm">Centimeters (cm)</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="dpi">DPI</Label>
@@ -264,113 +441,114 @@ export default function ImageTool({ config }) {
                       onChange={(e) =>
                         setResizeSettings({
                           ...resizeSettings,
-                          dpi: parseInt(e.target.value),
+                          dpi: parseInt(e.target.value) || 72,
                         })
                       }
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="rotate">Rotate (°) optional</Label>
-                    <input
-                      id="rotate"
-                      type="number"
-                      className="w-full border rounded px-3 py-2"
-                      value={resizeSettings.rotate}
-                      onChange={(e) =>
-                        setResizeSettings({
-                          ...resizeSettings,
-                          rotate: parseFloat(e.target.value) || 0,
-                        })
-                      }
-                      placeholder="Enter angle e.g. 90"
                     />
                   </div>
                 </div>
               </TabsContent>
 
               {/* Percentage Tab */}
-              {percentage && (
-                <TabsContent value="percentage" className="space-y-4 mt-4">
-                  <div className="space-y-2">
-                    <div className="flex justify-between">
-                      <Label htmlFor="percentage">
-                        Resize to {resizeSettings.percentage}%
-                      </Label>
-                      <span className="text-muted-foreground">
-                        {resizeSettings.percentage}%
-                      </span>
-                    </div>
-                    <Slider
-                      id="percentage"
-                      min={1}
-                      max={100}
-                      step={1}
-                      value={[resizeSettings.percentage]}
-                      onValueChange={(value) =>
-                        setResizeSettings({
-                          ...resizeSettings,
-                          percentage: value[0],
-                        })
-                      }
-                    />
+              <TabsContent value="percentage" className="space-y-4 mt-4">
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <Label htmlFor="percentage">
+                      Resize to {resizeSettings.percentage}%
+                    </Label>
+                    <span className="text-muted-foreground">
+                      {resizeSettings.percentage}%
+                    </span>
                   </div>
-                </TabsContent>
-              )}
+                  <Slider
+                    id="percentage"
+                    min={1}
+                    max={100}
+                    step={1}
+                    value={[resizeSettings.percentage]}
+                    onValueChange={(value) =>
+                      setResizeSettings({
+                        ...resizeSettings,
+                        percentage: value[0],
+                      })
+                    }
+                  />
+                </div>
+              </TabsContent>
 
               {/* File Size Tab */}
-              {targetSize && (
-                <TabsContent value="filesize" className="space-y-4 mt-4">
-                  <div className="space-y-2">
-                    <div className="flex justify-between">
-                      <Label htmlFor="filesize">
-                        Target File Size: {resizeSettings.targetSize} KB
-                      </Label>
-                      <span className="text-muted-foreground">
-                        {resizeSettings.targetSize} KB
-                      </span>
-                    </div>
-                    <Slider
-                      id="filesize"
-                      min={10}
-                      max={1000}
-                      step={10}
-                      value={[resizeSettings.targetSize]}
-                      onValueChange={(value) =>
-                        setResizeSettings({
-                          ...resizeSettings,
-                          targetSize: value[0],
-                        })
-                      }
-                    />
+              <TabsContent value="filesize" className="space-y-4 mt-4">
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <Label htmlFor="filesize">
+                      Target File Size: {resizeSettings.targetSize} KB
+                    </Label>
+                    <span className="text-muted-foreground">
+                      {resizeSettings.targetSize} KB
+                    </span>
                   </div>
-                </TabsContent>
-              )}
+                  <Slider
+                    id="filesize"
+                    min={10}
+                    max={1000}
+                    step={10}
+                    value={[resizeSettings.targetSize]}
+                    onValueChange={(value) =>
+                      setResizeSettings({
+                        ...resizeSettings,
+                        targetSize: value[0],
+                      })
+                    }
+                  />
+                </div>
+              </TabsContent>
             </Tabs>
 
             {/* Common Settings */}
             <div className="space-y-4 border-t pt-4">
-              {resizeMethod &&
-                resizeMethod !== "filesize" &&
-                resizeSettings.quality != null && (
-                  <div className="space-y-2">
-                    <Label htmlFor="quality">
-                      Quality: {resizeSettings.quality}%
-                    </Label>
-                    <Slider
-                      id="quality"
-                      min={10}
-                      max={100}
-                      step={1}
-                      value={[resizeSettings.quality]}
-                      onValueChange={(value) =>
-                        setResizeSettings({
-                          ...resizeSettings,
-                          quality: value[0],
-                        })
-                      }
-                    />
-                  </div>
-                )}
+              <div className="space-y-2">
+                <Label htmlFor="rotate">Rotate (°)</Label>
+                <Select
+                  value={resizeSettings.rotate.toString()}
+                  onValueChange={(value) =>
+                    setResizeSettings({
+                      ...resizeSettings,
+                      rotate: parseInt(value),
+                    })
+                  }
+                >
+                  <SelectTrigger id="rotate">
+                    <SelectValue placeholder="Select rotation" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="0">No rotation</SelectItem>
+                    <SelectItem value="90">90° clockwise</SelectItem>
+                    <SelectItem value="180">180° rotation</SelectItem>
+                    <SelectItem value="270">270° clockwise</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {resizeMethod !== "filesize" && (
+                <div className="space-y-2">
+                  <Label htmlFor="quality">
+                    Quality: {resizeSettings.quality}%
+                  </Label>
+                  <Slider
+                    id="quality"
+                    min={10}
+                    max={100}
+                    step={1}
+                    value={[resizeSettings.quality]}
+                    onValueChange={(value) =>
+                      setResizeSettings({
+                        ...resizeSettings,
+                        quality: value[0],
+                      })
+                    }
+                  />
+                </div>
+              )}
 
               <div className="space-y-2">
                 <Label htmlFor="format">Output Format</Label>
@@ -391,52 +569,73 @@ export default function ImageTool({ config }) {
                 </Select>
               </div>
 
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="aspect-ratio"
-                  checked={resizeSettings.maintainAspectRatio}
-                  onCheckedChange={(checked) =>
-                    setResizeSettings({
-                      ...resizeSettings,
-                      maintainAspectRatio: checked,
-                    })
-                  }
-                />
-                <label
-                  htmlFor="aspect-ratio"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Maintain aspect ratio
-                </label>
-              </div>
+              {resizeMethod === "dimensions" && (
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    id="aspect-ratio"
+                    checked={resizeSettings.maintainAspectRatio}
+                    onCheckedChange={(checked) =>
+                      setResizeSettings({
+                        ...resizeSettings,
+                        maintainAspectRatio: !!checked,
+                      })
+                    }
+                  />
+                  <label
+                    htmlFor="aspect-ratio"
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Maintain aspect ratio
+                  </label>
+                </div>
+              )}
             </div>
           </div>
         </div>
 
-        {/* Preview Section */}
-        {previewImage && !isProcessing && uploadedImage && (
+        {/* Preview Section - UPDATED with file size */}
+        {previewImage && !isProcessing && (
           <div className="mt-8 pt-6 border-t">
             <h3 className="text-lg font-semibold mb-4">Preview</h3>
             <div className="flex flex-col items-center">
               <div className="bg-muted rounded-md p-2">
-                <NextImage
+                <img
                   src={previewImage}
                   alt="Preview of resized image"
-                  height={pixelHeight}
-                  width={pixelWidth}
-                  className="max-h-[300px] rounded"
+                  className="max-h-[300px] rounded object-contain"
                 />
               </div>
-              <p className="text-sm text-muted-foreground mt-2 text-center">
-                Resized image preview <br /> Downloadable image will be in good
-                quality, don't worry!
-              </p>
+              <div className="text-sm text-muted-foreground mt-2 text-center">
+                <p>Resized image preview</p>
+                <p>
+                  File size:{" "}
+                  <span className="font-semibold">
+                    {formatFileSize(resizedImageSize)}
+                  </span>
+                </p>
+                {resizeMethod === "dimensions" && (
+                  <p>
+                    Dimensions:{" "}
+                    <span className="font-semibold">
+                      {Math.round(pixelWidth)}px × {Math.round(pixelHeight)}px
+                    </span>
+                  </p>
+                )}
+                {uploadedImage && resizedImageSize > 0 && (
+                  <p className="mt-1 text-xs">
+                    Original: {formatFileSize(uploadedImage.size)} → New:{" "}
+                    {formatFileSize(resizedImageSize)}(
+                    {Math.round((resizedImageSize / uploadedImage.size) * 100)}%
+                    of original)
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         )}
 
         {/* Action Buttons */}
-        <div className="flex flex-col space-y-3 pt-4">
+        <div className="flex flex-col space-y-3 mt-6 pt-4 border-t">
           <Button
             onClick={handleResize}
             disabled={!uploadedImage || isProcessing}

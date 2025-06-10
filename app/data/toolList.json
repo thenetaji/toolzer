@@ -189,6 +189,76 @@
         "exam form",
         "neet 2025 signature"
       ]
+    },
+    {
+      "title": "JEE Photo Resizer - Resize to 276x354 px & under 200KB JPEG",
+      "description": "Free JEE Main photo resizer to convert your image to 276x354 pixels and under 200KB JPEG, as required by NTA. Fast, accurate, and works on any device.",
+      "slug": "jee-photo-resizer",
+      "imageName": "",
+      "contentPath": "/jee-photo-resizer.md",
+      "featureList": [
+        "📸 Upload photo from phone or computer",
+        "📐 Resize image to JEE Main dimensions (3.5×4.5 cm)",
+        "🖼 Auto-crop and align face in frame",
+        "⚖️ Compress image under 200KB size limit",
+        "📁 Convert image to JPEG/JPG format",
+        "🔍 Instant before-after preview",
+        "🌐 Works on all browsers and devices",
+        "🛡️ Private and secure – nothing stored"
+      ],
+      "config": {
+        "width": 276,
+        "height": 354,
+        "percentage": null,
+        "targetSize": 200,
+        "quality": null,
+        "format": "jpeg",
+        "maintainAspectRatio": true
+      },
+      "tags": [
+        "JEE Main",
+        "photo resizer",
+        "276x354 pixels",
+        "200KB JPEG",
+        "online image tool",
+        "nta guidelines",
+        "jee 2025"
+      ]
+    },
+    {
+      "title": "JEE Signature Resizer - Resize to 276x118 px & under 50KB JPEG",
+      "description": "Resize and compress your scanned signature to match JEE Main dimensions (276x118 px) and under 50KB JPEG format. Simple, instant & secure.",
+      "slug": "jee-signature-resizer",
+      "imageName": "",
+      "contentPath": "/jee-signature-resizer.md",
+      "featureList": [
+        "✍️ Upload scanned signature",
+        "📐 Resize to exact 3.5×1.5 cm size",
+        "⚖️ Compress under 50KB without blurring",
+        "📁 Export in JPEG/JPG format",
+        "🧼 White background & sharp edges",
+        "🌐 Works online – no app needed",
+        "🔍 Instant preview",
+        "🛡️ Private, secure, no watermarks"
+      ],
+      "config": {
+        "width": 276,
+        "height": 118,
+        "percentage": null,
+        "targetSize": 50,
+        "quality": null,
+        "format": "jpeg",
+        "maintainAspectRatio": true
+      },
+      "tags": [
+        "JEE Main",
+        "signature resizer",
+        "276x118 pixels",
+        "50KB JPEG",
+        "jee 2025",
+        "nta form",
+        "digital signature"
+      ]
     }
   ]
 }

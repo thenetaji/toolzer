@@ -135,14 +135,10 @@ export default function TermsOfService() {
 
           <h2 className="text-xl font-semibold mt-8">11. Contact</h2>
           <p>
-            If you have any questions about these Terms, please contact us at{" "}
-            <a
-              href="mailto:legal@toolzer.io"
-              className="text-primary hover:underline"
-            >
-              contact.dry528@passinbox.com
-            </a>
-            .
+            If you have any questions about these Terms, please{" "}
+            <Link href="/contact" className="text-primary underline">
+              Contact Us
+            </Link>
           </p>
         </div>
       </div>

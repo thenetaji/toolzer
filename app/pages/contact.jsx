@@ -195,10 +195,13 @@ export default function Contact() {
           </div>
 
           {/* Contact Info */}
-          <div className="md:w-64 lg:w-80 space-y-8">
-            {/* Contact Details */}
-            {/* Connect With Us */}
-            {/* Last Updated Card */}
+          <div className="md:w-64 lg:w-80 space-y-8 text-center">
+            <p className="text-primary text-lg">
+              For more quick response mail us{" "}
+              <a href="mailto:hello@toolzer.studio" className="underline">
+                here
+              </a>
+            </p>
           </div>
         </div>
       </div>

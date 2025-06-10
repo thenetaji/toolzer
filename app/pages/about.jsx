@@ -184,14 +184,19 @@ export default function About() {
               <p>
                 Toolzer is built by a small team of passionate developers and
                 designers who believe in making technology more accessible.
-                We're distributed across the globe, working together to create
-                tools that solve real problems.
               </p>
 
               <p>
                 Our diverse backgrounds in web development, AI, design, and
                 product management help us approach problems from different
                 angles, creating solutions that work for everyone.
+              </p>
+              <p className="font-extrabold">
+                Owner: @thenetaji
+                <br />
+                Content Manager: @guddu
+                <br />
+                Maintainance: @vivek
               </p>
             </div>
 
@@ -223,11 +228,6 @@ export default function About() {
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="text-xs text-muted-foreground mt-16 border-t pt-6">
-          <p>Last Updated: 2025-04-22 08:33:44 (UTC)</p>
-          <p>Maintained by @thenetaji</p>
         </div>
       </div>
     </>

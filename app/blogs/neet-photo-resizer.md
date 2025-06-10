@@ -7,7 +7,7 @@ imageName: ""
 pageUrl: "/tools/neet-photo-resizer"
 slug: "neet-photo-resizer"
 toolLink: "/image/neet-photo-resizer"
-description: "Fast and simple NEET 2025 photo upload guide made for Gen Z. Skim through photo size, format, and signature requirements quickly."
+description: "Fast and simple NEET 2025 photo upload. Skim through photo size, format, and signature requirements quickly."
 ---
 
 ## NEET 2025 Photo and Signature Upload Guidelines
@@ -67,3 +67,4 @@ Refer to the [official NTA notification PDF](https://www.nta.ac.in/Download/Noti
 ---
 
 **Tip**: Submitting a correct photo and signature is essential to avoid application rejections or corrections later.
+lication rejections or corrections later.

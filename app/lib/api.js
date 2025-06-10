@@ -18,7 +18,7 @@ export const getMdContent = async (contentPath, type = null) => {
     if (!contentPath) console.error("path is empty");
 
     const fileContents = fs.readFileSync(fullPath, "utf8");
-    if (fileContents) console.error("tool content is empty");
+    if (!fileContents) console.error("tool content is empty");
 
     const { data, content } = matter(fileContents);
 
