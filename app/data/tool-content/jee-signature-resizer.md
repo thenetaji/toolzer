@@ -1,21 +1,4 @@
----
-title: JEE Signature Resizer - Resize to 276x118 px & Under 50KB JPEG
-description: Instantly resize your JEE Main signature image to 276x118 pixels and compress it under 50KB in JPG/JPEG format as per NTA 2025 rules.
-slug: jee-signature-resizer
-tags:
-  [
-    jee main,
-    jee 2025,
-    signature resizer,
-    nta guidelines,
-    image compressor,
-    signature size,
-    276x118 px,
-    50kb jpeg,
-  ]
----
-
-# ✍️ JEE Signature Resizer – Resize to 276x118 px & Under 50KB Instantly
+## ✍️ JEE Signature Resizer – Resize to 276x118 px & Under 50KB Instantly
 
 Having trouble uploading your **signature image for JEE Main 2025**? It often gets rejected due to incorrect size or format. Use our fast and free **JEE Signature Resizer** to get the exact dimensions and file size needed by the **NTA**.
 
@@ -88,7 +71,7 @@ This DPI conversion is followed by NTA for precise online form validation.
 
 ## 📝 Also Need a Photo?
 
-Use our [JEE Photo Resizer](/jee-photo-resizer) to get your passport-size photo ready at **276x354 px and under 200KB**.
+Use our [JEE Photo Resizer](/tools/image/jee-photo-resizer) to get your passport-size photo ready at **276x354 px and under 200KB**.
 
 > This tool is updated for **JEE Main 2025** and strictly follows the latest **NTA guidelines**.
 

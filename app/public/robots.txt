@@ -1,7 +1,0 @@
-User-agent: *
-Sitemap: https://toolzer.studio/sitemap.xml
-Disallow: /~partytown
-Disallow: /coming-soon
-Disallow: /cdn-cgi/l/email-protection
-Disallow: /blog/example
-Allow: *

@@ -1,21 +1,4 @@
----
-title: JEE Photo Resizer - Resize to 276x354 px & Under 200KB JPEG
-description: Instantly resize your JEE Main photo to 276x354 pixels and compress it under 200KB as per NTA guidelines. Free online tool for 2025 form upload.
-slug: jee-photo-resizer
-tags:
-  [
-    jee main,
-    jee 2025,
-    photo resizer,
-    image compressor,
-    nta,
-    form upload,
-    276x354 px,
-    200kb jpeg,
-  ]
----
-
-# 🧑‍🎓 JEE Photo Resizer – Resize Your Image to 276x354 px & Under 200KB
+## 🧑‍🎓 JEE Photo Resizer – Resize Your Image to 276x354 px & Under 200KB
 
 Applying for **JEE Main 2025** and stuck with image upload errors? Don't worry. Our free online **JEE Photo Resizer** helps you convert any image into the exact dimensions and file size required by **NTA**—instantly and securely.
 
@@ -88,7 +71,7 @@ You can use this to manually check if your image matches DPI requirements.
 
 ## 📤 Ready to Upload?
 
-Make sure you also resize your **signature** image using our [JEE Signature Resizer](/jee-signature-resizer) tool.
+Make sure you also resize your **signature** image using our [JEE Signature Resizer](/tools/image/jee-signature-resizer) tool.
 
 > This tool is updated for **JEE Main 2025** form submissions and follows the latest **NTA guidelines**.
 
