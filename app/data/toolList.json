@@ -589,6 +589,115 @@
         "CLAT form",
         "law entrance exam"
       ]
+    },
+    {
+      "title": "UPSC Photo Resizer – Resize to 413×531 px & Under 200 KB JPG",
+      "description": "Resize your passport-style photo for UPSC CSE 2025: 3.5×4.5 cm (~413×531 px @300 DPI), under 200 KB JPG. Free, mobile-friendly, and secure browser tool.",
+      "slug": "upsc-photo-resizer",
+      "imageName": "",
+      "contentPath": "/upsc-photo-resizer.md",
+      "featureList": [
+        "📷 Upload passport-style photo (JPG)",
+        "📐 Resize to standard CSE dimensions (~413×531 px)",
+        "⚖️ Compress to under 200 KB",
+        "🔍 Preview before download",
+        "📲 Mobile and desktop friendly",
+        "🛡️ 100% private — processed in your browser",
+        "🆓 Free & no watermark"
+      ],
+      "config": {
+        "width": 413,
+        "height": 531,
+        "targetSize": 200,
+        "format": "jpeg",
+        "maintainAspectRatio": true
+      },
+      "tags": [
+        "UPSC 2025",
+        "photo resizer",
+        "passport photo",
+        "application form tool"
+      ]
+    },
+    {
+      "title": "UPSC Signature Resizer – Resize to 350–500 px & Under 100 KB JPG",
+      "description": "Free online tool to resize and compress your signature for UPSC CSE 2025: JPG format, 350–500 px dimensions, under 100 KB. Fast, secure, and mobile-friendly.",
+      "slug": "upsc-signature-resizer",
+      "imageName": "",
+      "contentPath": "/upsc-signature-resizer.md",
+      "featureList": [
+        "✍️ Upload your handwritten signature",
+        "📐 Resize image to 350–500 pixels",
+        "⚖️ Compress to under 100 KB",
+        "📁 Output in JPG format",
+        "🔍 Live preview before download",
+        "🌐 Works entirely in your browser",
+        "📱 Compatible with mobile and desktop",
+        "🛡️ Secure, no data stored"
+      ],
+      "config": {
+        "minWidth": 350,
+        "maxWidth": 500,
+        "minHeight": 350,
+        "maxHeight": 500,
+        "targetSize": 100,
+        "format": "jpeg",
+        "maintainAspectRatio": true
+      },
+      "tags": [
+        "UPSC 2025",
+        "signature resizer",
+        "UPSC CSE form",
+        "image upload"
+      ]
+    },
+    {
+      "title": "NDA Photo Resizer – Resize to 110×140 px & Under 300 KB JPG",
+      "description": "Free online NDA photo resizer to resize your passport-style photograph to 110×140 px and under 300 KB JPG. Fits UPSC NDA & CDS form upload specs. Fast, secure, and mobile-friendly.",
+      "slug": "nda-photo-resizer",
+      "imageName": "",
+      "contentPath": "/nda-photo-resizer.md",
+      "featureList": [
+        "📷 Upload passport-style photo (JPG format)",
+        "📐 Resize to 110×140 px (NDA upload size)",
+        "⚖️ Compress to 20–300 KB",
+        "🔍 Preview before download",
+        "📲 Works on mobile & desktop",
+        "🛡️ Secure – processed in your browser only",
+        "🆓 100% free, no watermarks"
+      ],
+      "config": {
+        "width": 110,
+        "height": 140,
+        "targetSize": 300,
+        "format": "jpeg",
+        "maintainAspectRatio": true
+      },
+      "tags": ["NDA 2025", "photo resizer", "nda form image", "upsc nda photo"]
+    },
+    {
+      "title": "NDA Signature Resizer – Resize to 110×140 px & Under 300 KB JPG",
+      "description": "Resize your handwritten signature to 110×140 px and under 300 KB JPG format for the NDA 2025 form. Fast, secure, and mobile‑friendly browser tool.",
+      "slug": "nda-signature-resizer",
+      "imageName": "",
+      "contentPath": "/nda-signature-resizer.md",
+      "featureList": [
+        "✍️ Upload your scanned signature (JPG)",
+        "📐 Resize to 110×140 pixels (NDA spec)",
+        "⚖️ Compress to 20–300 KB",
+        "📁 Download as JPG",
+        "🔍 Preview before download",
+        "📲 Works on mobile & desktop",
+        "🛡️ 100% private — processed locally"
+      ],
+      "config": {
+        "width": 110,
+        "height": 140,
+        "targetSize": 300,
+        "format": "jpeg",
+        "maintainAspectRatio": true
+      },
+      "tags": ["NDA 2025", "signature resizer", "nda form", "upsc nda"]
     }
   ]
 }

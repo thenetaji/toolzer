@@ -13,6 +13,7 @@ export default function Document() {
         />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -20,6 +21,14 @@ export default function Document() {
         />
         <meta name="apple-mobile-web-app-title" content="Toolzer" />
         <link rel="manifest" href="/site.webmanifest" />
+
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link
+          rel="icon"
+          type="image/png"
+          href="/favicon-96x96.png"
+          sizes="96x96"
+        />
 
         <meta name="robots" content="index, follow" />
         <meta name="theme-color" content="#1e293b" />
