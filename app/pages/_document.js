@@ -39,7 +39,7 @@ export default function Document() {
 
         {/** Google Tag Manager */}
         <Script
-          strategy="worker"
+          strategy="afterInteractive"
           id="gtm-init"
           dangerouslySetInnerHTML={{
             __html: `
@@ -54,7 +54,7 @@ export default function Document() {
 
         {/**Ahref */}
         <Script
-          strategy="worker"
+          strategy="afterInteractive"
           src="https://analytics.ahrefs.com/analytics.js"
           data-key="C5aYtfiMQkYT/orxDj9DTA"
           async
