@@ -1,4 +1,4 @@
-# CUET Photo Resizer 2025 – Resize Image to 20KB–50KB & JPEG Format
+## CUET Photo Resizer 2025 – Resize Image to 20KB–50KB & JPEG Format
 
 Easily resize your photo for CUET 2025 application form as per NTA guidelines. This tool helps you adjust your image to meet the size, format, and dimension specifications without any hassle.
 

@@ -14,7 +14,19 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Upload, Download, Image as ImageIcon, Loader2 } from "lucide-react";
+import {
+  Upload,
+  Download,
+  Image as ImageIcon,
+  Loader2,
+  HelpCircle,
+} from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function ImageTool({ config }) {
   // Initialize with config values or defaults
@@ -40,7 +52,7 @@ export default function ImageTool({ config }) {
   });
   const [isProcessing, setIsProcessing] = useState(false);
   const [resizeMethod, setResizeMethod] = useState("dimensions");
-  const [resizedImageSize, setResizedImageSize] = useState(0); // Store the resized file size
+  const [resizedImageSize, setResizedImageSize] = useState(0);
   const [resizeSettings, setResizeSettings] = useState({
     width,
     height,
@@ -276,394 +288,481 @@ export default function ImageTool({ config }) {
     document.body.removeChild(link);
   };
 
+  // Helper component for tooltips
+  const InfoTooltip = ({ text }) => (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <HelpCircle className="h-4 w-4 text-muted-foreground ml-1 inline cursor-help" />
+        </TooltipTrigger>
+        <TooltipContent>
+          <p className="max-w-xs">{text}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+
   return (
     <Card className="w-full shadow-lg">
       <CardContent className="p-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Left Column - Upload and Preview */}
-          <div className="space-y-6">
+        {!uploadedImage ? (
+          /* Step 1: Upload Image - Simple, focused interface */
+          <div className="text-center space-y-6">
+            <div className="mb-4">
+              <h2 className="text-2xl font-bold">Image Resizer</h2>
+              <p className="text-muted-foreground">
+                Resize, compress, and convert your images easily
+              </p>
+            </div>
+            
             <div
-              className="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-6 text-center cursor-pointer hover:bg-muted/50 transition-colors"
+              className="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-8 mx-auto cursor-pointer hover:bg-muted/50 transition-colors max-w-md"
               onClick={() => fileInputRef.current.click()}
             >
-              {!uploadedImage ? (
-                <div className="flex flex-col items-center justify-center py-10">
-                  <Upload className="h-10 w-10 text-muted-foreground mb-4" />
-                  <h3 className="text-lg font-medium mb-1">
-                    Upload Your Image
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Drag and drop or click to browse
-                  </p>
-                  <Button variant="outline">Select File</Button>
-                </div>
-              ) : (
-                <div className="relative">
-                  <img
-                    src={uploadedImageUrl}
-                    alt="Uploaded image preview"
-                    className="max-h-[300px] mx-auto rounded-md object-contain"
-                  />
-                  <div className="mt-2 text-sm text-muted-foreground overflow-scroll">
-                    {uploadedImage.name} ({formatFileSize(uploadedImage.size)})
-                    <br />
-                    {originalDimensions.width} × {originalDimensions.height} px
-                  </div>
-                </div>
-              )}
-              <input
-                ref={fileInputRef}
-                type="file"
-                className="hidden"
-                accept="image/*"
-                onChange={handleFileUpload}
-              />
-            </div>
-
-            {uploadedImage && (
-              <div className="text-center">
-                <Button
-                  variant="default"
-                  size="sm"
-                  onClick={() => {
-                    setUploadedImage(null);
-                    setUploadedImageUrl(null);
-                    setPreviewImage(null);
-                    setResizedImageSize(0);
-                  }}
-                >
-                  Remove Image
-                </Button>
-              </div>
-            )}
-          </div>
-
-          {/* Right Column - Settings and Controls */}
-          <div className="space-y-6">
-            <Tabs defaultValue="dimensions" onValueChange={setResizeMethod}>
-              <TabsList className="grid grid-cols-3 w-full">
-                <TabsTrigger value="dimensions">Dimensions</TabsTrigger>
-                <TabsTrigger value="percentage">Percentage</TabsTrigger>
-                <TabsTrigger value="filesize">File Size</TabsTrigger>
-              </TabsList>
-
-              {/* Dimensions Tab */}
-              <TabsContent value="dimensions" className="space-y-4 mt-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="width">Width ({resizeSettings.unit})</Label>
-                    <Input
-                      id="width"
-                      type="number"
-                      value={resizeSettings.width}
-                      onChange={(e) =>
-                        setResizeSettings({
-                          ...resizeSettings,
-                          width: parseInt(e.target.value) || 0,
-                          height:
-                            resizeSettings.maintainAspectRatio &&
-                            originalDimensions.width
-                              ? Math.round(
-                                  ((parseInt(e.target.value) || 0) *
-                                    originalDimensions.height) /
-                                    originalDimensions.width,
-                                )
-                              : resizeSettings.height,
-                        })
-                      }
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="height">
-                      Height ({resizeSettings.unit})
-                    </Label>
-                    <Input
-                      id="height"
-                      type="number"
-                      value={resizeSettings.height}
-                      onChange={(e) =>
-                        setResizeSettings({
-                          ...resizeSettings,
-                          height: parseInt(e.target.value) || 0,
-                          width:
-                            resizeSettings.maintainAspectRatio &&
-                            originalDimensions.height
-                              ? Math.round(
-                                  ((parseInt(e.target.value) || 0) *
-                                    originalDimensions.width) /
-                                    originalDimensions.height,
-                                )
-                              : resizeSettings.width,
-                        })
-                      }
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="unit">Unit</Label>
-                    <Select
-                      value={resizeSettings.unit}
-                      onValueChange={(value) =>
-                        setResizeSettings({
-                          ...resizeSettings,
-                          unit: value,
-                          // Convert current values to new unit
-                          width:
-                            value === "px"
-                              ? pixelWidth
-                              : value === "in"
-                                ? pixelWidth / dpiValue
-                                : (pixelWidth / dpiValue) * 2.54,
-                          height:
-                            value === "px"
-                              ? pixelHeight
-                              : value === "in"
-                                ? pixelHeight / dpiValue
-                                : (pixelHeight / dpiValue) * 2.54,
-                        })
-                      }
-                    >
-                      <SelectTrigger id="unit">
-                        <SelectValue placeholder="Select unit" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="px">Pixels (px)</SelectItem>
-                        <SelectItem value="in">Inches (in)</SelectItem>
-                        <SelectItem value="cm">Centimeters (cm)</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="dpi">DPI</Label>
-                    <Input
-                      id="dpi"
-                      type="number"
-                      value={resizeSettings.dpi}
-                      onChange={(e) =>
-                        setResizeSettings({
-                          ...resizeSettings,
-                          dpi: parseInt(e.target.value) || 72,
-                        })
-                      }
-                    />
-                  </div>
-                </div>
-              </TabsContent>
-
-              {/* Percentage Tab */}
-              <TabsContent value="percentage" className="space-y-4 mt-4">
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <Label htmlFor="percentage">
-                      Resize to {resizeSettings.percentage}%
-                    </Label>
-                    <span className="text-muted-foreground">
-                      {resizeSettings.percentage}%
-                    </span>
-                  </div>
-                  <Slider
-                    id="percentage"
-                    min={1}
-                    max={100}
-                    step={1}
-                    value={[resizeSettings.percentage]}
-                    onValueChange={(value) =>
-                      setResizeSettings({
-                        ...resizeSettings,
-                        percentage: value[0],
-                      })
-                    }
-                  />
-                </div>
-              </TabsContent>
-
-              {/* File Size Tab */}
-              <TabsContent value="filesize" className="space-y-4 mt-4">
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <Label htmlFor="filesize">
-                      Target File Size: {resizeSettings.targetSize} KB
-                    </Label>
-                    <span className="text-muted-foreground">
-                      {resizeSettings.targetSize} KB
-                    </span>
-                  </div>
-                  <Slider
-                    id="filesize"
-                    min={10}
-                    max={1000}
-                    step={10}
-                    value={[resizeSettings.targetSize]}
-                    onValueChange={(value) =>
-                      setResizeSettings({
-                        ...resizeSettings,
-                        targetSize: value[0],
-                      })
-                    }
-                  />
-                </div>
-              </TabsContent>
-            </Tabs>
-
-            {/* Common Settings */}
-            <div className="space-y-4 border-t pt-4">
-              <div className="space-y-2">
-                <Label htmlFor="rotate">Rotate (°)</Label>
-                <Select
-                  value={resizeSettings.rotate.toString()}
-                  onValueChange={(value) =>
-                    setResizeSettings({
-                      ...resizeSettings,
-                      rotate: parseInt(value),
-                    })
-                  }
-                >
-                  <SelectTrigger id="rotate">
-                    <SelectValue placeholder="Select rotation" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="0">No rotation</SelectItem>
-                    <SelectItem value="90">90° clockwise</SelectItem>
-                    <SelectItem value="180">180° rotation</SelectItem>
-                    <SelectItem value="270">270° clockwise</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              {resizeMethod !== "filesize" && (
-                <div className="space-y-2">
-                  <Label htmlFor="quality">
-                    Quality: {resizeSettings.quality}%
-                  </Label>
-                  <Slider
-                    id="quality"
-                    min={10}
-                    max={100}
-                    step={1}
-                    value={[resizeSettings.quality]}
-                    onValueChange={(value) =>
-                      setResizeSettings({
-                        ...resizeSettings,
-                        quality: value[0],
-                      })
-                    }
-                  />
-                </div>
-              )}
-
-              <div className="space-y-2">
-                <Label htmlFor="format">Output Format</Label>
-                <Select
-                  value={resizeSettings.format}
-                  onValueChange={(value) =>
-                    setResizeSettings({ ...resizeSettings, format: value })
-                  }
-                >
-                  <SelectTrigger id="format">
-                    <SelectValue placeholder="Select format" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="jpeg">JPEG</SelectItem>
-                    <SelectItem value="png">PNG</SelectItem>
-                    <SelectItem value="webp">WebP</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              {resizeMethod === "dimensions" && (
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="aspect-ratio"
-                    checked={resizeSettings.maintainAspectRatio}
-                    onCheckedChange={(checked) =>
-                      setResizeSettings({
-                        ...resizeSettings,
-                        maintainAspectRatio: !!checked,
-                      })
-                    }
-                  />
-                  <label
-                    htmlFor="aspect-ratio"
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Maintain aspect ratio
-                  </label>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* Preview Section - UPDATED with file size */}
-        {previewImage && !isProcessing && (
-          <div className="mt-8 pt-6 border-t">
-            <h3 className="text-lg font-semibold mb-4">Preview</h3>
-            <div className="flex flex-col items-center">
-              <div className="bg-muted rounded-md p-2">
-                <img
-                  src={previewImage}
-                  alt="Preview of resized image"
-                  className="max-h-[300px] rounded object-contain"
-                />
-              </div>
-              <div className="text-sm text-muted-foreground mt-2 text-center">
-                <p>Resized image preview</p>
-                <p>
-                  File size:{" "}
-                  <span className="font-semibold">
-                    {formatFileSize(resizedImageSize)}
-                  </span>
+              <div className="flex flex-col items-center justify-center py-8">
+                <Upload className="h-16 w-16 text-muted-foreground mb-6" />
+                <h3 className="text-xl font-medium mb-2">
+                  Click to upload an image
+                </h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  or drag and drop image here
                 </p>
-                {resizeMethod === "dimensions" && (
-                  <p>
-                    Dimensions:{" "}
-                    <span className="font-semibold">
-                      {Math.round(pixelWidth)}px × {Math.round(pixelHeight)}px
-                    </span>
-                  </p>
+                <Button size="lg" className="px-8">
+                  Select Image
+                </Button>
+                <p className="mt-4 text-xs text-muted-foreground">
+                  Supports JPG, PNG, WebP and other image formats
+                </p>
+              </div>
+            </div>
+            <input
+              ref={fileInputRef}
+              type="file"
+              className="hidden"
+              accept="image/*"
+              onChange={handleFileUpload}
+            />
+          </div>
+        ) : (
+          /* Step 2: Edit Image - After upload */
+          <div className="space-y-8">
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-bold">Edit Your Image</h2>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  setUploadedImage(null);
+                  setUploadedImageUrl(null);
+                  setPreviewImage(null);
+                  setResizedImageSize(0);
+                }}
+              >
+                Upload a different image
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Left Column - Original Image */}
+              <div className="space-y-4">
+                <div className="border rounded-lg p-4 bg-muted/20">
+                  <h3 className="text-lg font-medium mb-2 flex items-center">
+                    Original Image
+                  </h3>
+                  <div className="relative flex justify-center bg-checkerboard rounded-md overflow-hidden">
+                    <img
+                      src={uploadedImageUrl}
+                      alt="Original image"
+                      className="max-h-[300px] object-contain"
+                    />
+                  </div>
+                  <div className="mt-3 text-sm">
+                    <p><strong>File:</strong> {uploadedImage.name}</p>
+                    <p><strong>Size:</strong> {formatFileSize(uploadedImage.size)}</p>
+                    <p><strong>Dimensions:</strong> {originalDimensions.width} × {originalDimensions.height} pixels</p>
+                  </div>
+                </div>
+
+                {/* Preview (if available) */}
+                {previewImage && !isProcessing && (
+                  <div className="border rounded-lg p-4 bg-muted/20">
+                    <h3 className="text-lg font-medium mb-2 flex items-center">
+                      New Image
+                      <span className="ml-2 text-xs bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100 rounded-full px-2 py-0.5">
+                        Preview
+                      </span>
+                    </h3>
+                    <div className="relative flex justify-center bg-checkerboard rounded-md overflow-hidden">
+                      <img
+                        src={previewImage}
+                        alt="Preview of resized image"
+                        className="max-h-[300px] object-contain"
+                      />
+                    </div>
+                    <div className="mt-3 text-sm">
+                      <p><strong>New size:</strong> {formatFileSize(resizedImageSize)}</p>
+                      {resizeMethod === "dimensions" && (
+                        <p><strong>New dimensions:</strong> {Math.round(pixelWidth)} × {Math.round(pixelHeight)} pixels</p>
+                      )}
+                      <p className="mt-1 text-xs">
+                        <span className="text-green-600 dark:text-green-400 font-medium">
+                          {Math.round(((uploadedImage.size - resizedImageSize) / uploadedImage.size) * 100)}% smaller
+                        </span> than original
+                      </p>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      onClick={handleDownload} 
+                      className="w-full mt-4"
+                    >
+                      <Download className="mr-2 h-4 w-4" />
+                      Download This Image
+                    </Button>
+                  </div>
                 )}
-                {uploadedImage && resizedImageSize > 0 && (
-                  <p className="mt-1 text-xs">
-                    Original: {formatFileSize(uploadedImage.size)} → New:{" "}
-                    {formatFileSize(resizedImageSize)}(
-                    {Math.round((resizedImageSize / uploadedImage.size) * 100)}%
-                    of original)
-                  </p>
-                )}
+              </div>
+
+              {/* Right Column - Editing Controls */}
+              <div className="space-y-6">
+                {/* Simple Options for Beginners */}
+                <div className="border rounded-lg p-4">
+                  <h3 className="text-lg font-medium mb-4">How do you want to resize?</h3>
+                  
+                  <Tabs defaultValue="simple" className="w-full">
+                    <TabsList className="grid grid-cols-3 mb-4">
+                      <TabsTrigger value="simple" onClick={() => setResizeMethod("percentage")}>
+                        Simple
+                      </TabsTrigger>
+                      <TabsTrigger value="advanced" onClick={() => setResizeMethod("dimensions")}>
+                        Custom Size
+                      </TabsTrigger>
+                      <TabsTrigger value="compress" onClick={() => setResizeMethod("filesize")}>
+                        Compress
+                      </TabsTrigger>
+                    </TabsList>
+
+                    {/* Simple Tab (Percentage) */}
+                    <TabsContent value="simple" className="space-y-4">
+                      <div className="space-y-4">
+                        <div>
+                          <div className="flex justify-between mb-2">
+                            <Label htmlFor="percentage" className="text-base">
+                              Image Size
+                              <InfoTooltip text="Adjust the slider to make your image smaller or larger" />
+                            </Label>
+                            <span className="font-medium">
+                              {resizeSettings.percentage}%
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs">Smaller</span>
+                            <Slider
+                              id="percentage"
+                              min={10}
+                              max={100}
+                              step={5}
+                              value={[resizeSettings.percentage]}
+                              onValueChange={(value) =>
+                                setResizeSettings({
+                                  ...resizeSettings,
+                                  percentage: value[0],
+                                })
+                              }
+                              className="flex-1"
+                            />
+                            <span className="text-xs">Original</span>
+                          </div>
+                          <p className="text-xs text-muted-foreground mt-2">
+                            {resizeSettings.percentage < 100
+                              ? `Image will be ${resizeSettings.percentage}% of the original size`
+                              : "Original size"}
+                          </p>
+                        </div>
+
+                        {/* Format Selection */}
+                        <div className="mt-4">
+                          <Label htmlFor="format" className="text-base">
+                            Image Format
+                            <InfoTooltip text="JPEG for photos, PNG for screenshots or graphics, WebP for best compression" />
+                          </Label>
+                          <Select
+                            value={resizeSettings.format}
+                            onValueChange={(value) =>
+                              setResizeSettings({ ...resizeSettings, format: value })
+                            }
+                          >
+                            <SelectTrigger id="format" className="mt-2">
+                              <SelectValue placeholder="Select format" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="jpeg">JPEG - Best for Photos</SelectItem>
+                              <SelectItem value="png">PNG - Best for Graphics</SelectItem>
+                              <SelectItem value="webp">WebP - Smallest File Size</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      </div>
+                    </TabsContent>
+
+                    {/* Advanced Tab (Dimensions) */}
+                    <TabsContent value="advanced" className="space-y-4">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="width" className="flex items-center">
+                            Width
+                            <InfoTooltip text="Enter the desired width for your image" />
+                          </Label>
+                          <Input
+                            id="width"
+                            type="number"
+                            value={resizeSettings.width}
+                            onChange={(e) =>
+                              setResizeSettings({
+                                ...resizeSettings,
+                                width: parseInt(e.target.value) || 0,
+                                height:
+                                  resizeSettings.maintainAspectRatio &&
+                                  originalDimensions.width
+                                    ? Math.round(
+                                        ((parseInt(e.target.value) || 0) *
+                                          originalDimensions.height) /
+                                          originalDimensions.width,
+                                      )
+                                    : resizeSettings.height,
+                              })
+                            }
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="height" className="flex items-center">
+                            Height
+                            <InfoTooltip text="Enter the desired height for your image" />
+                          </Label>
+                          <Input
+                            id="height"
+                            type="number"
+                            value={resizeSettings.height}
+                            onChange={(e) =>
+                              setResizeSettings({
+                                ...resizeSettings,
+                                height: parseInt(e.target.value) || 0,
+                                width:
+                                  resizeSettings.maintainAspectRatio &&
+                                  originalDimensions.height
+                                    ? Math.round(
+                                        ((parseInt(e.target.value) || 0) *
+                                          originalDimensions.width) /
+                                          originalDimensions.height,
+                                      )
+                                    : resizeSettings.width,
+                              })
+                            }
+                          />
+                        </div>
+                      </div>
+
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          id="aspect-ratio"
+                          checked={resizeSettings.maintainAspectRatio}
+                          onCheckedChange={(checked) =>
+                            setResizeSettings({
+                              ...resizeSettings,
+                              maintainAspectRatio: !!checked,
+                            })
+                          }
+                        />
+                        <label
+                          htmlFor="aspect-ratio"
+                          className="text-sm font-medium"
+                        >
+                          Keep proportions
+                          <InfoTooltip text="When checked, the image dimensions will stay proportional to avoid distortion" />
+                        </label>
+                      </div>
+
+                      <div className="mt-4">
+                        <Label htmlFor="format" className="flex items-center">
+                          File Format
+                          <InfoTooltip text="JPEG for photos, PNG for screenshots or graphics, WebP for best compression" />
+                        </Label>
+                        <Select
+                          value={resizeSettings.format}
+                          onValueChange={(value) =>
+                            setResizeSettings({ ...resizeSettings, format: value })
+                          }
+                        >
+                          <SelectTrigger id="format" className="mt-2">
+                            <SelectValue placeholder="Select format" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="jpeg">JPEG - Best for Photos</SelectItem>
+                            <SelectItem value="png">PNG - Best for Graphics</SelectItem>
+                            <SelectItem value="webp">WebP - Smallest File Size</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </TabsContent>
+
+                    {/* Compress Tab (File Size) */}
+                    <TabsContent value="compress" className="space-y-4">
+                      <div>
+                        <div className="flex justify-between mb-2">
+                          <Label htmlFor="filesize" className="flex items-center text-base">
+                            Target File Size
+                            <InfoTooltip text="Adjust to set your desired file size. The image will be compressed to be close to this size." />
+                          </Label>
+                          <span className="font-medium">
+                            {resizeSettings.targetSize} KB
+                          </span>
+                        </div>
+                        <Slider
+                          id="filesize"
+                          min={10}
+                          max={1000}
+                          step={10}
+                          value={[resizeSettings.targetSize]}
+                          onValueChange={(value) =>
+                            setResizeSettings({
+                              ...resizeSettings,
+                              targetSize: value[0],
+                            })
+                          }
+                        />
+                        <p className="text-xs text-muted-foreground mt-2">
+                          Drag the slider to set your target file size
+                        </p>
+                      </div>
+
+                      <div className="mt-4">
+                        <Label htmlFor="format" className="flex items-center">
+                          File Format
+                          <InfoTooltip text="For best compression, WebP is recommended" />
+                        </Label>
+                        <Select
+                          value={resizeSettings.format}
+                          onValueChange={(value) =>
+                            setResizeSettings({ ...resizeSettings, format: value })
+                          }
+                        >
+                          <SelectTrigger id="format" className="mt-2">
+                            <SelectValue placeholder="Select format" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="jpeg">JPEG - Good Compression</SelectItem>
+                            <SelectItem value="webp">WebP - Best Compression</SelectItem>
+                            <SelectItem value="png">PNG - Less Compression</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </TabsContent>
+                  </Tabs>
+                </div>
+
+                {/* Optional Adjustments */}
+                <div className="border rounded-lg p-4">
+                  <details>
+                    <summary className="text-lg font-medium cursor-pointer mb-4">
+                      Extra Options
+                    </summary>
+                    
+                    <div className="space-y-4 pt-2">
+                      <div className="space-y-2">
+                        <Label htmlFor="rotate" className="flex items-center">
+                          Rotate Image
+                          <InfoTooltip text="Rotate your image if needed" />
+                        </Label>
+                        <Select
+                          value={resizeSettings.rotate.toString()}
+                          onValueChange={(value) =>
+                            setResizeSettings({
+                              ...resizeSettings,
+                              rotate: parseInt(value),
+                            })
+                          }
+                        >
+                          <SelectTrigger id="rotate">
+                            <SelectValue placeholder="Select rotation" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="0">No rotation</SelectItem>
+                            <SelectItem value="90">Rotate right (90°)</SelectItem>
+                            <SelectItem value="180">Upside down (180°)</SelectItem>
+                            <SelectItem value="270">Rotate left (270°)</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      {resizeMethod !== "filesize" && (
+                        <div className="space-y-2">
+                          <div className="flex justify-between">
+                            <Label htmlFor="quality" className="flex items-center">
+                              Image Quality
+                              <InfoTooltip text="Higher quality means larger file size, lower quality means smaller file size" />
+                            </Label>
+                            <span className="text-sm">{resizeSettings.quality}%</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs">Lower</span>
+                            <Slider
+                              id="quality"
+                              min={10}
+                              max={100}
+                              step={5}
+                              value={[resizeSettings.quality]}
+                              onValueChange={(value) =>
+                                setResizeSettings({
+                                  ...resizeSettings,
+                                  quality: value[0],
+                                })
+                              }
+                              className="flex-1"
+                            />
+                            <span className="text-xs">Higher</span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </details>
+                </div>
+
+                {/* Process Button */}
+                <Button
+                  onClick={handleResize}
+                  disabled={isProcessing}
+                  className="w-full h-12 text-base font-medium"
+                  size="lg"
+                >
+                  {isProcessing ? (
+                    <>
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      Processing your image...
+                    </>
+                  ) : (
+                    <>
+                      <ImageIcon className="mr-2 h-5 w-5" />
+                      {previewImage ? "Update Image" : "Process Image"}
+                    </>
+                  )}
+                </Button>
               </div>
             </div>
           </div>
         )}
-
-        {/* Action Buttons */}
-        <div className="flex flex-col space-y-3 mt-6 pt-4 border-t">
-          <Button
-            onClick={handleResize}
-            disabled={!uploadedImage || isProcessing}
-            className="w-full"
-          >
-            {isProcessing ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Processing...
-              </>
-            ) : (
-              <>
-                <ImageIcon className="mr-2 h-4 w-4" />
-                Resize Image
-              </>
-            )}
-          </Button>
-
-          <Button
-            variant="outline"
-            onClick={handleDownload}
-            disabled={!previewImage || isProcessing}
-            className="w-full"
-          >
-            <Download className="mr-2 h-4 w-4" />
-            Download Resized Image
-          </Button>
-        </div>
+        
+        {/* Help Text */}
+        {!uploadedImage && (
+          <div className="mt-10 text-sm text-muted-foreground">
+            <h3 className="font-medium mb-2">What you can do with this tool:</h3>
+            <ul className="list-disc list-inside space-y-1 pl-2">
+              <li>Resize images to specific dimensions</li>
+              <li>Make images smaller or larger by percentage</li>
+              <li>Compress images to a target file size</li>
+              <li>Convert between image formats (JPEG, PNG, WebP)</li>
+              <li>Rotate images as needed</li>
+            </ul>
+          </div>
+        )}
       </CardContent>
     </Card>
   );

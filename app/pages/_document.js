@@ -1,5 +1,6 @@
+
 import { Html, Head, Main, NextScript } from "next/document";
-import Script from "next/script";
+import { Partytown } from "@qwik.dev/partytown/react";
 
 export default function Document() {
   return (
@@ -13,6 +14,7 @@ export default function Document() {
         />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -21,38 +23,38 @@ export default function Document() {
         <meta name="apple-mobile-web-app-title" content="Toolzer" />
         <link rel="manifest" href="/site.webmanifest" />
 
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link
+          rel="icon"
+          type="image/png"
+          href="/favicon-96x96.png"
+          sizes="96x96"
+        />
+
         <meta name="robots" content="index, follow" />
         <meta name="theme-color" content="#1e293b" />
 
         {/* Yandex */}
         <meta name="yandex-verification" content="b5c3a28f16fc141a" />
-
-        {/* Google Analytics */}
-        <Script
-          strategy="worker"
-          id="tag"
-          src="https://www.googletagmanager.com/gtag/js?id=G-V8DHJ6KM0Y"
-        ></Script>
-        <Script
-          strategy="worker"
-          id="window-layer"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag("js", new Date());
-              gtag("config", "G-V8DHJ6KM0Y");
-            `,
-          }}
-        />
-        <Script
-          strategy="worker"
+        {/* Ahrefs Analytics */}
+        <script
+          type="text/partytown"
           src="https://analytics.ahrefs.com/analytics.js"
-          data-key="C5aYtfiMQkYT/orxDj9DTA"
           async
-        ></Script>
+          data-key="C5aYtfiMQkYT/orxDj9DTA"
+        />
       </Head>
       <body>
+        {/** Google Tag Manager (noscript) **/}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-PT28VDL2"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+        {/** End Google Tag Manager (noscript) **/}
         <Main />
         <NextScript />
       </body>

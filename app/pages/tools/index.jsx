@@ -1,48 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Head from "@/components/Head";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
-import {
-  Search,
-  Star,
-  ArrowRight,
-  FileSymlink,
-  ImageIcon,
-  Type,
-  Code2,
-  Wand2,
-  Download,
-  FileType,
-  FileText,
-  FileImage,
-  FileBadge,
-  Table,
-  ImageDown,
-  Minimize2,
-  Video,
-  Scissors,
-  Music,
-  Edit3,
-  GitCompare,
-  Tag,
-  AlignJustify,
-  Braces,
-  BoxSelect,
-  FileCode,
-  FileCode2,
-  Binary,
-  Key,
-  ImagePlus,
-  FileDigit,
-  FileEdit,
-  Volume2,
-  Instagram,
-  Youtube,
+import { Youtube,
   Music2,
   Twitter,
   Network,
@@ -89,6 +45,52 @@ const iconMap = {
   Network,
   DollarSign,
 };
+import React, { useState, useEffect } from "react";
+import Head from "@/components/Head";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import {
+  Search,
+  Star,
+  ArrowRight,
+  FileSymlink,
+  ImageIcon,
+  Type,
+  Code2,
+  Wand2,
+  Download,
+  FileType,
+  FileText,
+  FileImage,
+  FileBadge,
+  Table,
+  ImageDown,
+  Minimize2,
+  Video,
+  Scissors,
+  Music,
+  Edit3,
+  GitCompare,
+  Tag,
+  AlignJustify,
+  Braces,
+  BoxSelect,
+  FileCode,
+  FileCode2,
+  Binary,
+  Key,
+  ImagePlus,
+  FileDigit,
+  FileEdit,
+  Volume2,
+  Instagram,
+} from "lucide-react";
+import { fromJSON } from "postcss";
 
 // Map category IDs to display names and icons
 const categoryConfig = {
@@ -96,6 +98,11 @@ const categoryConfig = {
     name: "Image Tools",
     description: "Tools for image editing, resizing, and manipulation",
     icon: "ImageIcon",
+  },
+  tax: {
+    name: "Tax Tools",
+    description: "Tools for image editing, resizing, and manipulation",
+    icon: "FileDigit",
   },
   networking: {
     name: "Networking Tools",
@@ -106,6 +113,11 @@ const categoryConfig = {
     name: "Finance Tools",
     description: "Tools for financial calculations and analysis",
     icon: "DollarSign",
+  },
+  tax: {
+    name: "Tax Tools",
+    description: "Tools for tax calculation and planning",
+    icon: "FileDigit",
   },
 };
 

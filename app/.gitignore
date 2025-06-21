@@ -15,6 +15,7 @@ sitemap.xml
 .wrangler/
 .output/
 robots.txt
+public/~partytown
 
 node_modules
 dist

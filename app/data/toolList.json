@@ -589,6 +589,203 @@
         "CLAT form",
         "law entrance exam"
       ]
+    },
+    {
+      "title": "UPSC Photo Resizer – Resize to 413×531 px & Under 200 KB JPG",
+      "description": "Resize your passport-style photo for UPSC CSE 2025: 3.5×4.5 cm (~413×531 px @300 DPI), under 200 KB JPG. Free, mobile-friendly, and secure browser tool.",
+      "slug": "upsc-photo-resizer",
+      "imageName": "",
+      "contentPath": "/upsc-photo-resizer.md",
+      "featureList": [
+        "📷 Upload passport-style photo (JPG)",
+        "📐 Resize to standard CSE dimensions (~413×531 px)",
+        "⚖️ Compress to under 200 KB",
+        "🔍 Preview before download",
+        "📲 Mobile and desktop friendly",
+        "🛡️ 100% private — processed in your browser",
+        "🆓 Free & no watermark"
+      ],
+      "config": {
+        "width": 413,
+        "height": 531,
+        "targetSize": 200,
+        "format": "jpeg",
+        "maintainAspectRatio": true
+      },
+      "tags": [
+        "UPSC 2025",
+        "photo resizer",
+        "passport photo",
+        "application form tool"
+      ]
+    },
+    {
+      "title": "UPSC Signature Resizer – Resize to 350–500 px & Under 100 KB JPG",
+      "description": "Free online tool to resize and compress your signature for UPSC CSE 2025: JPG format, 350–500 px dimensions, under 100 KB. Fast, secure, and mobile-friendly.",
+      "slug": "upsc-signature-resizer",
+      "imageName": "",
+      "contentPath": "/upsc-signature-resizer.md",
+      "featureList": [
+        "✍️ Upload your handwritten signature",
+        "📐 Resize image to 350–500 pixels",
+        "⚖️ Compress to under 100 KB",
+        "📁 Output in JPG format",
+        "🔍 Live preview before download",
+        "🌐 Works entirely in your browser",
+        "📱 Compatible with mobile and desktop",
+        "🛡️ Secure, no data stored"
+      ],
+      "config": {
+        "minWidth": 350,
+        "maxWidth": 500,
+        "minHeight": 350,
+        "maxHeight": 500,
+        "targetSize": 100,
+        "format": "jpeg",
+        "maintainAspectRatio": true
+      },
+      "tags": [
+        "UPSC 2025",
+        "signature resizer",
+        "UPSC CSE form",
+        "image upload"
+      ]
+    },
+    {
+      "title": "NDA Photo Resizer – Resize to 110×140 px & Under 300 KB JPG",
+      "description": "Free online NDA photo resizer to resize your passport-style photograph to 110×140 px and under 300 KB JPG. Fits UPSC NDA & CDS form upload specs.",
+      "slug": "nda-photo-resizer",
+      "imageName": "",
+      "contentPath": "/nda-photo-resizer.md",
+      "featureList": [
+        "📷 Upload passport-style photo (JPG format)",
+        "📐 Resize to 110×140 px (NDA upload size)",
+        "⚖️ Compress to 20–300 KB",
+        "🔍 Preview before download",
+        "📲 Works on mobile & desktop",
+        "🛡️ Secure – processed in your browser only",
+        "🆓 100% free, no watermarks"
+      ],
+      "config": {
+        "width": 110,
+        "height": 140,
+        "targetSize": 300,
+        "format": "jpeg",
+        "maintainAspectRatio": true
+      },
+      "tags": ["NDA 2025", "photo resizer", "nda form image", "upsc nda photo"]
+    },
+    {
+      "title": "NDA Signature Resizer – Resize to 110×140 px & Under 300 KB JPG",
+      "description": "Resize your handwritten signature to 110×140 px and under 300 KB JPG format for the NDA 2025 form. Fast, secure, and mobile‑friendly browser tool.",
+      "slug": "nda-signature-resizer",
+      "imageName": "",
+      "contentPath": "/nda-signature-resizer.md",
+      "featureList": [
+        "✍️ Upload your scanned signature (JPG)",
+        "📐 Resize to 110×140 pixels (NDA spec)",
+        "⚖️ Compress to 20–300 KB",
+        "📁 Download as JPG",
+        "🔍 Preview before download",
+        "📲 Works on mobile & desktop",
+        "🛡️ 100% private — processed locally"
+      ],
+      "config": {
+        "width": 110,
+        "height": 140,
+        "targetSize": 300,
+        "format": "jpeg",
+        "maintainAspectRatio": true
+      },
+      "tags": ["NDA 2025", "signature resizer", "nda form", "upsc nda"]
+    }
+  ],
+  "tax": [
+    {
+      "title": "Portugal NHR Tax Calculator – Non-Habitual Resident Estimator (2025)",
+      "description": "Estimate your 2025 tax under Portugal’s NHR regime, including salary, pension, and tax-exempt foreign income",
+      "slug": "portugal-nhr-tax-calculator",
+      "imageName": "",
+      "contentPath": "",
+      "featureList": [
+        "Supports Portugal NHR regime for 2025",
+        "Choose income type: salary, pension, or dividends",
+        "Auto-applies 20% or 10% flat tax rates",
+        "Calculates exemptions for foreign income under DTA",
+        "Compare NHR vs standard Portuguese tax",
+        "Outputs effective rate and take-home income"
+      ],
+      "config": {},
+      "tags": [
+        "Portugal",
+        "NHR",
+        "Non-Habitual Resident",
+        "expat tax calculator",
+        "flat tax",
+        "foreign income exemption",
+        "Portugal 2025",
+        "remote workers",
+        "pension tax",
+        "digital nomad"
+      ]
+    },{
+  "title": "Germany Expat Tax Calculator – 2025 Income, Church Tax & Solidarity Surcharge",
+  "description": "Estimate your monthly ALG I unemployment benefit in Germany for 2025 based on salary, children, and work history",
+  "slug": "germany-expat-tax-calculator",
+  "imageName": "",
+  "contentPath": "",
+  "featureList": [
+    "Input gross annual salary in EUR",
+    "Optional church tax selection by state",
+    "Includes 2025 progressive tax brackets",
+    "Calculates solidarity surcharge (Soli)",
+    "Estimates social security deductions",
+    "Outputs net salary and effective tax rate"
+  ],
+  "config": {},
+  "tags": [
+    "Germany",
+    "income tax",
+    "church tax",
+    "solidarity surcharge",
+    "expat tools",
+    "net salary calculator",
+    "2025 tax rules",
+    "freelancer tax",
+    "social security",
+    "German tax system"
+  ]
+}
+
+  ],
+  "gov-benefits": [
+    {
+      "title": "Germany Unemployment Benefit Calculator – ALG I Estimator (2025)",
+      "description": "Estimate your Arbeitslosengeld I (ALG I) monthly benefit in Germany based on your salary, contribution period, age, and child benefit eligibility. Updated for 2025.",
+      "slug": "germany-unemployment-benefit-calculator",
+      "imageName": "",
+      "contentPath": "",
+      "featureList": [
+        "Input gross monthly salary",
+        "Estimate based on German ALG I formula",
+        "Includes child benefit adjustment (60% or 67%)",
+        "Calculates maximum benefit duration by age & work history",
+        "Instant results for daily and monthly benefit",
+        "Optimized for German unemployment rules (2025)"
+      ],
+      "config": {},
+      "tags": [
+        "Germany",
+        "unemployment benefit",
+        "ALG I",
+        "Arbeitslosengeld",
+        "job loss support",
+        "benefit estimator",
+        "expat tools",
+        "Germany 2025",
+        "salary replacement",
+        "Kindergeld"
+      ]
     }
   ]
 }
