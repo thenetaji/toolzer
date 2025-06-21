@@ -80,7 +80,6 @@ import Head from "@/components/Head";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import FakePingTool from "@/components/FakePing";
 
 export default function Home() {
   return (
@@ -636,11 +635,11 @@ function HeroSection() {
             <span>Every tool you need, in one place</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+          <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold tracking-tight mb-6">
             Your Free All-in-One Online Toolbox
           </h1>
 
-          <h2 className="text-lg text-muted-foreground mx-auto">
+          <h2 className="text-md text-muted-foreground mx-auto">
             Toolzer offers fast, free browser and API access to powerful tools
             for file conversion, media editing, SEO optimization, and
             productivity boosting.
@@ -990,7 +989,6 @@ function CTASection() {
               </Link>
             </div>
           </div>
-          <FakePingTool />
         </div>
       </div>
     </section>

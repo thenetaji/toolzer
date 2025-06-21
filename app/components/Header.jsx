@@ -61,10 +61,7 @@ export default function Header() {
   };
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ type: "spring", stiffness: 120, damping: 20 }}
+    <header
       className={`relative top-0 z-50 ${
         scrolled
           ? "bg-background/80 backdrop-blur-xl shadow-lg"
@@ -251,6 +248,6 @@ export default function Header() {
           </div>
         </div>
       </div>
-    </motion.header>
+    </header>
   );
 }

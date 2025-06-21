@@ -1,5 +1,5 @@
 export default {
-  siteUrl: process.env.SITE_URL || "https://toolzer.studio",
+  siteUrl: process.env.SITE_URL || "https://toolzer.studio/",
   generateIndexSitemap: false,
   exclude: ["/coming-soon"],
   generateRobotsTxt: true,

@@ -1,4 +1,4 @@
-# CUET Signature Resizer 2025 – Resize to 200x100 px, 4KB–30KB JPEG Format
+## CUET Signature Resizer 2025 – Resize to 200x100 px, 4KB–30KB JPEG Format
 
 Use our free CUET Signature Resizer tool to resize and compress your scanned signature to match CUET 2025 application requirements. Automatically adjust your digital signature to the correct dimensions and size in just one click.
 
