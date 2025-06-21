@@ -787,5 +787,63 @@
         "Kindergeld"
       ]
     }
-  ]
+  ],
+  "tax": [
+  {
+    "title": "Germany Unemployment Benefit Calculator – ALG I Estimator (2025)",
+    "description": "Estimate your Arbeitslosengeld I (ALG I) monthly benefit in Germany based on your salary, contribution period, age, and child benefit eligibility. Updated for 2025.",
+    "slug": "germany-unemployment-benefit-calculator",
+    "imageName": "",
+    "contentPath": "",
+    "featureList": [
+      "Input gross monthly salary",
+      "Estimate based on German ALG I formula",
+      "Includes child benefit adjustment (60% or 67%)",
+      "Calculates maximum benefit duration by age & work history",
+      "Instant results for daily and monthly benefit",
+      "Optimized for German unemployment rules (2025)"
+    ],
+    "config": {},
+    "tags": [
+      "Germany",
+      "unemployment benefit",
+      "ALG I",
+      "Arbeitslosengeld",
+      "job loss support",
+      "benefit estimator",
+      "expat tools",
+      "Germany 2025",
+      "salary replacement",
+      "Kindergeld"
+    ]
+  },
+  {
+    "title": "Portugal NHR Tax Calculator – Non-Habitual Resident Estimator (2025)",
+    "description": "Calculate your 2025 income tax under Portugal’s Non-Habitual Resident (NHR) regime. Supports local salary, foreign pensions, and tax-exempt income under DTAs.",
+    "slug": "portugal-nhr-tax-calculator",
+    "imageName": "",
+    "contentPath": "",
+    "featureList": [
+      "Supports Portugal NHR regime for 2025",
+      "Choose income type: salary, pension, or dividends",
+      "Auto-applies 20% or 10% flat tax rates",
+      "Calculates exemptions for foreign income under DTA",
+      "Compare NHR vs standard Portuguese tax",
+      "Outputs effective rate and take-home income"
+    ],
+    "config": {},
+    "tags": [
+      "Portugal",
+      "NHR",
+      "Non-Habitual Resident",
+      "expat tax calculator",
+      "flat tax",
+      "foreign income exemption",
+      "Portugal 2025",
+      "remote workers",
+      "pension tax",
+      "digital nomad"
+    ]
+  }
+ ]
 }
