@@ -179,7 +179,10 @@
         "format": "jpeg",
         "maintainAspectRatio": true
       },
-      "tags": ["NEET", "neet 2025 signature"]
+      "tags": [
+        "NEET",
+        "neet 2025 signature"
+      ]
     },
     {
       "title": "JEE Photo Resizer - Resize to 276x354 px & under 200KB JPEG",
@@ -206,7 +209,11 @@
         "format": "jpeg",
         "maintainAspectRatio": true
       },
-      "tags": ["JEE Main", "photo resizer", "jee 2025"]
+      "tags": [
+        "JEE Main",
+        "photo resizer",
+        "jee 2025"
+      ]
     },
     {
       "title": "JEE Signature Resizer - Resize to 276x118 px & under 50KB JPEG",
@@ -233,7 +240,11 @@
         "format": "jpeg",
         "maintainAspectRatio": true
       },
-      "tags": ["JEE Main", "signature resizer", "jee 2025"]
+      "tags": [
+        "JEE Main",
+        "signature resizer",
+        "jee 2025"
+      ]
     },
     {
       "title": "CUET Signature Resizer - Resize to 200x100 px & under 50KB JPEG",
@@ -260,7 +271,11 @@
         "format": "jpeg",
         "maintainAspectRatio": true
       },
-      "tags": ["CUET 2025", "signature resizer", "cuet form tool"]
+      "tags": [
+        "CUET 2025",
+        "signature resizer",
+        "cuet form tool"
+      ]
     },
     {
       "title": "CUET Photo Resizer - Resize to 276x354 px & under 50KB JPEG",
@@ -287,7 +302,11 @@
         "format": "jpeg",
         "maintainAspectRatio": true
       },
-      "tags": ["CUET 2025", "photo resizer", "cuet image size"]
+      "tags": [
+        "CUET 2025",
+        "photo resizer",
+        "cuet image size"
+      ]
     },
     {
       "title": "CTET Photo Resizer – Resize to 413x531 px & under 100KB JPG",
@@ -380,7 +399,11 @@
         "format": "jpeg",
         "maintainAspectRatio": true
       },
-      "tags": ["CAT 2025", "signature resizer", "CAT form tool"]
+      "tags": [
+        "CAT 2025",
+        "signature resizer",
+        "CAT form tool"
+      ]
     },
     {
       "title": "CAT Photo Resizer - Resize to 248x300 px & under 80KB JPEG",
@@ -407,7 +430,12 @@
         "format": "jpeg",
         "maintainAspectRatio": true
       },
-      "tags": ["CAT 2025", "photo resizer", "pixels converter", "exam tool"]
+      "tags": [
+        "CAT 2025",
+        "photo resizer",
+        "pixels converter",
+        "exam tool"
+      ]
     },
     {
       "title": "SSC Photo Resizer – Resize to 200×230 px & Under 50 KB (JPG)",
@@ -673,7 +701,12 @@
         "format": "jpeg",
         "maintainAspectRatio": true
       },
-      "tags": ["NDA 2025", "photo resizer", "nda form image", "upsc nda photo"]
+      "tags": [
+        "NDA 2025",
+        "photo resizer",
+        "nda form image",
+        "upsc nda photo"
+      ]
     },
     {
       "title": "NDA Signature Resizer – Resize to 110×140 px & Under 300 KB JPG",
@@ -697,7 +730,12 @@
         "format": "jpeg",
         "maintainAspectRatio": true
       },
-      "tags": ["NDA 2025", "signature resizer", "nda form", "upsc nda"]
+      "tags": [
+        "NDA 2025",
+        "signature resizer",
+        "nda form",
+        "upsc nda"
+      ]
     }
   ],
   "tax": [
@@ -728,122 +766,234 @@
         "pension tax",
         "digital nomad"
       ]
-    },{
-  "title": "Germany Expat Tax Calculator – 2025 Income, Church Tax & Solidarity Surcharge",
-  "description": "Estimate your monthly ALG I unemployment benefit in Germany for 2025 based on salary, children, and work history",
-  "slug": "germany-expat-tax-calculator",
-  "imageName": "",
-  "contentPath": "",
-  "featureList": [
-    "Input gross annual salary in EUR",
-    "Optional church tax selection by state",
-    "Includes 2025 progressive tax brackets",
-    "Calculates solidarity surcharge (Soli)",
-    "Estimates social security deductions",
-    "Outputs net salary and effective tax rate"
-  ],
-  "config": {},
-  "tags": [
-    "Germany",
-    "income tax",
-    "church tax",
-    "solidarity surcharge",
-    "expat tools",
-    "net salary calculator",
-    "2025 tax rules",
-    "freelancer tax",
-    "social security",
-    "German tax system"
-  ]
-}
-
-  ],
-  "gov-benefits": [
+    },
     {
-      "title": "Germany Unemployment Benefit Calculator – ALG I Estimator (2025)",
-      "description": "Estimate your Arbeitslosengeld I (ALG I) monthly benefit in Germany based on your salary, contribution period, age, and child benefit eligibility. Updated for 2025.",
-      "slug": "germany-unemployment-benefit-calculator",
+      "title": "Germany Expat Tax Calculator – 2025 Income, Church Tax & Solidarity Surcharge",
+      "description": "Estimate your monthly ALG I unemployment benefit in Germany for 2025 based on salary, children, and work history",
+      "slug": "germany-expat-tax-calculator",
       "imageName": "",
       "contentPath": "",
       "featureList": [
-        "Input gross monthly salary",
-        "Estimate based on German ALG I formula",
-        "Includes child benefit adjustment (60% or 67%)",
-        "Calculates maximum benefit duration by age & work history",
-        "Instant results for daily and monthly benefit",
-        "Optimized for German unemployment rules (2025)"
+        "Input gross annual salary in EUR",
+        "Optional church tax selection by state",
+        "Includes 2025 progressive tax brackets",
+        "Calculates solidarity surcharge (Soli)",
+        "Estimates social security deductions",
+        "Outputs net salary and effective tax rate"
       ],
       "config": {},
       "tags": [
         "Germany",
-        "unemployment benefit",
-        "ALG I",
-        "Arbeitslosengeld",
-        "job loss support",
-        "benefit estimator",
+        "income tax",
+        "church tax",
+        "solidarity surcharge",
         "expat tools",
-        "Germany 2025",
-        "salary replacement",
-        "Kindergeld"
+        "net salary calculator",
+        "2025 tax rules",
+        "freelancer tax",
+        "social security",
+        "German tax system"
+      ]
+    },
+    {
+      "title": "Spain Property Capital Gains Tax Calculator for Non-Residents (2025)",
+      "description": "Calculate capital gains tax on Spanish property sales for non-residents. EU residents 19%, Non-EU 24%. Includes 3% withholding calculation and net tax due.",
+      "slug": "spain-property-capital-gains-calculator",
+      "imageName": "",
+      "contentPath": "",
+      "featureList": [
+        "🏠 Calculate capital gains on Spanish property sales",
+        "🇪🇺 Different rates: EU residents 19%, Non-EU 24%",
+        "💰 3% withholding tax calculation and deduction",
+        "📊 Deductible expenses for notary, commission, improvements",
+        "🧮 Net tax payable or refund potential",
+        "⚖️ Comprehensive validation and scenario analysis",
+        "📱 Mobile-friendly with step-by-step breakdown",
+        "🇪🇸 Based on 2025 Spanish tax regulations"
+      ],
+      "config": {},
+      "tags": [
+        "Spain",
+        "property capital gains",
+        "non-resident tax",
+        "Spanish property tax",
+        "EU tax rates",
+        "capital gains calculator",
+        "Spain 2025",
+        "property investment",
+        "withholding tax",
+        "Agencia Tributaria",
+        "Spanish real estate tax",
+        "expat property tax"
+      ]
+    },
+    {
+      "title": "Netherlands Income Tax Calculator for Expats & Foreign Workers (2025)",
+      "description": "Calculate Dutch income tax with 30% ruling benefits. Progressive Box 1 rates for residents and non-residents. Includes social insurance contributions and expat-specific deductions.",
+      "slug": "netherlands-expat-tax-calculator",
+      "imageName": "",
+      "contentPath": "",
+      "featureList": [
+        "💰 Calculate Box 1 progressive tax rates (35.82% - 49.50%)",
+        "🎯 30% ruling tax benefits for qualifying expats",
+        "🏠 Resident vs non-resident tax treatment",
+        "📊 Social insurance contributions included",
+        "🇪🇺 EU/EEA qualifying non-resident benefits",
+        "🧮 Effective and marginal tax rate calculations",
+        "📱 Monthly and annual breakdowns",
+        "🇳🇱 Based on 2025 Dutch tax regulations"
+      ],
+      "config": {},
+      "tags": [
+        "Netherlands",
+        "Dutch income tax",
+        "30% ruling",
+        "expat tax calculator",
+        "Box 1 tax",
+        "Netherlands 2025",
+        "foreign worker tax",
+        "Dutch tax resident",
+        "non-resident tax",
+        "Belastingdienst",
+        "social insurance Netherlands",
+        "progressive tax rates"
+      ]
+    },
+    {
+      "title": "US Self-Employment Tax Calculator – Schedule SE & Income Tax Estimator (2025)",
+      "description": "Calculate self-employment tax (15.3%) and federal income tax for freelancers and sole proprietors. Includes Social Security, Medicare, QBI deduction, and quarterly payment estimates.",
+      "slug": "us-self-employment-tax-calculator",
+      "imageName": "",
+      "contentPath": "",
+      "featureList": [
+        "💼 Calculate SE tax: 15.3% (12.4% SS + 2.9% Medicare)",
+        "🎯 Social Security wage base cap ($176,100 for 2025)",
+        "🏥 Additional Medicare 0.9% on high income ($200k+)",
+        "📊 Half SE tax deduction and QBI deduction (20%)",
+        "💰 Federal income tax estimation with progressive brackets",
+        "📅 Quarterly estimated tax payment suggestions",
+        "🧮 Comprehensive deductions: retirement, health, home office",
+        "🇺🇸 Based on 2025 IRS Schedule SE regulations"
+      ],
+      "config": {},
+      "tags": [
+        "United States",
+        "self-employment tax",
+        "Schedule SE",
+        "freelancer tax calculator",
+        "1099 tax",
+        "Social Security tax",
+        "Medicare tax",
+        "QBI deduction",
+        "quarterly payments",
+        "US 2025",
+        "IRS tax calculator",
+        "sole proprietor tax",
+        "self-employed",
+        "Schedule C",
+        "Form 1040ES"
+      ]
+    },
+    {
+      "title": "Germany Vehicle Import Tax Calculator – Customs Duty & VAT Estimator (2025)",
+      "description": "Calculate import taxes for vehicles to Germany. Non-EU: 10% customs duty + 19% VAT. EU: VAT on new vehicles only. Includes relocation exemptions and vehicle registration costs.",
+      "slug": "germany-vehicle-import-tax-calculator",
+      "imageName": "",
+      "contentPath": "",
+      "featureList": [
+        "🚗 Calculate customs duty (10%) for non-EU vehicle imports",
+        "💰 Import VAT (19%) on total value including transport",
+        "🇪🇺 EU vs Non-EU import tax differences",
+        "📋 New vs used vehicle classification (6 months/6,000km)",
+        "🏠 Relocation exemption for qualifying residents",
+        "🧾 Vehicle tax (Kfz-Steuer) based on engine size & CO₂",
+        "📊 Registration fees and TÜV inspection cost estimates",
+        "🇩🇪 Based on 2025 German customs and tax regulations"
+      ],
+      "config": {},
+      "tags": [
+        "Germany",
+        "vehicle import tax",
+        "German customs duty",
+        "car import Germany",
+        "German VAT",
+        "vehicle registration Germany",
+        "Zoll Germany",
+        "Kfz-Steuer",
+        "EU vehicle import",
+        "non-EU vehicle import",
+        "relocation exemption Germany",
+        "German vehicle tax calculator",
+        "customs calculator",
+        "import duty calculator",
+        "Germany 2025"
       ]
     }
   ],
-  "tax": [
-  {
-    "title": "Germany Unemployment Benefit Calculator – ALG I Estimator (2025)",
-    "description": "Estimate your Arbeitslosengeld I (ALG I) monthly benefit in Germany based on your salary, contribution period, age, and child benefit eligibility. Updated for 2025.",
-    "slug": "germany-unemployment-benefit-calculator",
-    "imageName": "",
-    "contentPath": "",
-    "featureList": [
-      "Input gross monthly salary",
-      "Estimate based on German ALG I formula",
-      "Includes child benefit adjustment (60% or 67%)",
-      "Calculates maximum benefit duration by age & work history",
-      "Instant results for daily and monthly benefit",
-      "Optimized for German unemployment rules (2025)"
-    ],
-    "config": {},
-    "tags": [
-      "Germany",
-      "unemployment benefit",
-      "ALG I",
-      "Arbeitslosengeld",
-      "job loss support",
-      "benefit estimator",
-      "expat tools",
-      "Germany 2025",
-      "salary replacement",
-      "Kindergeld"
-    ]
-  },
-  {
-    "title": "Portugal NHR Tax Calculator – Non-Habitual Resident Estimator (2025)",
-    "description": "Calculate your 2025 income tax under Portugal’s Non-Habitual Resident (NHR) regime. Supports local salary, foreign pensions, and tax-exempt income under DTAs.",
-    "slug": "portugal-nhr-tax-calculator",
-    "imageName": "",
-    "contentPath": "",
-    "featureList": [
-      "Supports Portugal NHR regime for 2025",
-      "Choose income type: salary, pension, or dividends",
-      "Auto-applies 20% or 10% flat tax rates",
-      "Calculates exemptions for foreign income under DTA",
-      "Compare NHR vs standard Portuguese tax",
-      "Outputs effective rate and take-home income"
-    ],
-    "config": {},
-    "tags": [
-      "Portugal",
-      "NHR",
-      "Non-Habitual Resident",
-      "expat tax calculator",
-      "flat tax",
-      "foreign income exemption",
-      "Portugal 2025",
-      "remote workers",
-      "pension tax",
-      "digital nomad"
-    ]
-  }
- ]
+  "gov-benefits": [
+    {
+      "title": "Germany Child Benefit & Parental Leave Calculator – Kindergeld & Elterngeld Estimator (2025)",
+      "description": "Calculate your Kindergeld (Child Benefit) and Elterngeld (Parental Leave Benefit) for Germany 2025. Official rates: €255 per child monthly, 65% income replacement for parental leave.",
+      "slug": "germany-child-benefit-estimator",
+      "imageName": "",
+      "contentPath": "",
+      "featureList": [
+        "💶 Calculate Kindergeld: €255 per child monthly",
+        "👶 Estimate Elterngeld: 65% of net income (€300-€1,800)",
+        "👨‍👩‍👧‍👦 Support for both parents with shared benefits",
+        "⏰ Choose Basic (14 months) or Plus (28 months) Elterngeld",
+        "📊 Duration sliders and remaining months tracker",
+        "🔍 Transparent formula breakdowns with tooltips",
+        "📱 Mobile-friendly with real-time calculations",
+        "🇩🇪 Based on official 2025 German regulations"
+      ],
+      "config": {},
+      "tags": [
+        "Germany",
+        "Kindergeld",
+        "Elterngeld",
+        "child benefit",
+        "parental leave",
+        "family benefits",
+        "Germany 2025",
+        "expat families",
+        "childcare allowance",
+        "parental allowance",
+        "German benefits calculator",
+        "family support"
+      ]
+    },
+    {
+      "title": "Germany Unemployment Benefit Calculator – ALG I Estimator (2025)",
+      "description": "Estimate your monthly ALG I unemployment benefit in Germany for 2025 based on salary, children, and work history. Calculate benefit duration and replacement rates.",
+      "slug": "germany-unemployment-benefits-calculator",
+      "imageName": "",
+      "contentPath": "",
+      "featureList": [
+        "💰 Calculate ALG I monthly benefits (60% or 67% replacement)",
+        "⏰ Estimate benefit duration based on employment history",
+        "👨‍👩‍👧‍👦 Higher rates for parents with child benefit",
+        "📊 Age-based duration extensions for 50+ workers",
+        "🧮 Daily and monthly benefit breakdown",
+        "📋 Clear eligibility criteria and requirements",
+        "📱 Mobile-friendly calculator interface",
+        "🇩🇪 Based on official 2025 German ALG I regulations"
+      ],
+      "config": {},
+      "tags": [
+        "Germany",
+        "unemployment benefits",
+        "ALG I",
+        "Arbeitslosengeld",
+        "unemployment calculator",
+        "Germany 2025",
+        "employment benefits",
+        "social security Germany",
+        "job loss benefits",
+        "German welfare system",
+        "benefit duration calculator",
+        "expat unemployment"
+      ]
+    }
+  ]
 }
